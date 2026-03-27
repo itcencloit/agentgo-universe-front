@@ -24,6 +24,70 @@ export function DiagnosisPage() {
           ))}
         </div>
       </SectionCard>
+
+      <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] px-5 py-5">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
+          <span className="text-sm font-semibold text-[#364457]">AI 진단 결과 종합 해석</span>
+          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
+            <div className="text-xs font-semibold text-[#2e7d32] uppercase tracking-wide mb-3">강점 영역</div>
+            <div className="space-y-3">
+              {[{ label: '직무적성', score: 91, color: '#2e7d32', pct: '91%' }, { label: '직업기초역량', score: 82, color: '#1a56b0', pct: '82%' }].map(item => (
+                <div key={item.label} className="flex items-center justify-between text-sm gap-3">
+                  <span className="text-[#364457] shrink-0">{item.label}</span>
+                  <div className="flex items-center gap-2 flex-1">
+                    <div className="h-2 flex-1 rounded-full bg-[#e8eef6] overflow-hidden">
+                      <div className="h-full rounded-full" style={{ width: item.pct, backgroundColor: item.color }} />
+                    </div>
+                    <span className="text-xs font-bold shrink-0" style={{ color: item.color }}>{item.score}점</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-xs text-[#64748b] leading-5">직무 적합도와 기초 역량이 우수합니다. 현재 관심 직무(데이터 전략) 방향성이 적성과 잘 맞습니다.</p>
+          </div>
+
+          <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
+            <div className="text-xs font-semibold text-[#f55d78] uppercase tracking-wide mb-3">보완 필요 영역</div>
+            <div className="space-y-3">
+              {[{ label: '취업준비도', score: 68, color: '#f55d78', pct: '68%' }, { label: '진로성숙도', score: 74, color: '#f0b03f', pct: '74%' }].map(item => (
+                <div key={item.label} className="flex items-center justify-between text-sm gap-3">
+                  <span className="text-[#364457] shrink-0">{item.label}</span>
+                  <div className="flex items-center gap-2 flex-1">
+                    <div className="h-2 flex-1 rounded-full bg-[#e8eef6] overflow-hidden">
+                      <div className="h-full rounded-full" style={{ width: item.pct, backgroundColor: item.color }} />
+                    </div>
+                    <span className="text-xs font-bold shrink-0" style={{ color: item.color }}>{item.score}점</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-xs text-[#64748b] leading-5">서류·면접 준비도와 진로 확신도가 상대적으로 낮습니다. 자소서 완성 및 모의 면접 경험이 필요합니다.</p>
+          </div>
+
+          <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
+            <div className="text-xs font-semibold text-[#3a5fd9] uppercase tracking-wide mb-3">AI 강화 추천 액션</div>
+            <div className="space-y-2">
+              {[
+                { priority: '1순위', action: '자소서 1번 문항 완성', reason: '취업준비도 중 서류 항목 최저' },
+                { priority: '2순위', action: '모의 면접 1회 신청', reason: '면접 준비 미흡, 취업지원관 상담 연계 권장' },
+                { priority: '3순위', action: '진로 목표 구체화', reason: '진로성숙도 74점, 목표 직무 세분화 필요' },
+              ].map(item => (
+                <div key={item.priority} className="rounded bg-[#f8fafd] border border-[#e8eef6] px-3 py-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-bold text-[#3a5fd9]">{item.priority}</span>
+                    <span className="text-xs font-semibold text-[#364457]">{item.action}</span>
+                  </div>
+                  <div className="mt-0.5 text-[11px] text-[#64748b]">{item.reason}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

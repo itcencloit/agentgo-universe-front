@@ -33,6 +33,39 @@ export function MockSimulationPage() {
 
   return (
     <div className="space-y-4">
+      <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] px-5 py-4">
+        <div className="flex items-start gap-3">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#3a5fd9] text-xs font-bold text-white">AI</div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-semibold text-[#364457]">AI 채용 시장 트렌드 요약</span>
+              <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
+              <span className="ml-auto text-xs text-[#8a9ab5]">2026년 상반기 기준 · 관심직무: 데이터 전략</span>
+            </div>
+            <div className="mt-3 grid gap-3 md:grid-cols-3">
+              <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
+                <div className="text-xs font-semibold text-[#3a5fd9] mb-2">직무 수요 변화</div>
+                <div className="text-2xl font-bold text-[#364457]">+23%</div>
+                <div className="mt-1 text-xs text-[#64748b]">데이터 분석·전략 직무 공고 수 전년 동기 대비 증가</div>
+              </div>
+              <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
+                <div className="text-xs font-semibold text-[#3a5fd9] mb-2">핵심 요구 역량</div>
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {['SQL', 'Python', 'GA4', '대시보드 설계', 'KPI 정의'].map(tag => (
+                    <span key={tag} className="rounded bg-[#eef2fb] px-2 py-0.5 text-[11px] text-[#3a5fd9] font-medium">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
+                <div className="text-xs font-semibold text-[#3a5fd9] mb-2">학생 프로필 적합도</div>
+                <div className="text-2xl font-bold text-[#364457]">82%</div>
+                <div className="mt-1 text-xs text-[#64748b]">현재 스펙 기준, ADsP 취득 시 91%로 향상 예측</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <SectionCard eyebrow="취업정보" title="취업자료실 및 기업정보">
         <div className="grid gap-3 md:grid-cols-5">
           <div className="rounded-2xl bg-[#5d84f0] px-4 py-5 text-center text-white">
@@ -176,6 +209,45 @@ export function MockSimulationPage() {
           </SectionCard>
         </div>
       )}
+
+      <div className="rounded-xl border border-[#dce4f3] bg-white px-5 py-4">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
+          <span className="text-sm font-semibold text-[#364457]">AI 기업 분석</span>
+          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
+          <span className="ml-auto text-xs text-[#8a9ab5]">관심 기업: 에스케이텔레콤</span>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="space-y-2">
+            <div className="text-xs font-semibold text-[#536174] uppercase tracking-wide">채용 패턴 분석</div>
+            {[
+              { label: '채용 시기', value: '상반기 3월·하반기 9월 공채 정기화' },
+              { label: '선호 전공', value: '전자공학, 컴퓨터공학, 산업공학' },
+              { label: '선호 경험', value: '데이터 분석 프로젝트, 대외활동 리더 경험' },
+              { label: '합격 자격증', value: 'SQLD, ADsP, OPIc IM 이상' },
+            ].map(row => (
+              <div key={row.label} className="flex gap-3 rounded-lg bg-[#f8fafd] border border-[#e8eef6] px-3 py-2 text-sm">
+                <span className="w-24 shrink-0 font-semibold text-[#536174]">{row.label}</span>
+                <span className="text-[#46556c]">{row.value}</span>
+              </div>
+            ))}
+          </div>
+          <div className="space-y-2">
+            <div className="text-xs font-semibold text-[#536174] uppercase tracking-wide">현재 스펙 대비 GAP</div>
+            {[
+              { item: 'SQLD 자격증', status: '미보유', color: 'text-[#f55d78]' },
+              { item: 'Python 포트폴리오', status: '미비', color: 'text-[#f0b03f]' },
+              { item: '대외활동 리더 경험', status: '동아리 운영 (충족)', color: 'text-[#2e7d32]' },
+              { item: '전공 적합도', status: '전자공학과 (충족)', color: 'text-[#2e7d32]' },
+            ].map(row => (
+              <div key={row.item} className="flex items-center justify-between rounded-lg bg-[#f8fafd] border border-[#e8eef6] px-3 py-2 text-sm">
+                <span className="text-[#364457]">{row.item}</span>
+                <span className={`text-xs font-semibold ${row.color}`}>{row.status}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <SectionCard eyebrow="지원 흐름" title="추천 준비 경로">
         <div className="grid gap-4 md:grid-cols-4">
