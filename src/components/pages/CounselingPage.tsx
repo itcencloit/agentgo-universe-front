@@ -1,10 +1,17 @@
 import { SectionCard } from '../ui/SectionCard'
 
+const aiSolutionCards = [
+  { icon: '📝', title: 'AI 자기소개서 솔루션', description: '직무·기업 맞춤형 자소서 초안 생성 및 피드백을 제공합니다.', tag: 'AI' },
+  { icon: '🎤', title: 'AI 면접 솔루션', description: '예상 질문 생성·답변 코칭·모의 면접 시뮬레이션을 진행합니다.', tag: 'AI' },
+  { icon: '🌐', title: 'AI 영어 면접 솔루션', description: '영어 면접 빈출 질문 연습 및 발음·표현 피드백을 제공합니다.', tag: 'AI' },
+  { icon: '🧠', title: 'AI 역량검사', description: '잡다(JOBDA) 연동 AI 역량검사로 적합 직무를 진단합니다.', tag: '잡다' },
+]
+
 const counselingCards = [
-  { title: '기초조사지', description: '상담 전 기본 진로 정보를 입력합니다.' },
-  { title: '교수님 상담', description: '학업, 연구, 진학 방향 상담을 예약합니다.' },
-  { title: '취업지원관 상담', description: '이력서, 면접, 취업전략 상담을 진행합니다.' },
-  { title: '외부컨설턴트 컨설팅', description: '직무별 전문가와 맞춤 컨설팅을 진행합니다.' },
+  { icon: '📋', title: '기초조사지', description: '상담 전 기본 진로 정보를 입력합니다.', tag: '' },
+  { icon: '👩‍🏫', title: '지도교수 상담', description: '학업·연구·진학·전공 방향에 대해 지도교수님과 상담합니다.', tag: '' },
+  { icon: '💼', title: '진로취업 상담', description: '이력서·면접·취업전략 전반을 취업지원관과 상담합니다.', tag: '' },
+  { icon: '🤝', title: '온라인 현직자 멘토링', description: '잇다(ITDA) 연동 현직자 멘토와 1:1 온라인 멘토링을 진행합니다.', tag: '잇다' },
 ]
 
 const counselingRows = [
@@ -46,10 +53,10 @@ export function CounselingPage() {
                 <div className="text-xs font-semibold text-[#3a5fd9] mb-2">AI 생성 상담 의제</div>
                 <div className="space-y-1.5">
                   {[
-                    '자소서 Q1 문항 피드백 요청 (식품성분분석 실험 경험 STAR 구조 연결)',
+                    '자소서 Q1 문항 피드백 요청 (식품화학·식품위생 실험 경험 STAR 구조 연결)',
                     '식품기사 필기 시험 D-5 — 접수 완료 여부 확인 및 학습 계획 공유',
-                    '교내 연구실 인턴 신청 절차 및 지도교수 연결 방법 상의',
-                    'CJ제일제당 상반기 공고 서류 제출 일정 역산 (4월 초 마감 기준)',
+                    '캡스톤디자인 결과를 포트폴리오로 정리하는 방법 상의',
+                    '희창유업·코카콜라 채용공고 기준 지원 일정 역산',
                   ].map((agenda, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs text-[#364457]">
                       <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#eef2fb] text-[10px] font-bold text-[#3a5fd9]">{i + 1}</span>
@@ -74,12 +81,36 @@ export function CounselingPage() {
         </div>
       </div>
 
+      <SectionCard eyebrow="AI 솔루션" title="취업 솔루션">
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          {aiSolutionCards.map((card) => (
+            <div key={card.title} className="rounded-xl border border-[#c9d9f8] bg-gradient-to-b from-[#eef3ff] to-[#f8fbff] p-4">
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <span className="text-2xl">{card.icon}</span>
+                <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[10px] font-bold text-white">{card.tag}</span>
+              </div>
+              <div className="text-sm font-bold text-[#1e2d45]">{card.title}</div>
+              <div className="mt-2 text-xs leading-5 text-[#647387]">{card.description}</div>
+              <button type="button" className="mt-3 w-full rounded-lg bg-[#3a5fd9] py-1.5 text-xs font-semibold text-white hover:bg-[#2e4dbf]">
+                시작하기
+              </button>
+            </div>
+          ))}
+        </div>
+      </SectionCard>
+
       <SectionCard eyebrow="상담예약" title="상담 메뉴">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {counselingCards.map((card) => (
             <div key={card.title} className="rounded-md border border-[#dce4f3] bg-[#f8fbff] p-5">
-              <div className="text-[17px] font-semibold text-[#344257]">{card.title}</div>
-              <div className="mt-3 min-h-[72px] text-sm leading-6 text-[#647387]">{card.description}</div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xl">{card.icon}</span>
+                {card.tag && (
+                  <span className="rounded-full bg-[#e8eef6] px-2 py-0.5 text-[10px] font-semibold text-[#3a5fd9]">{card.tag}</span>
+                )}
+              </div>
+              <div className="mt-2 text-[15px] font-semibold text-[#344257]">{card.title}</div>
+              <div className="mt-2 min-h-[60px] text-sm leading-6 text-[#647387]">{card.description}</div>
               <button type="button" className="mt-4 rounded bg-[#4d8fa8] px-4 py-2 text-sm font-semibold text-white">
                 이동하기
               </button>

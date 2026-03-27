@@ -37,7 +37,7 @@ const jobNotices = [
   { label: '신규', title: '[코카콜라] 음료 품질·연구 직무 채용', date: '26-04-18' },
 ]
 
-const serviceLinks = ['로드맵 설정', '진로설계', curriculumHighlights[3].courses[0], curriculumHighlights[3].courses[3]]
+const serviceLinks = ['AI 자기소개서 솔루션', 'AI 면접 솔루션', 'AI 역량검사 (잡다)', '현직자 멘토링 (잇다)']
 
 export function DashboardPage() {
   return (
