@@ -15,14 +15,14 @@ const myCdpCards = [
 ]
 
 const roadmapBoxes = [
-  { title: '졸업 후 커리어 설계', status: '설정 필요' },
-  { title: '목표기업 분석', status: '설정 필요', badge: 'GAP' },
-  { title: '직업기초역량진단', status: '실시 필요' },
-  { title: '스펙정보', status: '총 0건' },
-  { title: '목표기업 유사여부', status: '임시 커리어맵', badge: 'GAP' },
-  { title: '맞춤 채용정보', status: '8건' },
-  { title: '이력서 작성', status: '설정 필요' },
-  { title: '나의 희망진로현황', status: '실시 필요' },
+  { title: '졸업 후 커리어 설계', status: '설정 필요', icon: '🎓' },
+  { title: '목표기업 분석', status: '설정 필요', badge: 'GAP', icon: '🏢' },
+  { title: '직업기초역량진단', status: '실시 필요', icon: '📊' },
+  { title: '스펙정보', status: '총 0건', icon: '🏆' },
+  { title: '목표기업 유사여부', status: '임시 커리어맵', badge: 'GAP', icon: '🔍' },
+  { title: '맞춤 채용정보', status: '8건', icon: '💼' },
+  { title: '이력서 작성', status: '설정 필요', icon: '📝' },
+  { title: '나의 희망진로현황', status: '실시 필요', icon: '🎯' },
 ]
 
 const programNotices = [
@@ -165,8 +165,8 @@ export function DashboardPage() {
                     index % 4 !== 3 ? 'md:border-r' : ''
                   } ${index < 4 ? 'border-b' : ''}`}
                 >
-                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-[#d9e1ee] text-[#8da0bc]">
-                    ●
+                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-[#d9e1ee] bg-[#f3f6fb] text-xl">
+                    {item.icon}
                   </div>
                   <div className="text-sm text-[#7c8799]">{item.title}</div>
                   <div className="mt-2 font-semibold text-[#ff5b76]">{item.status}</div>
