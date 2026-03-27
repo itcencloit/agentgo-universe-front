@@ -1,42 +1,42 @@
-# AgentGo Universe MVP
+# AgentGo Universe MVP 소개
 
-## Overview
-AgentGo Universe is an AI-powered integrated platform for universities, designed to streamline industry-academic cooperation, administrative tasks, and student career management.
+## 개요
+AgentGo Universe는 대학의 산학협력, 행정 업무, 학생 진로 관리를 하나의 흐름으로 연결하는 AI 기반 통합 플랫폼입니다.
 
-This MVP demonstrates the core value propositions through a high-fidelity mockup.
+이 MVP는 핵심 가치와 주요 사용자 흐름을 고해상도 목업 형태로 보여줍니다.
 
-## Key Features
-- **Industry-University Synergy**: AI-driven research promotion content generation and corporate matchmaking.
-- **Smart Administrative Archive**: Natural language search for administrative documents and AI-assisted drafting.
-- **AI Career Tutor**: Personalized career roadmaps and resume optimization based on student profiles.
+## 주요 기능
+- **산학협력 지원**: 연구 성과 홍보물 생성과 기업 매칭을 AI로 지원합니다.
+- **스마트 행정 아카이브**: 행정 문서를 자연어로 검색하고 초안 작성을 보조합니다.
+- **AI 진로 코치**: 학생 프로필을 바탕으로 맞춤형 로드맵과 자소서 개선을 제안합니다.
 
-## Tech Stack
-- **Frontend**: React 19, TypeScript, Vite
-- **Styling**: Tailwind CSS 4
-- **Mock Data**: Pre-configured scenarios for instant demonstration
+## 기술 스택
+- **프론트엔드**: React 19, TypeScript, Vite
+- **스타일링**: Tailwind CSS 4
+- **목업 데이터**: 즉시 데모 가능한 사전 구성 시나리오
 
-## Getting Started
+## 시작 방법
 
-### Prerequisites
+### 사전 준비
 - Node.js (v18+)
 - npm
 
-### Installation
-1. Navigate to the project directory:
+### 설치 및 실행
+1. 프로젝트 디렉터리로 이동합니다.
    ```bash
    cd agentgo-universe
    ```
-2. Install dependencies:
+2. 의존성을 설치합니다.
    ```bash
    npm install
    ```
-3. Run the development server:
+3. 개발 서버를 실행합니다.
    ```bash
    npm run dev
    ```
 
-## Demo Scenarios
-- **Switch Personas**: Use the toggle in the top-right to switch between **Admin**, **Researcher**, and **Student** views.
-- **Research Promotion**: Navigate to **Research & Biz** and try the promotion generator.
-- **Natural Language Search**: Navigate to **Admin & Archive** to see how semantic search simplifies information retrieval.
-- **Career Roadmap**: Navigate to **Career Tutor** to see a personalized student growth timeline.
+## 데모 시나리오
+- **페르소나 전환**: 우측 상단 토글로 **관리자**, **연구자**, **학생** 화면을 바꿔볼 수 있습니다.
+- **연구 성과 홍보**: **산학 연구** 영역에서 홍보물 생성 흐름을 확인할 수 있습니다.
+- **자연어 검색**: **스마트 행정** 영역에서 의미 기반 검색 경험을 확인할 수 있습니다.
+- **커리어 로드맵**: **진로 지원** 영역에서 개인화된 성장 타임라인을 볼 수 있습니다.
