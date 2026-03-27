@@ -19,10 +19,9 @@ const primaryMenus: Array<{ id: GlobalPage; label: string }> = [
   { id: 'home', label: 'HOME' },
   { id: 'roadmap', label: 'My로드맵' },
   { id: 'mentoring', label: '졸업선배 노하우·멘토링' },
-  { id: 'employment', label: '취업정보' },
+  { id: 'employment', label: '취업자료·기업분석' },
   { id: 'recruitment', label: '채용정보' },
   { id: 'diagnosis', label: '진단실시' },
-  { id: 'counseling', label: '상담예약' },
   { id: 'sitemap', label: '사이트맵' },
 ]
 

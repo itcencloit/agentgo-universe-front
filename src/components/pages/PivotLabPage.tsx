@@ -1,246 +1,199 @@
 import { useState } from 'react'
-import { lifecycleScenarios, pivotMatches, transferableSkills } from '../../data/unisync'
-import { mentorProfiles, studentProfile } from '../../data/foodEngineering'
+import { pivotMatches, transferableSkills } from '../../data/unisync'
+import { mentorProfiles } from '../../data/foodEngineering'
 import { SectionCard } from '../ui/SectionCard'
 
 export function PivotLabPage() {
   const [selectedMatchId, setSelectedMatchId] = useState(pivotMatches[0]?.id ?? '')
-  const selectedMatch = pivotMatches.find((match) => match.id === selectedMatchId) ?? pivotMatches[0]
-  const primaryMentor = mentorProfiles[0]
+  const [selectedMentorName, setSelectedMentorName] = useState<string | null>(null)
+
+  // 김민서 멘토 데이터 (요청 사양 반영)
+  const minseoMentor = {
+    mentor: '김민서',
+    company: '희창유업',
+    job: '품질관리',
+    score: 96,
+    summary: '부산 식품기업 품질관리 직무에 입사해 원료 입고 검사, 공정 위생 점검, 클레임 원인 분석을 담당하고 있습니다.',
+    advice: '식품위생학, 품질평가 실험, 캡스톤 결과를 한 흐름으로 묶어 설명하면 서류 설득력이 높아집니다.',
+    prep: ['식품기사 준비', '품질관리 자소서', '실험 결과 수치화'],
+    faq: [
+      '현업에서 가장 자주 보는 품질 지표',
+      '신입이 맡는 검사 업무 범위',
+      '현장 실무에 도움 된 전공 과목'
+    ]
+  }
+
+  const mentorCandidates = [minseoMentor, mentorProfiles[1], mentorProfiles[2]]
+  const selectedMentor = mentorCandidates.find((mentor) => mentor.mentor === selectedMentorName) ?? null
+
+  const openMentorPanel = (name: string) => {
+    setSelectedMentorName((current) => (current === name ? null : name))
+  }
 
   return (
     <div className="space-y-4">
-      <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] px-5 py-4">
-        <div className="flex items-start gap-3">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#3a5fd9] text-xs font-bold text-white">AI</div>
-          <div className="flex-1">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm font-semibold text-[#364457]">AI 멘토 자동 매칭</span>
-              <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
-            </div>
-            <p className="mt-1 text-sm text-[#64748b]">전공({studentProfile.major})·관심직무({studentProfile.targetRole})·전공 실험 이력을 기반으로 현재 활동 중인 멘토와의 적합도를 자동 분석했습니다.</p>
-            <div className="mt-3 grid gap-3 md:grid-cols-3">
-              {mentorProfiles.map((mentor) => (
-                <div key={mentor.mentor} className="rounded-lg bg-white border border-[#dce4f3] p-3">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-semibold text-[#364457] text-sm">{mentor.mentor}</span>
-                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${mentor.score >= 90 ? 'bg-[#e8f5e9] text-[#2e7d32]' : mentor.score >= 80 ? 'bg-[#e3f0ff] text-[#1a56b0]' : 'bg-[#f5f5f5] text-[#616161]'}`}>{mentor.score}%</span>
-                  </div>
-                  <div className="mt-1 text-xs text-[#64748b]">{mentor.company} · {mentor.job}</div>
-                  <div className="mt-2 text-xs text-[#64748b]">{mentor.reason}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
       <SectionCard eyebrow="졸업생 노하우" title="클로잇 학생에게 바로 연결되는 선배 인사이트">
-        <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="rounded-xl border border-[#dce4f3] bg-[linear-gradient(135deg,#f7fbff_0%,#eef4ff_100%)] p-5">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <div className="text-xs font-semibold tracking-[0.14em] text-[#7d8798]">TOP MENTOR INSIGHT</div>
-                <div className="mt-2 text-xl font-semibold text-[#344257]">
-                  {primaryMentor.mentor} · {primaryMentor.company} {primaryMentor.job}
-                </div>
-                <div className="mt-1 text-sm text-[#647387]">{primaryMentor.summary}</div>
+        <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] px-5 py-4">
+          <div className="flex items-start gap-3">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#3a5fd9] text-xs font-bold text-white">AI</div>
+            <div className="flex-1">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-sm font-semibold text-[#364457]">AI 멘토 자동 매칭 리포트</span>
+                <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
               </div>
-              <div className="rounded-full bg-[#316bff] px-3 py-1 text-sm font-semibold text-white">{primaryMentor.score}%</div>
-            </div>
-            <div className="mt-5 rounded-lg bg-white/80 p-4 text-sm leading-7 text-[#4f5f76]">
-              <span className="font-semibold text-[#344257]">선배 한 줄 조언:</span> {primaryMentor.advice}
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {primaryMentor.prep.map((item) => (
-                <span key={item} className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#3a5fd9] border border-[#d6e0f4]">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-xl border border-[#dce4f3] bg-white p-5">
-            <div className="text-xs font-semibold tracking-[0.14em] text-[#7d8798]">MENTOR FAQ</div>
-            <div className="mt-3 space-y-3">
-              {primaryMentor.faq.map((question, index) => (
-                <div key={question} className="rounded-lg border border-[#e8eef6] bg-[#f8fbff] p-4">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#eef2fb] text-[11px] font-bold text-[#3a5fd9]">
-                      {index + 1}
-                    </span>
-                    <span className="text-sm font-semibold text-[#344257]">{question}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 rounded-lg border border-dashed border-[#d6e0f0] bg-[#fbfcfe] p-4 text-sm text-[#647387]">
-              AI가 클로잇 학생의 현재 목표 직무와 가장 가까운 선배 질문 주제를 먼저 정리했습니다.
-            </div>
-          </div>
-        </div>
-      </SectionCard>
-
-      <SectionCard eyebrow="멘토링 검색" title="올해 활동 중인 선배멘토를 검색해 보세요">
-        <div className="rounded-md bg-[#dff3fb] px-4 py-4">
-          <div className="grid gap-3 md:grid-cols-[1fr_170px_156px]">
-            <input
-              readOnly
-              value="졸업학과, 회사명(학교명), 직무 등 검색 키워드를 입력하세요."
-              className="rounded border border-[#d6def0] bg-white px-4 py-3 text-sm text-[#7c8799]"
-            />
-            <div className="rounded border border-[#d6def0] bg-white px-4 py-3 text-sm text-[#5f6d82]">상세검색</div>
-            <button type="button" className="rounded bg-[#5d84f0] px-4 py-3 text-sm font-semibold text-white">
-              검색
-            </button>
-          </div>
-        </div>
-
-        <div className="mt-5 overflow-hidden rounded-md border border-[#d6def0]">
-          <table className="min-w-full border-collapse text-sm">
-            <thead className="bg-[#f3f5f8] text-[#536174]">
-              <tr>
-                <th className="px-3 py-3 text-left">멘토구분</th>
-                <th className="px-3 py-3 text-left">졸업생 멘토</th>
-                <th className="px-3 py-3 text-left">회사(학교)</th>
-                <th className="px-3 py-3 text-left">부서(학과)</th>
-                <th className="px-3 py-3 text-left">직무구분</th>
-                <th className="px-3 py-3 text-left">졸업학과</th>
-                <th className="px-3 py-3 text-left">졸업년도</th>
-                <th className="px-3 py-3 text-left">질문가능횟수</th>
-                <th className="px-3 py-3 text-left">신청</th>
-              </tr>
-            </thead>
-            <tbody>
-              {mentorProfiles.map((row) => (
-                <tr key={`${row.mentor}-${row.company}`} className="border-t border-[#e7edf6] text-[#46556c]">
-                  <td className="px-3 py-3">{row.type}</td>
-                  <td className="px-3 py-3">{row.mentor}</td>
-                  <td className="px-3 py-3">{row.company}</td>
-                  <td className="px-3 py-3">{row.department}</td>
-                  <td className="px-3 py-3">{row.job}</td>
-                  <td className="px-3 py-3">{row.major}</td>
-                  <td className="px-3 py-3">{row.year}</td>
-                  <td className="px-3 py-3">{row.count}</td>
-                  <td className="px-3 py-3">
-                    <button type="button" className="rounded bg-[#6fd2de] px-3 py-1 text-xs font-semibold text-white">
-                      질문
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </SectionCard>
-
-      <div className="grid gap-4 xl:grid-cols-[1.02fr_0.98fr]">
-        <SectionCard eyebrow="추천 매칭" title="상담 연결 추천">
-          <div className="space-y-3">
-            {pivotMatches.map((match) => (
-              <button
-                key={match.id}
-                type="button"
-                onClick={() => setSelectedMatchId(match.id)}
-                className={`block w-full rounded-md border p-4 text-left ${
-                  selectedMatchId === match.id ? 'border-[#bfd4ff] bg-[#eef4ff]' : 'border-[#dce4f3] bg-[#f8fbff]'
-                }`}
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <div className="text-sm text-[#6d7a8e]">{match.company}</div>
-                    <div className="mt-1 font-semibold text-[#344257]">{match.role}</div>
-                  </div>
-                  <div className="rounded bg-[#316bff] px-3 py-1 text-sm font-semibold text-white">{match.fit}</div>
-                </div>
-                <div className="mt-3 text-sm text-[#647387]">{match.evidence}</div>
-              </button>
-            ))}
-          </div>
-        </SectionCard>
-
-        <SectionCard eyebrow="상담 준비" title="전환 가능 역량">
-          <div className="space-y-3">
-            {transferableSkills.map((skill) => (
-              <div key={skill.id} className="rounded-md border border-[#dce4f3] bg-[#f8fbff] p-4">
-                <div className="text-sm text-[#6d7a8e]">{skill.from}</div>
-                <div className="mt-1 font-semibold text-[#344257]">{skill.skill}</div>
-                <div className="mt-2 text-sm text-[#647387]">연결 항목: {skill.to}</div>
-              </div>
-            ))}
-          </div>
-        </SectionCard>
-      </div>
-
-      <SectionCard eyebrow="선배 준비법" title="졸업생들이 공통적으로 남긴 준비 포인트">
-        <div className="grid gap-4 md:grid-cols-3">
-          {mentorProfiles.map((mentor) => (
-            <div key={`${mentor.mentor}-prep`} className="rounded-md border border-[#dce4f3] bg-[#f8fbff] p-4">
-              <div className="text-sm font-semibold text-[#344257]">{mentor.mentor} · {mentor.company}</div>
-              <div className="mt-1 text-xs text-[#7d8798]">{mentor.job}</div>
-              <div className="mt-3 text-sm leading-6 text-[#647387]">{mentor.advice}</div>
-              <div className="mt-4 space-y-2">
-                {mentor.prep.map((item) => (
-                  <div key={item} className="rounded bg-white px-3 py-2 text-sm text-[#4f5f76] border border-[#e7edf6]">
-                    {item}
-                  </div>
+              <p className="mt-1 text-sm text-[#64748b]">클로잇 학생의 전공 실험 이력과 희창유업 품질관리 직무의 연관성을 분석한 결과입니다.</p>
+              <div className="mt-3 grid gap-3 md:grid-cols-3">
+                {mentorCandidates.map((mentor) => (
+                  <button
+                    key={mentor.mentor}
+                    type="button"
+                    onClick={() => openMentorPanel(mentor.mentor)}
+                    className={`rounded-lg border p-3 text-left transition-all ${selectedMentor?.mentor === mentor.mentor ? 'border-[#3a5fd9] bg-white shadow-md' : 'border-[#dce4f3] bg-white/50 hover:bg-white'}`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-semibold text-[#364457] text-sm">{mentor.mentor}</span>
+                      <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${mentor.score >= 90 ? 'bg-[#e8f5e9] text-[#2e7d32]' : 'bg-[#e3f0ff] text-[#1a56b0]'}`}>{mentor.score}%</span>
+                    </div>
+                    <div className="mt-1 text-xs text-[#64748b]">{mentor.company} · {mentor.job}</div>
+                  </button>
                 ))}
               </div>
             </div>
-          ))}
+          </div>
+        </div>
+
+        <div className="mt-4 space-y-3">
+          {mentorCandidates.map((mentor) => {
+            const isOpen = selectedMentor?.mentor === mentor.mentor
+            return (
+              <div key={mentor.mentor} className="overflow-hidden rounded-xl border border-[#dce4f3] bg-white">
+                <button
+                  type="button"
+                  onClick={() => openMentorPanel(mentor.mentor)}
+                  className={`flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-all ${
+                    isOpen ? 'bg-[#f7fbff]' : 'hover:bg-[#f8fbff]'
+                  }`}
+                >
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[15px] font-bold text-[#1e2d45]">{mentor.mentor}</span>
+                      <span className="text-sm text-[#64748b]">· {mentor.company} {mentor.job}</span>
+                    </div>
+                    <div className="mt-1 text-sm text-[#64748b]">{mentor.summary}</div>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-3">
+                    <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${mentor.score >= 90 ? 'bg-[#e8f5e9] text-[#2e7d32]' : 'bg-[#e3f0ff] text-[#1a56b0]'}`}>
+                      {mentor.score}%
+                    </span>
+                    <span className={`text-xs font-bold text-[#7d8798] transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+                      ▼
+                    </span>
+                  </div>
+                </button>
+
+                {isOpen ? (
+                  <div className="border-t border-[#e8eef6] bg-[#fbfcff] px-5 py-5">
+                    <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+                      <div className="rounded-xl border border-[#dce4f3] bg-[linear-gradient(135deg,#f7fbff_0%,#eef4ff_100%)] p-6 shadow-sm">
+                        <div className="flex items-center justify-between gap-3">
+                          <div>
+                            <div className="text-[11px] font-bold tracking-[0.14em] text-[#3a5fd9] uppercase">TOP MENTOR INSIGHT</div>
+                            <div className="mt-2 text-[22px] font-bold text-[#1e2d45]">
+                              {mentor.mentor} <span className="text-sm font-normal text-[#64748b]">· {mentor.company} {mentor.job}</span>
+                            </div>
+                          </div>
+                          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white border-4 border-[#3a5fd9] text-lg font-black text-[#3a5fd9] shadow-sm">
+                            {mentor.score}%
+                          </div>
+                        </div>
+
+                        <div className="mt-6 rounded-xl bg-white/90 p-5 border border-[#dce4f3] relative">
+                          <div className="absolute -top-3 left-4 bg-[#3a5fd9] text-white px-2 py-0.5 text-[10px] font-bold rounded">선배 한 줄 조언</div>
+                          <p className="text-[14.5px] leading-7 text-[#344257] font-semibold italic">
+                            "{mentor.advice}"
+                          </p>
+                        </div>
+
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {mentor.prep.map((item) => (
+                            <span key={item} className="rounded-full bg-[#eef2fb] px-4 py-1.5 text-xs font-bold text-[#3a5fd9] border border-[#c9d9f8]">
+                              #{item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="rounded-xl border border-[#dce4f3] bg-white p-5 shadow-sm">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="text-[11px] font-bold tracking-[0.14em] text-[#7d8798] uppercase">MENTOR FAQ</div>
+                          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[9px] font-bold text-white">AI 정리</span>
+                        </div>
+                        <div className="space-y-3">
+                          {mentor.faq.map((question, index) => (
+                            <div key={question} className="group rounded-lg border border-[#e8eef6] bg-[#f8fbff] p-4">
+                              <div className="flex items-start gap-3">
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3a5fd9] text-[11px] font-bold text-white">
+                                  {index + 1}
+                                </span>
+                                <span className="text-sm font-semibold text-[#344257]">{question}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-4 rounded-lg bg-[#f3f6fb] p-3 border border-dashed border-[#c9d9f8]">
+                          <p className="text-[11px] leading-5 text-[#647387]">
+                            AI가 클로잇 학생의 현재 목표 직무와 가장 가까운 선배 질문 주제를 먼저 정리했습니다. 필요한 항목만 열어 보고 상담 질문 초안으로 이어갈 수 있습니다.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            )
+          })}
         </div>
       </SectionCard>
 
-      <SectionCard eyebrow="선택된 매칭" title="매칭 근거">
-        <div className="grid gap-4 md:grid-cols-[0.82fr_1.18fr]">
-          <div className="rounded-md bg-[linear-gradient(135deg,#316bff_0%,#4aa2ff_100%)] p-5 text-white">
-            <div className="text-sm text-white/80">{selectedMatch.company}</div>
-            <div className="mt-2 text-2xl font-semibold">{selectedMatch.role}</div>
-            <div className="mt-4 text-5xl font-bold">{selectedMatch.fit}</div>
-          </div>
-          <div className="rounded-md border border-[#dce4f3] bg-[#f8fbff] p-5 text-sm leading-7 text-[#556276]">
-            {selectedMatch.evidence}
-            <div className="mt-4">
-              상담 선호도, 질문 주제, 전공 유사도, 활동 이력을 종합해 연결 우선순위를 제안합니다.
+      <div className="space-y-4">
+        <div className="grid gap-4 xl:grid-cols-[1.02fr_0.98fr]">
+          <SectionCard eyebrow="추천 매칭" title="상담 연결 추천">
+            <div className="space-y-3">
+              {pivotMatches.map((match) => (
+                <button
+                  key={match.id}
+                  type="button"
+                  onClick={() => setSelectedMatchId(match.id)}
+                  className={`block w-full rounded-md border p-4 text-left ${
+                    selectedMatchId === match.id ? 'border-[#bfd4ff] bg-[#eef4ff]' : 'border-[#dce4f3] bg-[#f8fbff]'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <div className="text-sm text-[#6d7a8e]">{match.company}</div>
+                      <div className="mt-1 font-semibold text-[#344257]">{match.role}</div>
+                    </div>
+                    <div className="rounded bg-[#316bff] px-3 py-1 text-sm font-semibold text-white">{match.fit}</div>
+                  </div>
+                  <div className="mt-3 text-sm text-[#647387]">{match.evidence}</div>
+                </button>
+              ))}
             </div>
-          </div>
-        </div>
-      </SectionCard>
+          </SectionCard>
 
-      <div className="rounded-xl border border-[#dce4f3] bg-white px-5 py-4">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
-          <span className="text-sm font-semibold text-[#364457]">AI 상담 질문 자동 생성</span>
-          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
-          <span className="ml-auto text-xs text-[#8a9ab5]">선택 멘토: {primaryMentor.mentor} ({primaryMentor.company} · {primaryMentor.job})</span>
-        </div>
-        <p className="text-sm text-[#64748b] mb-3">선택한 멘토의 직무, 최근 질문 이력, 클로잇 학생의 전공·활동 데이터를 반영해 상담에서 바로 쓸 질문 초안을 생성했습니다.</p>
-        <div className="space-y-2">
-          {[
-            { tag: '직무 이해', q: '희창유업 품질관리 직무에서 일상적으로 확인하는 핵심 품질 지표와 위생관리 포인트는 무엇인가요?' },
-            { tag: '스펙 조언', q: '식품공학전공 출신으로 품질관리 직무에 지원할 때 가장 설득력 있었던 전공 과목이나 프로젝트는 무엇이었나요?' },
-            { tag: '자소서 전략', q: '식품위생학, HACCP, 품질평가 실습 경험을 자소서에 어떻게 풀어내면 현업과 가깝게 보이나요?' },
-            { tag: '준비 시점', q: '4학년 1학기에 식품기사 준비와 캡스톤디자인 정리 중 무엇을 먼저 완료하는 것이 효과적일까요?' },
-          ].map((item, i) => (
-            <div key={i} className="flex items-start gap-3 rounded-lg border border-[#e8eef6] bg-[#f8fafd] p-3">
-              <span className="mt-0.5 shrink-0 rounded bg-[#eef2fb] px-2 py-0.5 text-[11px] font-semibold text-[#3a5fd9]">{item.tag}</span>
-              <span className="text-sm text-[#364457]">{item.q}</span>
+          <SectionCard eyebrow="상담 준비" title="전환 가능 역량">
+            <div className="space-y-3">
+              {transferableSkills.map((skill) => (
+                <div key={skill.id} className="rounded-md border border-[#dce4f3] bg-[#f8fbff] p-4">
+                  <div className="text-sm text-[#6d7a8e]">{skill.from}</div>
+                  <div className="mt-1 font-semibold text-[#344257]">{skill.skill}</div>
+                  <div className="mt-2 text-sm text-[#647387]">연결 항목: {skill.to}</div>
+                </div>
+              ))}
             </div>
-          ))}
+          </SectionCard>
         </div>
       </div>
-
-      <SectionCard eyebrow="멘토링 흐름" title="이용 시나리오">
-        <div className="grid gap-4 md:grid-cols-3">
-          {lifecycleScenarios.map((scenario) => (
-            <div key={scenario.id} className="rounded-md border border-[#dce4f3] bg-[#f8fbff] p-4">
-              <div className="text-xs font-semibold tracking-[0.14em] text-[#7d8798]">{scenario.target}</div>
-              <div className="mt-3 font-semibold text-[#344257]">{scenario.headline}</div>
-              <div className="mt-2 text-sm leading-6 text-[#647387]">{scenario.summary}</div>
-            </div>
-          ))}
-        </div>
-      </SectionCard>
     </div>
   )
 }

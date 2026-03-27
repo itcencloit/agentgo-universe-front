@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { AppShell } from './components/layout/AppShell'
-import { CounselingPage } from './components/pages/CounselingPage'
 import { DashboardPage } from './components/pages/DashboardPage'
 import { DiagnosisPage } from './components/pages/DiagnosisPage'
 import { MockSimulationPage } from './components/pages/MockSimulationPage'
@@ -15,10 +14,9 @@ const PAGE_TITLES: Record<GlobalPage, string> = {
   home: 'HOME',
   roadmap: 'My로드맵',
   mentoring: '졸업선배 노하우·멘토링',
-  employment: '취업정보',
+  employment: '취업자료·기업분석',
   recruitment: '채용정보',
   diagnosis: '진단실시',
-  counseling: '상담예약',
   sitemap: '사이트맵',
 }
 
@@ -47,7 +45,6 @@ function App() {
       {activePage === 'employment' && <MockSimulationPage />}
       {activePage === 'recruitment' && <RecruitmentPage />}
       {activePage === 'diagnosis' && <DiagnosisPage />}
-      {activePage === 'counseling' && <CounselingPage />}
       {activePage === 'sitemap' && <SitemapPage />}
     </AppShell>
   )

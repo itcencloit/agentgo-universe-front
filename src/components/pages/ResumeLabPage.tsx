@@ -54,6 +54,7 @@ export function ResumeLabPage() {
   return (
     <div className="space-y-4">
       <SectionCard eyebrow="진로·취업프로그램" title="프로그램 현황">
+        {/* ... existing code ... */}
         <div className="grid gap-3 md:grid-cols-3">
           {programCategories.map((category) => (
             <div
@@ -87,7 +88,64 @@ export function ResumeLabPage() {
           <span className="rounded-full bg-[#3a5fd9] px-3 py-1 text-[11px] font-semibold text-white">AI 기능</span>
           <span className="text-sm font-semibold text-[#364457]">취업 컨설팅 및 자소서 피드백 — 시나리오 시연</span>
         </div>
-        <AiChatPanel title="AI 자소서·취업 어시스턴트" placeholder="직무·자격증·자소서 문항 등 무엇이든 물어보세요." />
+        <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
+          <AiChatPanel title="AI 자소서·취업 어시스턴트" placeholder="직무·자격증·자소서 문항 등 무엇이든 물어보세요." />
+          <div className="rounded-xl border border-[#c9d9f8] bg-white p-4">
+            <div className="text-xs font-bold text-[#3a5fd9] mb-3 uppercase tracking-wider">AI STAR 코칭 가이드</div>
+            <div className="space-y-3">
+              {[
+                { label: 'Situation', desc: '경험의 배경과 상황 설명', status: '완료' },
+                { label: 'Task', desc: '해결해야 했던 과제/목표', status: '진행중' },
+                { label: 'Action', desc: '본인이 직접 수행한 구체적 행동', status: '대기' },
+                { label: 'Result', desc: '성과 및 배운 점 (수치 활용 추천)', status: '대기' },
+              ].map(item => (
+                <div key={item.label} className="border-l-2 border-[#e8eef6] pl-3 py-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-[#364457]">{item.label}</span>
+                    <span className={`text-[10px] ${item.status === '완료' ? 'text-[#2e7d32]' : 'text-[#8a9ab5]'}`}>{item.status}</span>
+                  </div>
+                  <div className="mt-0.5 text-[11px] text-[#64748b] leading-4">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+            <button className="mt-4 w-full rounded bg-[#eef2fb] py-2 text-[11px] font-semibold text-[#3a5fd9]">
+              STAR 구조로 자동 요약하기
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-[#dce4f3] bg-white p-5">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
+          <span className="text-sm font-semibold text-[#364457]">AI 전략 설계도 추천</span>
+          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
+        </div>
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
+            <div className="w-full h-full border-2 border-dashed border-[#3a5fd9] rounded-full" />
+          </div>
+          <div className="grid gap-6 md:grid-cols-3 relative z-10">
+            {[
+              { q: 'Q1. 지원동기 및 포부', node: '식품공학 전공 심화', reason: '전공 전문성과 목표 기업의 기술 방향성 일치' },
+              { q: 'Q2. 문제해결 경험', node: '캡스톤디자인 A+ 프로젝트', reason: '갈등 관리 및 기술적 난제 해결 과정 강조' },
+              { q: 'Q3. 직무 관련 강점', node: 'HACCP 품질 교육 이수', reason: '품질관리 직무 핵심 역량 증빙 최적' },
+            ].map((item, i) => (
+              <div key={i} className="flex flex-col items-center text-center">
+                <div className="rounded-lg border border-[#e8eef6] bg-[#f8fafd] p-3 w-full">
+                  <div className="text-[10px] font-bold text-[#3a5fd9] mb-1">{item.q}</div>
+                  <div className="text-xs font-semibold text-[#364457] truncate">{item.node}</div>
+                </div>
+                <div className="h-4 w-px bg-[#dce4f3] my-1" />
+                <div className="rounded-full bg-[#3a5fd9] text-white px-2 py-0.5 text-[10px] font-bold italic">Match</div>
+                <div className="h-4 w-px bg-[#dce4f3] my-1" />
+                <div className="text-[10px] text-[#64748b] leading-4 bg-[#f3f6fb] p-2 rounded w-full border border-dashed border-[#dce4f3]">
+                  {item.reason}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="grid gap-4 xl:grid-cols-[1.08fr_0.92fr]">

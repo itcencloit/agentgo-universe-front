@@ -12,7 +12,6 @@ export type GlobalPage =
   | 'employment'
   | 'recruitment'
   | 'diagnosis'
-  | 'counseling'
   | 'sitemap'
 
 export type SidebarItem = {

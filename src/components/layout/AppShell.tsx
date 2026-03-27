@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react'
+import type { PropsWithChildren, ReactNode } from 'react'
 import favicon from '../../assets/favicon.svg'
 import type { RoadmapSelection } from '../../data/roadmap'
 import { studentProfile } from '../../data/foodEngineering'
@@ -23,7 +23,7 @@ const sectionMenuMap: Record<GlobalPage, { title: string; items: string[]; accen
   home: {
     title: 'MY HOME',
     accent: '#55a7a3',
-    items: ['마이홈 대시보드', '나의 이수현황', '공지사항', '취업정보'],
+    items: ['마이홈 대시보드', '나의 이수현황', '공지사항', '취업자료·기업분석'],
   },
   roadmap: {
     title: '연구수행',
@@ -43,9 +43,9 @@ const sectionMenuMap: Record<GlobalPage, { title: string; items: string[]; accen
     ],
   },
   employment: {
-    title: '취업정보',
+    title: '취업자료·기업분석',
     accent: '#f4c45f',
-    items: ['공지사항', '진로·취업프로그램', '제휴회사 안내', '동영상특강', '기업정보', '고연봉 히든기업', '취업자료실'],
+    items: ['취업자료실', '기업 분석 리포트', '직무 참고자료', '자격증 정보', '기업정보', '산업행사', '프로그램 안내'],
   },
   recruitment: {
     title: '채용정보',
@@ -57,22 +57,17 @@ const sectionMenuMap: Record<GlobalPage, { title: string; items: string[]; accen
     accent: '#7da24a',
     items: ['직업기초역량진단', '진로성숙도검사', '취업준비도검사', '직무적성검사', '역량결과보기'],
   },
-  counseling: {
-    title: '상담예약',
-    accent: '#4d8fa8',
-    items: ['기초조사지', '교수님 상담', '취업지원관 진로·취업상담', '외부컨설턴트 취업컨설팅', '상담현황'],
-  },
   sitemap: {
     title: '사이트맵',
     accent: '#69758a',
-    items: ['HOME', 'My로드맵', '졸업선배 노하우·멘토링', '취업정보', '채용정보', '진단실시', '상담예약'],
+    items: ['HOME', 'My로드맵', '졸업선배 노하우·멘토링', '취업자료·기업분석', '채용정보', '진단실시'],
   },
 }
 
 type QuickMenuItem = {
   label: string
   page: GlobalPage
-  icon: React.ReactNode
+  icon: ReactNode
 }
 
 const quickMenus: QuickMenuItem[] = [
@@ -104,7 +99,7 @@ const quickMenus: QuickMenuItem[] = [
     ),
   },
   {
-    label: '취업정보',
+    label: '자료·기업분석',
     page: 'employment',
     icon: (
       <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
@@ -132,15 +127,6 @@ const quickMenus: QuickMenuItem[] = [
     ),
   },
   {
-    label: '상담예약',
-    page: 'counseling',
-    icon: (
-      <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
-        <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-      </svg>
-    ),
-  },
-  {
     label: '사이트맵',
     page: 'sitemap',
     icon: (
@@ -157,20 +143,6 @@ const toneClassMap = {
   amber: 'bg-[#fff7ea] text-[#f1b544] border-[#f7e3b5]',
   green: 'bg-[#eef7ea] text-[#7cab42] border-[#d9e9c4]',
 } as const
-
-function ChevronRightIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
-      <path
-        d="M7.5 4.5L13 10L7.5 15.5"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
 
 export function AppShell({
   activePage,
@@ -235,16 +207,6 @@ export function AppShell({
                   {item}
                 </div>
               ))}
-            </div>
-          </section>
-
-          <section className="rounded-md border border-[#e1e6ef] bg-white p-4 shadow-sm">
-            <div className="flex items-center justify-between text-[15px] font-semibold text-[#3e4b60]">
-              <span>상담예약</span>
-              <ChevronRightIcon className="h-4 w-4 shrink-0 text-[#7f8b9b]" />
-            </div>
-            <div className="mt-4 space-y-2 text-sm text-[#4d5c73]">
-              <div>기초조사지</div>
             </div>
           </section>
 

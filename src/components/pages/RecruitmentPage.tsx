@@ -30,9 +30,17 @@ function AiScoreBadge({ score }: { score: number }) {
 
 export function RecruitmentPage() {
   const [bookmarked, setBookmarked] = useState<Set<string>>(new Set())
+  const [expandedReasons, setExpandedReasons] = useState<Set<string>>(new Set())
 
   const toggleBookmark = (id: string) =>
     setBookmarked((prev) => {
+      const next = new Set(prev)
+      next.has(id) ? next.delete(id) : next.add(id)
+      return next
+    })
+
+  const toggleReason = (id: string) =>
+    setExpandedReasons((prev) => {
       const next = new Set(prev)
       next.has(id) ? next.delete(id) : next.add(id)
       return next
@@ -95,6 +103,7 @@ export function RecruitmentPage() {
             {departmentRecruitments.map((row) => {
               const dd = dDay(row.deadline)
               const isBookmarked = bookmarked.has(row.id)
+              const isReasonOpen = expandedReasons.has(row.id)
               return (
                 <div
                   key={row.id}
@@ -132,9 +141,36 @@ export function RecruitmentPage() {
                   </div>
 
                   {/* AI 매칭도 */}
-                  <div className="mt-3 flex items-center gap-2">
-                    <AiScoreBadge score={row.aiScore} />
-                    <span className="text-[11px] text-[#64748b] leading-4 flex-1">{row.aiReason}</span>
+                  <div className="mt-3 rounded-lg bg-[#f8fafd] border border-[#e8eef6] px-3 py-3">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <AiScoreBadge score={row.aiScore} />
+                      <span className="text-[10px] font-semibold text-[#546173] uppercase tracking-wide">매칭 근거</span>
+                    </div>
+                    <p className="text-[11px] leading-5 text-[#4f5f78]">{row.aiReasonSummary}</p>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {row.evidenceTags.map((tag) => (
+                        <span key={tag} className="rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold text-[#64748b] border border-[#dce4f3]">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => toggleReason(row.id)}
+                      className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-[#3a5fd9] hover:underline"
+                    >
+                      {isReasonOpen ? '상세 분석 닫기' : '상세 분석 보기'}
+                    </button>
+                    {isReasonOpen ? (
+                      <ul className="mt-3 space-y-1.5 border-t border-[#e8eef6] pt-3">
+                        {row.aiReasonDetails.map((detail) => (
+                          <li key={detail} className="flex items-start gap-2 text-[11px] leading-5 text-[#64748b]">
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#3a5fd9]" />
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </div>
 
                   {/* 마감일 + 조회수 */}
