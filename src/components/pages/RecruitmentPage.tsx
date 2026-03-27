@@ -8,15 +8,46 @@ const recruitmentStats = [
 ]
 
 const recruitmentRows = [
-  { type: '추천채용', company: '네오모빌리티', role: '데이터 전략', deadline: '2026-04-02', status: '접수중' },
-  { type: '일반채용', company: '에이스텔레콤', role: '서비스 기획', deadline: '2026-04-05', status: '접수중' },
-  { type: '인턴채용', company: '미래에너지솔루션', role: '마케팅 인턴', deadline: '2026-04-09', status: '예정' },
-  { type: '채용설명회', company: '한국산업플랫폼', role: '캠퍼스 설명회', deadline: '2026-04-11', status: '신청가능' },
+  { type: '추천채용', company: '네오모빌리티', role: '데이터 전략', deadline: '2026-04-02', status: '접수중', aiScore: 94, aiReason: '전공·관심직무·지역 조건 모두 일치' },
+  { type: '일반채용', company: '에이스텔레콤', role: '서비스 기획', deadline: '2026-04-05', status: '접수중', aiScore: 87, aiReason: '관심 직무·선호 지역 일치, 전공 부분 일치' },
+  { type: '인턴채용', company: '미래에너지솔루션', role: '마케팅 인턴', deadline: '2026-04-09', status: '예정', aiScore: 71, aiReason: '관심 키워드 일치, 지역 조건 미충족' },
+  { type: '채용설명회', company: '한국산업플랫폼', role: '캠퍼스 설명회', deadline: '2026-04-11', status: '신청가능', aiScore: 65, aiReason: '업종 관련성 있음, 직무 전환 필요' },
 ]
+
+function AiScoreBadge({ score }: { score: number }) {
+  const color =
+    score >= 90 ? 'bg-[#e8f5e9] text-[#2e7d32]' :
+    score >= 75 ? 'bg-[#e3f0ff] text-[#1a56b0]' :
+    'bg-[#f5f5f5] text-[#616161]'
+
+  return (
+    <span className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-bold ${color}`}>
+      {score}%
+    </span>
+  )
+}
 
 export function RecruitmentPage() {
   return (
     <div className="space-y-4">
+      <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] px-5 py-4">
+        <div className="flex items-start gap-3">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#3a5fd9] text-xs font-bold text-white">
+            AI
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold text-[#364457]">AI 채용공고 자동 매칭</span>
+              <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
+            </div>
+            <p className="mt-1 text-sm leading-6 text-[#5d6b7e]">
+              등록된 프로필(전공: 전자공학과 / 관심직무: 데이터 전략·서비스기획 / 선호지역: 서울)을 기준으로
+              현재 공고와의 적합도를 AI가 자동 분석했습니다. 마감 임박 공고는 상단에 우선 배치됩니다.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <SectionCard eyebrow="채용정보" title="채용 현황">
         <div className="grid gap-3 md:grid-cols-4">
           {recruitmentStats.map((item, index) => (
@@ -31,7 +62,7 @@ export function RecruitmentPage() {
         </div>
       </SectionCard>
 
-      <SectionCard eyebrow="모집 공고" title="추천 채용 리스트">
+      <SectionCard eyebrow="모집 공고" title="AI 매칭 채용 리스트">
         <div className="overflow-hidden rounded-md border border-[#d6def0]">
           <table className="min-w-full border-collapse text-sm">
             <thead className="bg-[#f3f5f8] text-[#536174]">
@@ -41,6 +72,8 @@ export function RecruitmentPage() {
                 <th className="px-4 py-3 text-left">모집직무</th>
                 <th className="px-4 py-3 text-left">마감일</th>
                 <th className="px-4 py-3 text-left">상태</th>
+                <th className="px-4 py-3 text-left">AI 매칭도</th>
+                <th className="px-4 py-3 text-left">매칭 근거</th>
                 <th className="px-4 py-3 text-left">지원</th>
               </tr>
             </thead>
@@ -48,10 +81,14 @@ export function RecruitmentPage() {
               {recruitmentRows.map((row) => (
                 <tr key={`${row.company}-${row.role}`} className="border-t border-[#e7edf6] text-[#46556c]">
                   <td className="px-4 py-3">{row.type}</td>
-                  <td className="px-4 py-3">{row.company}</td>
+                  <td className="px-4 py-3 font-semibold text-[#344257]">{row.company}</td>
                   <td className="px-4 py-3">{row.role}</td>
                   <td className="px-4 py-3">{row.deadline}</td>
                   <td className="px-4 py-3">{row.status}</td>
+                  <td className="px-4 py-3">
+                    <AiScoreBadge score={row.aiScore} />
+                  </td>
+                  <td className="px-4 py-3 text-xs text-[#64748b]">{row.aiReason}</td>
                   <td className="px-4 py-3">
                     <button type="button" className="rounded bg-[#316bff] px-3 py-1 text-xs font-semibold text-white">
                       보기

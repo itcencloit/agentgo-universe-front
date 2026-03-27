@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { experienceNodes, resumeQuestions } from '../../data/unisync'
+import { AiChatPanel } from '../ui/AiChatPanel'
 import { SectionCard } from '../ui/SectionCard'
 
 const programCategories = [
@@ -80,6 +81,14 @@ export function ResumeLabPage() {
           </div>
         </div>
       </SectionCard>
+
+      <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] p-4">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="rounded-full bg-[#3a5fd9] px-3 py-1 text-[11px] font-semibold text-white">AI 기능</span>
+          <span className="text-sm font-semibold text-[#364457]">취업 컨설팅 및 자소서 피드백 — 시나리오 시연</span>
+        </div>
+        <AiChatPanel title="AI 자소서·취업 어시스턴트" placeholder="직무·자격증·자소서 문항 등 무엇이든 물어보세요." />
+      </div>
 
       <div className="grid gap-4 xl:grid-cols-[1.08fr_0.92fr]">
         <SectionCard eyebrow="프로그램 목록" title="추천 프로그램">

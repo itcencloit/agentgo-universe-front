@@ -299,6 +299,37 @@ export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) 
         </section>
       )}
 
+      <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] px-5 py-4">
+        <div className="mb-3 flex items-center gap-2">
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
+          <span className="text-sm font-semibold text-[#364457]">AI 맞춤 로드맵 분석</span>
+          <span className="ml-auto rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
+        </div>
+        <div className="grid gap-3 md:grid-cols-3">
+          <div className="rounded-lg bg-white p-4 border border-[#dce4f3]">
+            <div className="text-xs font-semibold text-[#3a5fd9] uppercase tracking-wide mb-2">역량 GAP 분석</div>
+            <ul className="space-y-1.5 text-sm text-[#4a5568]">
+              <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f55d78]" />데이터 분석 도구(R·Python) 실습 이력 없음</li>
+              <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f55d78]" />영어 역량 증빙 갱신 필요 (TOEIC 유효기간 초과)</li>
+              <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f0b03f]" />산업 연계 프로젝트 경험 부족</li>
+            </ul>
+          </div>
+          <div className="rounded-lg bg-white p-4 border border-[#dce4f3]">
+            <div className="text-xs font-semibold text-[#3a5fd9] uppercase tracking-wide mb-2">자격증 취득 권장 순서</div>
+            <ol className="space-y-1.5 text-sm text-[#4a5568]">
+              <li className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">1</span>ADsP (3개월, D-90)</li>
+              <li className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#6b8ef5] text-[10px] font-bold text-white">2</span>SQL 개발자 (4개월)</li>
+              <li className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#a0b4f5] text-[10px] font-bold text-white">3</span>TOEIC 갱신 (병행 가능)</li>
+            </ol>
+          </div>
+          <div className="rounded-lg bg-white p-4 border border-[#dce4f3]">
+            <div className="text-xs font-semibold text-[#3a5fd9] uppercase tracking-wide mb-2">졸업까지 남은 학기 기준</div>
+            <div className="text-3xl font-bold text-[#364457] mb-1">2학기</div>
+            <p className="text-sm text-[#64748b] leading-6">목표 기업(에스케이텔레콤) 상반기 공고 기준 역산 시, 자소서 완성 기한은 <span className="font-semibold text-[#3a5fd9]">2026년 8월</span>입니다.</p>
+          </div>
+        </div>
+      </div>
+
       <SectionCard
         eyebrow="추천 액션"
         title={`${selectedRoadmap.title} 수행 항목`}
