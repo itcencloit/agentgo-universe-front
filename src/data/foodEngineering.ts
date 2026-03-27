@@ -98,23 +98,35 @@ export const departmentRecruitments = [
 ]
 
 export const departmentEmploymentPosts = [
-  { category: '기업행사', title: '[삼성웰스토리] 2026년 푸드페스타 사전신청 안내: ~3/31(화) 12시', views: '20', date: '2026-03-25' },
-  { category: '공모전', title: '[2026 KT&G 상상마당 코코챌린지] 친환경 화장품 창업 공모전: 3.23~4.23 17시', views: '19', date: '2026-03-25' },
-  { category: '프로그램', title: '대안단백질(Alt Protein) 분야 글로벌 대학(원)생 프로그램 참가자 모집', views: '71', date: '2026-03-12' },
-  { category: '기업행사', title: '[참관 안내] CJ프레시웨이 푸드 솔루션 페어 2026', views: '153', date: '2026-03-03' },
-  { category: '채용공고', title: '(주)희창유업 채용공고', views: '176', date: '2025-12-17' },
-  { category: '채용공고', title: '[코카콜라 채용공고]', views: '497', date: '2025-05-21' },
-  { category: '채용공고', title: '엠에스씨 품질안전팀 신입사원 채용공고', views: '520', date: '2024-12-18' },
-  { category: '채용공고', title: '삼양그룹 신입사원 모집 안내', views: '511', date: '2024-09-26' },
+  { no: 34, category: '기업행사', title: '[삼성웰스토리] 2026년 푸드페스타 사전신청 안내: ~3/31(화) 12시', author: '행정팀', views: '20', date: '2026-03-25' },
+  { no: 33, category: '공모전', title: '[2026 KT&G 상상마당 코코챌린지] 친환경 화장품 창업 공모전: 3.23~4.23 17시', author: '행정팀', views: '19', date: '2026-03-25' },
+  { no: 32, category: '프로그램', title: '대안단백질(Alt Protein) 분야 글로벌 대학(원)생 프로그램 참가자 모집', author: '행정팀', views: '71', date: '2026-03-12' },
+  { no: 31, category: '기업행사', title: '[참관 안내] CJ프레시웨이 푸드 솔루션 페어 2026', author: '행정팀', views: '153', date: '2026-03-03' },
+  { no: 30, category: '채용공고', title: '코카콜라음료(주) 채용공고', author: '식품공학과', views: '609', date: '2025-09-02' },
+  { no: 29, category: '채용공고', title: '(주)해농 품질팀 신입사원 모집', author: '식품공학과', views: '478', date: '2025-05-21' },
+  { no: 28, category: '채용공고', title: '(주)해송물산 신규 직원 채용', author: '식품공학과', views: '416', date: '2025-04-22' },
+  { no: 27, category: '채용공고', title: '세계김치연구소 석사과정 학생연구원 모집', author: '식품공학과', views: '507', date: '2025-04-15' },
+  { no: 26, category: '채용공고', title: '무안군융복합센터 위생관리책임자 채용공고', author: '식품공학과', views: '477', date: '2025-01-09' },
+  { no: 25, category: '채용공고', title: '[공고] 대상웰라이프 생산본부 천안1공장 생산관리자 취업공고', author: '식품공학과', views: '488', date: '2024-11-21' },
+  { no: 24, category: '채용공고', title: '[채용공고] 식품공학과 조교 출산휴가 및 육아휴직 대체인력 채용공고', author: '식품공학과', views: '693', date: '2024-09-13' },
+  { no: 23, category: '채용공고', title: '한국식품산업클러스터진흥원 2024년 제2차 직원(정규직) 채용공고', author: '식품공학과', views: '745', date: '2024-03-07' },
+  { no: 22, category: '채용공고', title: '2024년 (주)일화 신입 및 경력 채용공고', author: '식품공학과', views: '527', date: '2024-03-07' },
+  { no: 21, category: '채용공고', title: '한국에너지기술연구원 2023년 제2차 박사후연구원 채용공고', author: '식품공학과', views: '737', date: '2023-05-02' },
 ]
 
 export const departmentCompanies = [
   { state: '학과공고', name: '삼성웰스토리', type: '대기업', area: '서울', sales: '비공개', pay: '3,800' },
   { state: '학과공고', name: 'CJ프레시웨이', type: '대기업', area: '서울', sales: '비공개', pay: '3,900' },
-  { state: '학과공고', name: '코카콜라', type: '대기업', area: '서울', sales: '비공개', pay: '4,000' },
-  { state: '학과공고', name: '희창유업', type: '중견기업', area: '부산', sales: '비공개', pay: '3,500' },
-  { state: '학과공고', name: '엠에스씨', type: '중견기업', area: '부산', sales: '비공개', pay: '3,400' },
+  { state: '학과공고', name: '코카콜라음료', type: '대기업', area: '서울', sales: '비공개', pay: '4,000' },
+  { state: '학과공고', name: '대상웰라이프', type: '대기업', area: '충남 천안', sales: '비공개', pay: '3,700' },
   { state: '학과공고', name: '삼양그룹', type: '대기업', area: '서울', sales: '비공개', pay: '4,100' },
+  { state: '학과공고', name: '희창유업', type: '중견기업', area: '부산', sales: '비공개', pay: '3,500' },
+  { state: '학과공고', name: '해농', type: '중소기업', area: '전남', sales: '비공개', pay: '3,200' },
+  { state: '학과공고', name: '해송물산', type: '중소기업', area: '부산', sales: '비공개', pay: '3,100' },
+  { state: '학과공고', name: '일화', type: '중견기업', area: '서울', sales: '비공개', pay: '3,400' },
+  { state: '학과공고', name: '엠에스씨', type: '중견기업', area: '부산', sales: '비공개', pay: '3,400' },
+  { state: '연구기관', name: '세계김치연구소', type: '연구기관', area: '광주', sales: '-', pay: '별도 협의' },
+  { state: '연구기관', name: '한국식품산업클러스터진흥원', type: '공공기관', area: '전북 익산', sales: '-', pay: '별도 협의' },
 ]
 
 export const mentorProfiles = [
@@ -129,6 +141,10 @@ export const mentorProfiles = [
     count: '5/5',
     score: 96,
     reason: '동일 전공, 품질관리 직무, 위생·HACCP 교과 연계성이 높습니다.',
+    summary: '부산 식품기업 품질관리 직무에 입사해 원료 입고 검사, 공정 위생 점검, 클레임 원인 분석을 담당하고 있습니다.',
+    advice: '식품위생학, 품질평가 실험, 캡스톤 결과를 한 흐름으로 묶어 설명하면 서류 설득력이 높아집니다.',
+    prep: ['식품기사 준비', '품질관리 자소서', '실험 결과 수치화'],
+    faq: ['현업에서 가장 자주 보는 품질 지표', '신입이 맡는 검사 업무 범위', '현장 실무에 도움 된 전공 과목'],
   },
   {
     type: '취업',
@@ -141,6 +157,10 @@ export const mentorProfiles = [
     count: '3/5',
     score: 92,
     reason: '식품화학·미생물학·품질평가 과목 기반으로 연구 직무 연결이 가능합니다.',
+    summary: '음료 연구 조직에서 배합 테스트, 기준서 검토, 관능 및 안정성 평가 보조 업무를 수행하고 있습니다.',
+    advice: '식품화학과 식품미생물학 실험을 단순 수업이 아니라 제품 안정성 검토 경험으로 바꿔서 말하는 게 중요합니다.',
+    prep: ['식품화학 실험 정리', '연구 직무 자소서', '음료 품질 이슈 이해'],
+    faq: ['연구 직무와 품질 직무 차이', '제품 테스트 과정', '학부생에게 필요한 실험 경험'],
   },
   {
     type: '취업',
@@ -153,5 +173,9 @@ export const mentorProfiles = [
     count: '10/10',
     score: 87,
     reason: '식품가공, 기능성식품, 캡스톤디자인 경험을 신제품개발로 확장할 수 있습니다.',
+    summary: '식품 R&D 부서에서 신제품 컨셉 검토, 배합 수정, 생산 전환 테스트 지원 업무를 맡고 있습니다.',
+    advice: '캡스톤디자인을 단순 발표 경험이 아니라 공정 개선과 협업 문제 해결 경험으로 정리해야 합니다.',
+    prep: ['캡스톤 스토리라인 정리', '신제품개발 관심 산업 분석', '직무 질문 리스트 준비'],
+    faq: ['신제품개발 직무의 하루 업무', '캡스톤을 자소서에 넣는 방식', '학부생이 준비해야 할 포트폴리오 수준'],
   },
 ]

@@ -1,31 +1,18 @@
 import { useState } from 'react'
 import { alumniPath } from '../../data/unisync'
+import { certifications, departmentCompanies, departmentEmploymentPosts, studentProfile } from '../../data/foodEngineering'
 import { SectionCard } from '../ui/SectionCard'
 
-const resourceRows = [
-  { category: '취업뉴스', title: '식품 대기업 R&D 인력 수요 확대…CJ제일제당·농심 상반기 채용 확대', views: '89', date: '2026-02-26' },
-  { category: '기타', title: '식품기사 vs 영양사: R&D 직무 합격자 자격증 현황 분석', views: '67', date: '2026-02-25' },
-  { category: '기타', title: '대체단백질·기능성 식품 시장 트렌드와 R&D 역할 변화 2026', views: '52', date: '2026-02-24' },
-  { category: '기타', title: 'CJ제일제당 R&D 합격자 스펙과 면접 질문 트렌드 완전 분석', views: '45', date: '2026-02-23' },
-]
-
-const companyRows = [
-  { state: '학과/선배', name: 'CJ제일제당', type: '대기업', area: '서울', sales: '115,700,000', pay: '4,200' },
-  { state: '학과/선배', name: '농심', type: '대기업', area: '서울', sales: '23,800,000', pay: '3,900' },
-  { state: '선배', name: '풀무원', type: '중견기업', area: '서울', sales: '15,200,000', pay: '3,600' },
-  { state: '선배', name: '오뚜기', type: '대기업', area: '경기', sales: '32,000,000', pay: '3,800' },
-]
-
 const regionGroups = [
-  { region: '서울', count: '19518' },
-  { region: '강남구', count: '3958' },
-  { region: '강동구', count: '304' },
-  { region: '강북구', count: '65' },
-  { region: '강서구', count: '595' },
-  { region: '관악구', count: '172' },
-  { region: '광진구', count: '326' },
-  { region: '구로구', count: '1044' },
-  { region: '금천구', count: '1333' },
+  { region: '부산', count: '8' },
+  { region: '서울', count: '6' },
+  { region: '경남', count: '4' },
+  { region: '사하구', count: '2' },
+  { region: '강서구', count: '2' },
+  { region: '금정구', count: '1' },
+  { region: '강남구', count: '3' },
+  { region: '마포구', count: '1' },
+  { region: '송파구', count: '2' },
 ]
 
 export function MockSimulationPage() {
@@ -40,18 +27,18 @@ export function MockSimulationPage() {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-sm font-semibold text-[#364457]">AI 채용 시장 트렌드 요약</span>
               <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
-              <span className="ml-auto text-xs text-[#8a9ab5]">2026년 상반기 기준 · 관심직무: 식품 R&D</span>
+              <span className="ml-auto text-xs text-[#8a9ab5]">2026년 상반기 기준 · 관심직무: {studentProfile.targetRole}</span>
             </div>
             <div className="mt-3 grid gap-3 md:grid-cols-3">
               <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
                 <div className="text-xs font-semibold text-[#3a5fd9] mb-2">직무 수요 변화</div>
-                <div className="text-2xl font-bold text-[#364457]">+18%</div>
-                <div className="mt-1 text-xs text-[#64748b]">식품 R&D 직무 공고 수 전년 동기 대비 증가 (건강기능·대체단백질 중심)</div>
+                <div className="text-2xl font-bold text-[#364457]">+12%</div>
+                <div className="mt-1 text-xs text-[#64748b]">학과 게시판 기준 품질·위생·식품가공 직무 공고 비중이 높게 나타납니다.</div>
               </div>
               <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
                 <div className="text-xs font-semibold text-[#3a5fd9] mb-2">핵심 요구 역량</div>
                 <div className="flex flex-wrap gap-1 mt-2">
-                  {['HACCP', '관능평가', 'GC-MS', '배합실험', '소재분석', '식품기사'].map(tag => (
+                  {['HACCP', '식품위생', '품질평가', '식품화학', '식품가공', certifications[0].name].map(tag => (
                     <span key={tag} className="rounded bg-[#eef2fb] px-2 py-0.5 text-[11px] text-[#3a5fd9] font-medium">{tag}</span>
                   ))}
                 </div>
@@ -59,7 +46,7 @@ export function MockSimulationPage() {
               <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
                 <div className="text-xs font-semibold text-[#3a5fd9] mb-2">학생 프로필 적합도</div>
                 <div className="text-2xl font-bold text-[#364457]">84%</div>
-                <div className="mt-1 text-xs text-[#64748b]">현재 스펙 기준, 식품기사 취득 시 93%로 향상 예측</div>
+                <div className="mt-1 text-xs text-[#64748b]">현재 스펙 기준, 식품기사 취득 시 92%로 향상 예측</div>
               </div>
             </div>
           </div>
@@ -70,23 +57,23 @@ export function MockSimulationPage() {
         <div className="grid gap-3 md:grid-cols-5">
           <div className="rounded-2xl bg-[#5d84f0] px-4 py-5 text-center text-white">
             <div className="text-sm">전체</div>
-            <div className="mt-2 text-4xl font-bold">1316</div>
+            <div className="mt-2 text-4xl font-bold">23</div>
           </div>
           <div className="rounded-2xl bg-[#f1f3f7] px-4 py-5 text-center text-[#546173]">
-            <div className="text-sm">취업뉴스</div>
-            <div className="mt-2 text-4xl font-bold">1191</div>
+            <div className="text-sm">채용공고</div>
+            <div className="mt-2 text-4xl font-bold">18</div>
           </div>
           <div className="rounded-2xl bg-[#f1f3f7] px-4 py-5 text-center text-[#546173]">
             <div className="text-sm">기업분석보고서</div>
-            <div className="mt-2 text-4xl font-bold">11</div>
+            <div className="mt-2 text-4xl font-bold">2</div>
           </div>
           <div className="rounded-2xl bg-[#f1f3f7] px-4 py-5 text-center text-[#546173]">
-            <div className="text-sm">프로그램후기</div>
-            <div className="mt-2 text-4xl font-bold">13</div>
+            <div className="text-sm">자격증 정보</div>
+            <div className="mt-2 text-4xl font-bold">3</div>
           </div>
           <div className="rounded-2xl bg-[#f1f3f7] px-4 py-5 text-center text-[#546173]">
             <div className="text-sm">기타</div>
-            <div className="mt-2 text-4xl font-bold">101</div>
+            <div className="mt-2 text-4xl font-bold">0</div>
           </div>
         </div>
 
@@ -132,21 +119,32 @@ export function MockSimulationPage() {
             <table className="min-w-full border-collapse text-sm">
               <thead className="bg-[#f3f5f8] text-[#536174]">
                 <tr>
-                  <th className="px-4 py-3 text-left">분류</th>
-                  <th className="px-4 py-3 text-left">제목</th>
-                  <th className="px-4 py-3 text-left">조회수</th>
-                  <th className="px-4 py-3 text-left">작성일</th>
-                  <th className="px-4 py-3 text-left">보기</th>
+                  <th className="px-3 py-3 text-left w-10">번호</th>
+                  <th className="px-3 py-3 text-left">분류</th>
+                  <th className="px-3 py-3 text-left">제목</th>
+                  <th className="px-3 py-3 text-left">작성자</th>
+                  <th className="px-3 py-3 text-left">작성일</th>
+                  <th className="px-3 py-3 text-left">조회수</th>
+                  <th className="px-3 py-3 text-left">보기</th>
                 </tr>
               </thead>
               <tbody>
-                {resourceRows.map((row) => (
-                  <tr key={row.title} className="border-t border-[#e7edf6] text-[#46556c]">
-                    <td className="px-4 py-3">{row.category}</td>
-                    <td className="px-4 py-3">{row.title}</td>
-                    <td className="px-4 py-3">{row.views}</td>
-                    <td className="px-4 py-3">{row.date}</td>
-                    <td className="px-4 py-3">
+                {departmentEmploymentPosts.map((row) => (
+                  <tr key={row.no} className="border-t border-[#e7edf6] text-[#46556c]">
+                    <td className="px-3 py-3 text-[#8a9ab5]">{row.no}</td>
+                    <td className="px-3 py-3">
+                      <span className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${
+                        row.category === '채용공고' ? 'bg-[#e3f0ff] text-[#1a56b0]' :
+                        row.category === '기업행사' ? 'bg-[#e8f5e9] text-[#2e7d32]' :
+                        row.category === '공모전' ? 'bg-[#fff3e0] text-[#e65100]' :
+                        'bg-[#f3f0ff] text-[#5b3fa6]'
+                      }`}>{row.category}</span>
+                    </td>
+                    <td className="px-3 py-3 max-w-xs truncate">{row.title}</td>
+                    <td className="px-3 py-3 text-xs text-[#64748b]">{row.author}</td>
+                    <td className="px-3 py-3 text-xs">{row.date}</td>
+                    <td className="px-3 py-3">{row.views}</td>
+                    <td className="px-3 py-3">
                       <button type="button" className="rounded bg-[#7b63f6] px-3 py-1 text-xs font-semibold text-white">
                         보기
                       </button>
@@ -174,7 +172,7 @@ export function MockSimulationPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {companyRows.map((row) => (
+                  {departmentCompanies.map((row) => (
                     <tr key={row.name} className="border-t border-[#e7edf6] text-[#46556c]">
                       <td className="px-4 py-3">{row.state}</td>
                       <td className="px-4 py-3">{row.name}</td>
@@ -215,16 +213,16 @@ export function MockSimulationPage() {
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
           <span className="text-sm font-semibold text-[#364457]">AI 기업 분석</span>
           <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
-          <span className="ml-auto text-xs text-[#8a9ab5]">관심 기업: CJ제일제당</span>
+          <span className="ml-auto text-xs text-[#8a9ab5]">관심 기업: {studentProfile.targetCompany}</span>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2">
             <div className="text-xs font-semibold text-[#536174] uppercase tracking-wide">채용 패턴 분석</div>
             {[
-              { label: '채용 시기', value: '상반기 3~4월·하반기 9~10월 공채 정기화' },
-              { label: '선호 전공', value: '식품영양학, 식품공학, 생명공학, 화학공학' },
-              { label: '선호 경험', value: '연구실 인턴, 관능평가, 캡스톤 프로젝트' },
-              { label: '합격 자격증', value: '식품기사, 영양사, HACCP 관리사' },
+              { label: '채용 시기', value: '상반기 학과게시판 중심 수시채용 비중이 높음' },
+              { label: '선호 전공', value: '식품공학, 식품과학, 생명공학, 화학 관련 전공' },
+              { label: '선호 경험', value: '식품위생 실험, 품질평가, 캡스톤디자인, 공정 실습' },
+              { label: '합격 자격증', value: '식품기사, 위생사, 수산제조기사' },
             ].map(row => (
               <div key={row.label} className="flex gap-3 rounded-lg bg-[#f8fafd] border border-[#e8eef6] px-3 py-2 text-sm">
                 <span className="w-24 shrink-0 font-semibold text-[#536174]">{row.label}</span>
@@ -235,10 +233,10 @@ export function MockSimulationPage() {
           <div className="space-y-2">
             <div className="text-xs font-semibold text-[#536174] uppercase tracking-wide">현재 스펙 대비 GAP</div>
             {[
-              { item: '식품기사 자격증', status: '미보유', color: 'text-[#f55d78]' },
-              { item: '연구실 인턴 경험', status: '미이수', color: 'text-[#f0b03f]' },
-              { item: '관능평가 실무 경험', status: '동아리 실습 (부분 충족)', color: 'text-[#f0b03f]' },
-              { item: '전공 적합도', status: '식품영양학과 (충족)', color: 'text-[#2e7d32]' },
+              { item: '식품기사 자격증', status: '준비중', color: 'text-[#f55d78]' },
+              { item: '식품위생·품질 실습 경험', status: '전공 수업 이수 (부분 충족)', color: 'text-[#f0b03f]' },
+              { item: '캡스톤·종합설계 사례', status: '정리 필요', color: 'text-[#f0b03f]' },
+              { item: '전공 적합도', status: '식품공학전공 (충족)', color: 'text-[#2e7d32]' },
             ].map(row => (
               <div key={row.item} className="flex items-center justify-between rounded-lg bg-[#f8fafd] border border-[#e8eef6] px-3 py-2 text-sm">
                 <span className="text-[#364457]">{row.item}</span>
