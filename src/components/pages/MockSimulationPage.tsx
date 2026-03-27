@@ -122,8 +122,9 @@ export function MockSimulationPage() {
                   <th className="px-3 py-3 text-left w-10">번호</th>
                   <th className="px-3 py-3 text-left">분류</th>
                   <th className="px-3 py-3 text-left">제목</th>
+                  <th className="px-3 py-3 text-left">첨부</th>
                   <th className="px-3 py-3 text-left">작성자</th>
-                  <th className="px-3 py-3 text-left">작성일</th>
+                  <th className="px-3 py-3 text-left">등록일</th>
                   <th className="px-3 py-3 text-left">조회수</th>
                   <th className="px-3 py-3 text-left">보기</th>
                 </tr>
@@ -141,9 +142,10 @@ export function MockSimulationPage() {
                       }`}>{row.category}</span>
                     </td>
                     <td className="px-3 py-3 max-w-xs truncate">{row.title}</td>
+                    <td className="px-3 py-3 text-center">{row.hasAttachment ? <span className="text-[#3a5fd9]" title="첨부파일">📎</span> : ''}</td>
                     <td className="px-3 py-3 text-xs text-[#64748b]">{row.author}</td>
                     <td className="px-3 py-3 text-xs">{row.date}</td>
-                    <td className="px-3 py-3">{row.views}</td>
+                    <td className="px-3 py-3 text-xs">{row.views !== '-' ? row.views : '-'}</td>
                     <td className="px-3 py-3">
                       <button type="button" className="rounded bg-[#7b63f6] px-3 py-1 text-xs font-semibold text-white">
                         보기

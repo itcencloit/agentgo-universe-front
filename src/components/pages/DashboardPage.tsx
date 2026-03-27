@@ -54,21 +54,21 @@ export function DashboardPage() {
               <span className="ml-auto text-xs text-[#8a9ab5]">4학년 1학기 · 목표: {studentProfile.targetCompany}</span>
             </div>
             <div className="mt-3 grid gap-3 md:grid-cols-3">
-              <div className="rounded-lg bg-white border border-[#e0e8f5] p-3">
+              <div className="rounded-lg bg-white border border-[#fca5a5] p-3">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#f55d78] text-[10px] font-bold text-white">1</span>
-                  <span className="text-xs font-semibold text-[#f55d78]">긴급 · D-5</span>
+                  <span className="text-xs font-semibold text-[#f55d78]">긴급 · D-4</span>
                 </div>
-                <div className="text-sm font-semibold text-[#364457]">{certifications[0].name} 필기 접수</div>
-                <div className="mt-1 text-xs text-[#64748b]">품질관리·연구개발 직무 연결도가 가장 높은 핵심 자격증입니다.</div>
+                <div className="text-sm font-semibold text-[#364457]">CJ제일제당 식품사업부문 신입 지원</div>
+                <div className="mt-1 text-xs text-[#64748b]">4/1(수) 17시 마감. 학과 게시판 공고 확인 후 즉시 지원 준비가 필요합니다.</div>
               </div>
               <div className="rounded-lg bg-white border border-[#e0e8f5] p-3">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#f0b03f] text-[10px] font-bold text-white">2</span>
-                  <span className="text-xs font-semibold text-[#f0b03f]">권장</span>
+                  <span className="text-xs font-semibold text-[#f0b03f]">긴급 · D-5</span>
                 </div>
-                <div className="text-sm font-semibold text-[#364457]">품질·위생 실습 경험 정리</div>
-                <div className="mt-1 text-xs text-[#64748b]">식품위생학, HACCP, 품질평가 수업 경험을 직무 역량으로 연결할 시점입니다.</div>
+                <div className="text-sm font-semibold text-[#364457]">{certifications[0].name} 필기 접수</div>
+                <div className="mt-1 text-xs text-[#64748b]">품질관리·연구개발 직무 연결도가 가장 높은 핵심 자격증입니다.</div>
               </div>
               <div className="rounded-lg bg-white border border-[#e0e8f5] p-3">
                 <div className="flex items-center gap-2 mb-2">
