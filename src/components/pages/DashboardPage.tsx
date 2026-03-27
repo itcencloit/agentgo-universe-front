@@ -26,9 +26,9 @@ const roadmapBoxes = [
 ]
 
 const programNotices = [
-  { label: '진행중', title: '식품기사 취득 집중 대비 프로그램', date: '26-03-01' },
-  { label: '진행중', title: '품질관리·위생관리 직무 특강', date: '26-03-14' },
-  { label: '진행중', title: '식품공정제어·캡스톤 포트폴리오 워크숍', date: '26-03-19' },
+  { label: '마감임박', title: '[삼성웰스토리] 2026년 푸드페스타 사전신청 안내', date: '26-03-25' },
+  { label: '신규', title: '대안단백질(Alt Protein) 글로벌 대학(원)생 프로그램 모집', date: '26-03-12' },
+  { label: '신규', title: '[참관 안내] CJ프레시웨이 푸드 솔루션 페어 2026', date: '26-03-03' },
 ]
 
 const jobNotices = [
