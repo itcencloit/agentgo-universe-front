@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from 'react'
 import favicon from '../../assets/favicon.svg'
 import type { RoadmapSelection } from '../../data/roadmap'
+import { studentProfile } from '../../data/foodEngineering'
 import type { GlobalPage } from '../../types/unisync'
 import { Header } from './Header'
 
@@ -194,12 +195,12 @@ export function AppShell({
             <div className="mx-auto flex h-24 w-24 items-center justify-center overflow-hidden rounded-full bg-[linear-gradient(135deg,#dfe6f3_0%,#cfd8e9_100%)] p-4">
               <img src={favicon} alt="User avatar" className="h-full w-full object-contain" />
             </div>
-            <div className="mt-4 text-[15px] font-semibold text-[#37455e]">클로잇</div>
+            <div className="mt-4 text-[15px] font-semibold text-[#37455e]">{studentProfile.name}</div>
             <div className="mt-2 text-sm leading-6 text-[#5e6d83]">
-              생명과학대학/식품영양학과
+              식품과학부/식품공학전공
             </div>
-            <div className="mt-2 text-sm text-[#5e6d83]">4학년</div>
-            <div className="mt-1 text-sm text-[#5e6d83]">아이티센 교수</div>
+            <div className="mt-2 text-sm text-[#5e6d83]">{studentProfile.grade}</div>
+            <div className="mt-1 text-sm text-[#5e6d83]">전공지도교수</div>
           </section>
 
           <section className="rounded-md border border-[#e1e6ef] bg-white p-3 shadow-sm">
