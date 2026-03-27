@@ -4,9 +4,9 @@ import { AiChatPanel } from '../ui/AiChatPanel'
 import { SectionCard } from '../ui/SectionCard'
 
 const programCategories = [
-  { label: '전체', value: '1185', active: true },
+  { label: '전체', value: '23', active: true },
   { label: '관심 프로그램', value: '0' },
-  { label: 'My 프로그램', value: '9' },
+  { label: 'My 프로그램', value: '4' },
 ]
 
 const programCards = [
@@ -21,21 +21,21 @@ const programCards = [
   },
   {
     id: 'p2',
-    title: 'R&D 직무 자기소개서 첨삭 & 1:1 화상 컨설팅',
+    title: '품질·연구 직무 자기소개서 첨삭 & 1:1 화상 컨설팅',
     team: '커리어개발팀',
     status: '진행중',
     applyPeriod: '2026.03.01(일) ~ 2027.02.28(일)',
     eduPeriod: '2026.03.01(일) ~ 2027.02.28(일)',
-    keyword: '#자기소개서 #R&D',
+    keyword: '#자기소개서 #품질관리',
   },
   {
     id: 'p3',
-    title: '[식품대기업] CJ·농심·풀무원 면접 마스터 클래스',
+    title: '[식품기업] 희창유업·코카콜라·삼양그룹 면접 마스터 클래스',
     team: '커리어개발팀',
     status: '진행중',
     applyPeriod: '2026.03.19(목) ~ 2026.04.12(일)',
     eduPeriod: '2026.04.14(화)',
-    keyword: '#식품R&D #면접특강',
+    keyword: '#식품공학 #면접특강',
   },
 ]
 

@@ -47,7 +47,7 @@ export function DiagnosisPage() {
                 </div>
               ))}
             </div>
-            <p className="mt-3 text-xs text-[#64748b] leading-5">직무 적합도와 기초 역량이 우수합니다. 현재 관심 직무(식품 R&D) 방향성이 적성과 잘 맞습니다.</p>
+            <p className="mt-3 text-xs text-[#64748b] leading-5">직무 적합도와 기초 역량이 우수합니다. 현재 관심 직무(식품 품질·연구) 방향성이 적성과 잘 맞습니다.</p>
           </div>
 
           <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
@@ -72,9 +72,9 @@ export function DiagnosisPage() {
             <div className="text-xs font-semibold text-[#3a5fd9] uppercase tracking-wide mb-3">AI 강화 추천 액션</div>
             <div className="space-y-2">
               {[
-                { priority: '1순위', action: '식품기사 필기 접수 (D-5)', reason: '취업준비도 중 자격증 항목 최저, CJ제일제당 R&D 필수 요건' },
-                { priority: '2순위', action: 'R&D 자소서 1번 문항 완성', reason: '실험 경험 STAR 구조 정리 미완료' },
-                { priority: '3순위', action: '진로 목표 구체화', reason: '진로성숙도 74점, 식품 R&D 세부 직무(신제품개발·소재탐색) 방향 확정 필요' },
+                { priority: '1순위', action: '식품기사 필기 접수 (D-5)', reason: '취업준비도 중 자격증 항목 최저, 품질·연구 직무 핵심 자격증' },
+                { priority: '2순위', action: '품질관리 자소서 1번 문항 완성', reason: '전공 실험 경험 STAR 구조 정리 미완료' },
+                { priority: '3순위', action: '진로 목표 구체화', reason: '진로성숙도 74점, 품질관리·식품연구 세부 방향 확정 필요' },
               ].map(item => (
                 <div key={item.priority} className="rounded bg-[#f8fafd] border border-[#e8eef6] px-3 py-2">
                   <div className="flex items-center gap-2">
