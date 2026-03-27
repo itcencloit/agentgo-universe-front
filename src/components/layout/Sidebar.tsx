@@ -23,14 +23,14 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
             KM
           </div>
           <div>
-            <div className="font-semibold text-gray-900">김미래</div>
-            <div className="mt-0.5 text-xs text-gray-500">경영학과 / 데이터 마케팅 트랙</div>
+            <div className="font-semibold text-gray-900">클로잇</div>
+            <div className="mt-0.5 text-xs text-gray-500">식품영양학과 / 식품 R&D 트랙</div>
           </div>
         </div>
         <div className="space-y-1 text-xs text-gray-600">
           <div>4학년</div>
-          <div>지도교수 조성민</div>
-          <div>커리어 목표: K-데이터 마케터</div>
+          <div>지도교수 이영석</div>
+          <div>커리어 목표: CJ제일제당 R&D 연구원</div>
         </div>
       </div>
 

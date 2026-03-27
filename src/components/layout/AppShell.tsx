@@ -196,7 +196,7 @@ export function AppShell({
             </div>
             <div className="mt-4 text-[15px] font-semibold text-[#37455e]">클로잇</div>
             <div className="mt-2 text-sm leading-6 text-[#5e6d83]">
-              공과대학/전자공학과
+              생명과학대학/식품영양학과
             </div>
             <div className="mt-2 text-sm text-[#5e6d83]">4학년</div>
             <div className="mt-1 text-sm text-[#5e6d83]">아이티센 교수</div>

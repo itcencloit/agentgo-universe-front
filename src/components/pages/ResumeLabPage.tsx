@@ -12,30 +12,30 @@ const programCategories = [
 const programCards = [
   {
     id: 'p1',
-    title: '공기업 NCS 합격 단기 완성 프로그램',
+    title: '식품기사 자격증 단기 합격 프로그램',
     team: '커리어개발팀',
     status: '진행중',
-    applyPeriod: '2026.02.23(월) ~ 2026.05.29(금)',
-    eduPeriod: '2026.03.09(월) ~ 2026.07.31(금)',
-    keyword: '#NCS교육',
+    applyPeriod: '2026.03.01(일) ~ 2026.04.20(일)',
+    eduPeriod: '2026.03.09(월) ~ 2026.06.30(화)',
+    keyword: '#식품기사 #자격증',
   },
   {
     id: 'p2',
-    title: '자기소개서 첨삭 & 1:1 화상 컨설팅',
+    title: 'R&D 직무 자기소개서 첨삭 & 1:1 화상 컨설팅',
     team: '커리어개발팀',
     status: '진행중',
     applyPeriod: '2026.03.01(일) ~ 2027.02.28(일)',
     eduPeriod: '2026.03.01(일) ~ 2027.02.28(일)',
-    keyword: '#자기소개서',
+    keyword: '#자기소개서 #R&D',
   },
   {
     id: 'p3',
-    title: '[대기업] 면접 마스터 클래스: 면접 기초부터 실전까지',
+    title: '[식품대기업] CJ·농심·풀무원 면접 마스터 클래스',
     team: '커리어개발팀',
     status: '진행중',
     applyPeriod: '2026.03.19(목) ~ 2026.04.12(일)',
     eduPeriod: '2026.04.14(화)',
-    keyword: '#취업 #면접특강',
+    keyword: '#식품R&D #면접특강',
   },
 ]
 

@@ -46,10 +46,10 @@ export function CounselingPage() {
                 <div className="text-xs font-semibold text-[#3a5fd9] mb-2">AI 생성 상담 의제</div>
                 <div className="space-y-1.5">
                   {[
-                    '자소서 Q1 문항 피드백 요청 (경영통계 프로젝트 경험 연결)',
-                    '4학년 2학기 비교과 프로그램 우선 신청 목록 확인',
-                    'ADsP 취득 후 포트폴리오 구성 방향 상의',
-                    '에스케이텔레콤 상반기 공고 서류 제출 일정 역산',
+                    '자소서 Q1 문항 피드백 요청 (식품성분분석 실험 경험 STAR 구조 연결)',
+                    '식품기사 필기 시험 D-5 — 접수 완료 여부 확인 및 학습 계획 공유',
+                    '교내 연구실 인턴 신청 절차 및 지도교수 연결 방법 상의',
+                    'CJ제일제당 상반기 공고 서류 제출 일정 역산 (4월 초 마감 기준)',
                   ].map((agenda, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs text-[#364457]">
                       <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#eef2fb] text-[10px] font-bold text-[#3a5fd9]">{i + 1}</span>

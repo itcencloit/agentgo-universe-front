@@ -3,17 +3,17 @@ import { alumniPath } from '../../data/unisync'
 import { SectionCard } from '../ui/SectionCard'
 
 const resourceRows = [
-  { category: '기타', title: '2026 상반기 채용 대비: 기업이 실제로 묻는 면접 질문 트렌드 분석', views: '56', date: '2026-02-26' },
-  { category: '기타', title: '산업·직무별 유망 분야 분석', views: '34', date: '2026-02-26' },
-  { category: '취업뉴스', title: '2026년 10대 주요 기업 신년사 핵심 정리', views: '16', date: '2026-02-24' },
-  { category: '기타', title: '기업이 같이 일하고 싶은 사람을 뽑는 이유', views: '15', date: '2026-02-23' },
+  { category: '취업뉴스', title: '식품 대기업 R&D 인력 수요 확대…CJ제일제당·농심 상반기 채용 확대', views: '89', date: '2026-02-26' },
+  { category: '기타', title: '식품기사 vs 영양사: R&D 직무 합격자 자격증 현황 분석', views: '67', date: '2026-02-25' },
+  { category: '기타', title: '대체단백질·기능성 식품 시장 트렌드와 R&D 역할 변화 2026', views: '52', date: '2026-02-24' },
+  { category: '기타', title: 'CJ제일제당 R&D 합격자 스펙과 면접 질문 트렌드 완전 분석', views: '45', date: '2026-02-23' },
 ]
 
 const companyRows = [
-  { state: '선배', name: '현대모템', type: '중견기업', area: '서울', sales: '2,229,836', pay: '3,300' },
-  { state: '학과/선배', name: '삼성전자', type: '대기업', area: '경기', sales: '154,772,900', pay: '4,051' },
-  { state: '학과/선배', name: '현대자동차', type: '대기업', area: '서울', sales: '49,155,690', pay: '4,051' },
-  { state: '선배', name: '에스케이하이닉스', type: '대기업', area: '경기', sales: '25,320,760', pay: '4,058' },
+  { state: '학과/선배', name: 'CJ제일제당', type: '대기업', area: '서울', sales: '115,700,000', pay: '4,200' },
+  { state: '학과/선배', name: '농심', type: '대기업', area: '서울', sales: '23,800,000', pay: '3,900' },
+  { state: '선배', name: '풀무원', type: '중견기업', area: '서울', sales: '15,200,000', pay: '3,600' },
+  { state: '선배', name: '오뚜기', type: '대기업', area: '경기', sales: '32,000,000', pay: '3,800' },
 ]
 
 const regionGroups = [
@@ -40,26 +40,26 @@ export function MockSimulationPage() {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-sm font-semibold text-[#364457]">AI 채용 시장 트렌드 요약</span>
               <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
-              <span className="ml-auto text-xs text-[#8a9ab5]">2026년 상반기 기준 · 관심직무: 데이터 전략</span>
+              <span className="ml-auto text-xs text-[#8a9ab5]">2026년 상반기 기준 · 관심직무: 식품 R&D</span>
             </div>
             <div className="mt-3 grid gap-3 md:grid-cols-3">
               <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
                 <div className="text-xs font-semibold text-[#3a5fd9] mb-2">직무 수요 변화</div>
-                <div className="text-2xl font-bold text-[#364457]">+23%</div>
-                <div className="mt-1 text-xs text-[#64748b]">데이터 분석·전략 직무 공고 수 전년 동기 대비 증가</div>
+                <div className="text-2xl font-bold text-[#364457]">+18%</div>
+                <div className="mt-1 text-xs text-[#64748b]">식품 R&D 직무 공고 수 전년 동기 대비 증가 (건강기능·대체단백질 중심)</div>
               </div>
               <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
                 <div className="text-xs font-semibold text-[#3a5fd9] mb-2">핵심 요구 역량</div>
                 <div className="flex flex-wrap gap-1 mt-2">
-                  {['SQL', 'Python', 'GA4', '대시보드 설계', 'KPI 정의'].map(tag => (
+                  {['HACCP', '관능평가', 'GC-MS', '배합실험', '소재분석', '식품기사'].map(tag => (
                     <span key={tag} className="rounded bg-[#eef2fb] px-2 py-0.5 text-[11px] text-[#3a5fd9] font-medium">{tag}</span>
                   ))}
                 </div>
               </div>
               <div className="rounded-lg bg-white border border-[#dce4f3] p-4">
                 <div className="text-xs font-semibold text-[#3a5fd9] mb-2">학생 프로필 적합도</div>
-                <div className="text-2xl font-bold text-[#364457]">82%</div>
-                <div className="mt-1 text-xs text-[#64748b]">현재 스펙 기준, ADsP 취득 시 91%로 향상 예측</div>
+                <div className="text-2xl font-bold text-[#364457]">84%</div>
+                <div className="mt-1 text-xs text-[#64748b]">현재 스펙 기준, 식품기사 취득 시 93%로 향상 예측</div>
               </div>
             </div>
           </div>
@@ -215,16 +215,16 @@ export function MockSimulationPage() {
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
           <span className="text-sm font-semibold text-[#364457]">AI 기업 분석</span>
           <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
-          <span className="ml-auto text-xs text-[#8a9ab5]">관심 기업: 에스케이텔레콤</span>
+          <span className="ml-auto text-xs text-[#8a9ab5]">관심 기업: CJ제일제당</span>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2">
             <div className="text-xs font-semibold text-[#536174] uppercase tracking-wide">채용 패턴 분석</div>
             {[
-              { label: '채용 시기', value: '상반기 3월·하반기 9월 공채 정기화' },
-              { label: '선호 전공', value: '전자공학, 컴퓨터공학, 산업공학' },
-              { label: '선호 경험', value: '데이터 분석 프로젝트, 대외활동 리더 경험' },
-              { label: '합격 자격증', value: 'SQLD, ADsP, OPIc IM 이상' },
+              { label: '채용 시기', value: '상반기 3~4월·하반기 9~10월 공채 정기화' },
+              { label: '선호 전공', value: '식품영양학, 식품공학, 생명공학, 화학공학' },
+              { label: '선호 경험', value: '연구실 인턴, 관능평가, 캡스톤 프로젝트' },
+              { label: '합격 자격증', value: '식품기사, 영양사, HACCP 관리사' },
             ].map(row => (
               <div key={row.label} className="flex gap-3 rounded-lg bg-[#f8fafd] border border-[#e8eef6] px-3 py-2 text-sm">
                 <span className="w-24 shrink-0 font-semibold text-[#536174]">{row.label}</span>
@@ -235,10 +235,10 @@ export function MockSimulationPage() {
           <div className="space-y-2">
             <div className="text-xs font-semibold text-[#536174] uppercase tracking-wide">현재 스펙 대비 GAP</div>
             {[
-              { item: 'SQLD 자격증', status: '미보유', color: 'text-[#f55d78]' },
-              { item: 'Python 포트폴리오', status: '미비', color: 'text-[#f0b03f]' },
-              { item: '대외활동 리더 경험', status: '동아리 운영 (충족)', color: 'text-[#2e7d32]' },
-              { item: '전공 적합도', status: '전자공학과 (충족)', color: 'text-[#2e7d32]' },
+              { item: '식품기사 자격증', status: '미보유', color: 'text-[#f55d78]' },
+              { item: '연구실 인턴 경험', status: '미이수', color: 'text-[#f0b03f]' },
+              { item: '관능평가 실무 경험', status: '동아리 실습 (부분 충족)', color: 'text-[#f0b03f]' },
+              { item: '전공 적합도', status: '식품영양학과 (충족)', color: 'text-[#2e7d32]' },
             ].map(row => (
               <div key={row.item} className="flex items-center justify-between rounded-lg bg-[#f8fafd] border border-[#e8eef6] px-3 py-2 text-sm">
                 <span className="text-[#364457]">{row.item}</span>

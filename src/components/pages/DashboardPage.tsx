@@ -1,8 +1,8 @@
 const myInfoRows = [
-  { label: '이름', value: '클로잇 ' },
+  { label: '이름', value: '클로잇' },
   { label: '학번', value: '2010304032' },
   { label: '학년', value: '4학년' },
-  { label: '소속', value: '전자공학과' },
+  { label: '소속', value: '식품영양학과' },
 ]
 
 const myCdpCards = [
@@ -24,15 +24,15 @@ const roadmapBoxes = [
 ]
 
 const programNotices = [
-  { label: '진행중', title: '공기업 NCS 합격 단기 완성 프로그램', date: '26-02-23' },
-  { label: '진행중', title: '자기소개서 첨삭 및 1:1 화상 컨설팅', date: '26-03-01' },
-  { label: '진행중', title: '대기업 면접 직무 마스터 클래스', date: '26-03-19' },
+  { label: '진행중', title: 'CJ제일제당 채용연계형 R&D 인턴십 설명회', date: '26-03-15' },
+  { label: '진행중', title: '식품기사 취득 집중 대비 프로그램 (필기+실기)', date: '26-03-01' },
+  { label: '진행중', title: '식품산업 취업 전략 및 R&D 자소서 특강', date: '26-03-19' },
 ]
 
 const jobNotices = [
-  { label: '긴급', title: '[리베이터] 2026 상반기 인재 추천 채용', date: '26-03-27' },
-  { label: '긴급', title: '[코시앤테리] 경영기획 부문 추천 채용', date: '26-03-27' },
-  { label: '신규', title: '[금강세미나] 26년 1분기 인재 추천 채용', date: '26-03-30' },
+  { label: '긴급', title: '[CJ제일제당] 2026 상반기 식품 R&D 신입 채용', date: '26-04-10' },
+  { label: '신규', title: '[농심] 중앙연구소 식품공학 신입연구원 모집', date: '26-04-15' },
+  { label: '신규', title: '[풀무원] 기술원 식품연구 인턴 채용', date: '26-04-20' },
 ]
 
 const serviceLinks = ['로드맵 설정', '진로설계', '경력개발', '직무 탐색']
@@ -49,7 +49,7 @@ export function DashboardPage() {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-sm font-semibold text-[#364457]">AI 오늘의 브리핑</span>
               <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
-              <span className="ml-auto text-xs text-[#8a9ab5]">4학년 1학기 · 목표: 에스케이텔레콤</span>
+              <span className="ml-auto text-xs text-[#8a9ab5]">4학년 1학기 · 목표: CJ제일제당 R&D</span>
             </div>
             <div className="mt-3 grid gap-3 md:grid-cols-3">
               <div className="rounded-lg bg-white border border-[#e0e8f5] p-3">
@@ -57,28 +57,28 @@ export function DashboardPage() {
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#f55d78] text-[10px] font-bold text-white">1</span>
                   <span className="text-xs font-semibold text-[#f55d78]">긴급 · D-5</span>
                 </div>
-                <div className="text-sm font-semibold text-[#364457]">진로계획서 초안 제출</div>
-                <div className="mt-1 text-xs text-[#64748b]">로드맵 미완료 항목 중 마감이 가장 임박했습니다.</div>
+                <div className="text-sm font-semibold text-[#364457]">식품기사 필기 접수</div>
+                <div className="mt-1 text-xs text-[#64748b]">CJ제일제당 R&D 합격자 78% 보유 자격증. 다음 시험 D-60.</div>
               </div>
               <div className="rounded-lg bg-white border border-[#e0e8f5] p-3">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#f0b03f] text-[10px] font-bold text-white">2</span>
                   <span className="text-xs font-semibold text-[#f0b03f]">권장</span>
                 </div>
-                <div className="text-sm font-semibold text-[#364457]">ADsP 시험 일정 확인</div>
-                <div className="mt-1 text-xs text-[#64748b]">목표 직무 필수 자격증, 다음 시험까지 90일 남았습니다.</div>
+                <div className="text-sm font-semibold text-[#364457]">연구실 인턴 신청 마감 확인</div>
+                <div className="mt-1 text-xs text-[#64748b]">교내 식품연구실 인턴 경험이 자소서 핵심 근거가 됩니다.</div>
               </div>
               <div className="rounded-lg bg-white border border-[#e0e8f5] p-3">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">3</span>
                   <span className="text-xs font-semibold text-[#3a5fd9]">추천</span>
                 </div>
-                <div className="text-sm font-semibold text-[#364457]">자소서 경험 노드 1건 연결</div>
-                <div className="mt-1 text-xs text-[#64748b]">경영통계 프로젝트가 Q1 문항과 아직 연결되지 않았습니다.</div>
+                <div className="text-sm font-semibold text-[#364457]">자소서 Q3 경험 노드 연결</div>
+                <div className="mt-1 text-xs text-[#64748b]">대체단백질 연구가 Q3 문항과 아직 연결되지 않았습니다.</div>
               </div>
             </div>
             <div className="mt-3 rounded-lg bg-[#eef2fb] border border-[#d6e0f4] px-4 py-2.5 text-sm text-[#4a5d8a]">
-              <span className="font-semibold">AI 로드맵 분석:</span> 현재 8개 로드맵 항목 중 5개가 미설정 상태입니다. 이력서 작성과 희망진로 설정을 완료하면 커리어 적합도가 82% → 91%로 향상될 것으로 예측됩니다.
+              <span className="font-semibold">AI 로드맵 분석:</span> 현재 8개 로드맵 항목 중 5개가 미설정 상태입니다. 식품기사 취득과 연구실 인턴을 완료하면 CJ제일제당 R&D 커리어 적합도가 84% → 93%로 향상될 것으로 예측됩니다.
             </div>
           </div>
         </div>

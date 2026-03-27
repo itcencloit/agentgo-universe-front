@@ -5,32 +5,32 @@ import { SectionCard } from '../ui/SectionCard'
 const mentorRows = [
   {
     type: '취업',
-    mentor: '김채훈',
-    company: '오퍼레이션',
-    department: '서비스팀',
-    job: 'IT·인터넷',
-    major: '사회학과',
+    mentor: '김은지',
+    company: 'CJ제일제당',
+    department: 'R&D센터',
+    job: '식품연구개발',
+    major: '식품영양학과',
     year: '2023',
     count: '5/5',
   },
   {
     type: '취업',
-    mentor: '박은진',
-    company: '한화에어로스페이스',
-    department: '추진단약1팀',
-    job: '연구개발·설계',
-    major: '화학과',
-    year: '2025',
-    count: '5/5',
+    mentor: '박성민',
+    company: '농심',
+    department: '중앙연구소',
+    job: '신제품개발',
+    major: '식품공학과',
+    year: '2024',
+    count: '3/5',
   },
   {
     type: '취업',
-    mentor: '한이진',
-    company: 'LG에너지솔루션',
-    department: '선행개발',
-    job: '연구개발·설계',
-    major: '신소재공학부',
-    year: '2026',
+    mentor: '이수연',
+    company: '풀무원',
+    department: '기술원',
+    job: '식품R&D',
+    major: '식품영양학과',
+    year: '2025',
     count: '10/10',
   },
 ]
@@ -49,12 +49,12 @@ export function PivotLabPage() {
               <span className="text-sm font-semibold text-[#364457]">AI 멘토 자동 매칭</span>
               <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
             </div>
-            <p className="mt-1 text-sm text-[#64748b]">전공(전자공학과)·관심직무(데이터전략·서비스기획)·활동이력을 기반으로 현재 활동 중인 멘토와의 적합도를 자동 분석했습니다.</p>
+            <p className="mt-1 text-sm text-[#64748b]">전공(식품영양학과)·관심직무(식품 R&D)·실험 이력을 기반으로 현재 활동 중인 멘토와의 적합도를 자동 분석했습니다.</p>
             <div className="mt-3 grid gap-3 md:grid-cols-3">
               {[
-                { name: '김채훈', company: '오퍼레이션', job: 'IT·인터넷', score: 94, reason: '전공·관심직무 일치, 활동 이력 유사' },
-                { name: '박은진', company: '한화에어로스페이스', job: '연구개발·설계', score: 82, reason: '연구 역량 연계, 대기업 취업 경로 참고 가능' },
-                { name: '한이진', company: 'LG에너지솔루션', job: '연구개발·설계', score: 76, reason: '신소재 분야 전환 경로, 스펙 패턴 유사' },
+                { name: '김은지', company: 'CJ제일제당', job: '식품연구개발', score: 97, reason: '동일 전공·동일 목표 기업·실험 이력 일치' },
+                { name: '박성민', company: '농심', job: '신제품개발', score: 89, reason: '식품공학 유사 전공, 대기업 R&D 경로 참고 가능' },
+                { name: '이수연', company: '풀무원', job: '식품R&D', score: 84, reason: '동일 전공, 건강기능식품 R&D 경로 유사' },
               ].map(m => (
                 <div key={m.name} className="rounded-lg bg-white border border-[#dce4f3] p-3">
                   <div className="flex items-center justify-between gap-2">
@@ -182,15 +182,15 @@ export function PivotLabPage() {
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
           <span className="text-sm font-semibold text-[#364457]">AI 상담 질문 자동 생성</span>
           <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
-          <span className="ml-auto text-xs text-[#8a9ab5]">선택 멘토: 김채훈 (오퍼레이션 · IT·인터넷)</span>
+          <span className="ml-auto text-xs text-[#8a9ab5]">선택 멘토: 김은지 (CJ제일제당 · 식품연구개발)</span>
         </div>
         <p className="text-sm text-[#64748b] mb-3">선택한 멘토의 이력과 학생 프로필을 분석해 상담에서 활용할 질문 초안을 생성했습니다.</p>
         <div className="space-y-2">
           {[
-            { tag: '직무 이해', q: '오퍼레이션 IT 직무에서 실제로 가장 많은 시간을 쓰는 업무는 무엇인가요?' },
-            { tag: '스펙 조언', q: '전자공학과 출신으로 IT·인터넷 기획 직무로 전환하셨는데, 어떤 경험이 가장 결정적이었나요?' },
-            { tag: '자소서 전략', q: '데이터 분석 경험을 자소서에서 어떻게 표현했을 때 좋은 반응을 받으셨나요?' },
-            { tag: '준비 시점', q: '4학년 1학기에 집중해야 할 한 가지를 꼽으신다면 무엇인가요?' },
+            { tag: '직무 이해', q: 'CJ제일제당 R&D에서 신제품 하나를 개발할 때 실제 프로세스(소재 탐색→배합→관능평가)가 어떻게 진행되나요?' },
+            { tag: '스펙 조언', q: '식품영양학과 출신으로 CJ제일제당 R&D에 합격하셨는데, 준비 과정에서 가장 결정적이었던 경험은 무엇인가요?' },
+            { tag: '자소서 전략', q: '실험 경험을 자소서에서 어떻게 표현했을 때 좋은 반응을 받으셨나요? 수치화 방법이 궁금합니다.' },
+            { tag: '준비 시점', q: '4학년 1학기에 식품기사 준비와 연구실 인턴 중 어느 것을 먼저 집중하는 것이 좋을까요?' },
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-3 rounded-lg border border-[#e8eef6] bg-[#f8fafd] p-3">
               <span className="mt-0.5 shrink-0 rounded bg-[#eef2fb] px-2 py-0.5 text-[11px] font-semibold text-[#3a5fd9]">{item.tag}</span>

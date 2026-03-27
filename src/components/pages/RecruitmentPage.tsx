@@ -8,10 +8,10 @@ const recruitmentStats = [
 ]
 
 const recruitmentRows = [
-  { type: '추천채용', company: '네오모빌리티', role: '데이터 전략', deadline: '2026-04-02', status: '접수중', aiScore: 94, aiReason: '전공·관심직무·지역 조건 모두 일치' },
-  { type: '일반채용', company: '에이스텔레콤', role: '서비스 기획', deadline: '2026-04-05', status: '접수중', aiScore: 87, aiReason: '관심 직무·선호 지역 일치, 전공 부분 일치' },
-  { type: '인턴채용', company: '미래에너지솔루션', role: '마케팅 인턴', deadline: '2026-04-09', status: '예정', aiScore: 71, aiReason: '관심 키워드 일치, 지역 조건 미충족' },
-  { type: '채용설명회', company: '한국산업플랫폼', role: '캠퍼스 설명회', deadline: '2026-04-11', status: '신청가능', aiScore: 65, aiReason: '업종 관련성 있음, 직무 전환 필요' },
+  { type: '추천채용', company: 'CJ제일제당', role: '식품R&D 신입연구원', deadline: '2026-04-10', status: '접수중', aiScore: 97, aiReason: '전공·관심직무·실험이력 모두 일치, 목표 기업' },
+  { type: '일반채용', company: '농심', role: '중앙연구소 신제품개발', deadline: '2026-04-15', status: '접수중', aiScore: 89, aiReason: '전공 일치, 유사 R&D 경로, 선배 진출 사례 확인' },
+  { type: '인턴채용', company: '풀무원', role: '기술원 식품연구 인턴', deadline: '2026-04-20', status: '예정', aiScore: 84, aiReason: '관심 직무 일치, 건강기능식품 R&D 연계 가능' },
+  { type: '일반채용', company: '오뚜기', role: '품질관리연구원', deadline: '2026-04-25', status: '신청가능', aiScore: 76, aiReason: '전공 일치, QC 경험 연계 가능, 직무 방향 일부 전환 필요' },
 ]
 
 function AiScoreBadge({ score }: { score: number }) {
@@ -41,7 +41,7 @@ export function RecruitmentPage() {
               <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
             </div>
             <p className="mt-1 text-sm leading-6 text-[#5d6b7e]">
-              등록된 프로필(전공: 전자공학과 / 관심직무: 데이터 전략·서비스기획 / 선호지역: 서울)을 기준으로
+              등록된 프로필(전공: 식품영양학과 / 관심직무: 식품R&D·신제품개발 / 선호지역: 서울·경기)을 기준으로
               현재 공고와의 적합도를 AI가 자동 분석했습니다. 마감 임박 공고는 상단에 우선 배치됩니다.
             </p>
           </div>

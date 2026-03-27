@@ -26,8 +26,8 @@ const yearRoadmapRows = [
   { stage: '2단계 역량개발', item: '수상실적', values: ['', '', '', ''] },
   { stage: '2단계 역량개발', item: '취업 프로그램', values: ['총 7건', '총 7건', '총 7건', '총 7건'] },
   { stage: '3단계 실전준비', item: '취업준비도검사', values: ['', '', '', ''] },
-  { stage: '3단계 실전준비', item: '목표기업탐색', values: ['에스케이텔레콤', '에스케이텔레콤', '에스케이텔레콤', '에스케이텔레콤'] },
-  { stage: '3단계 실전준비', item: '맞춤채용정보', values: ['IT/정보통신 분야', 'IT/정보통신 분야', 'IT/정보통신 분야', '면접 예정'] },
+  { stage: '3단계 실전준비', item: '목표기업탐색', values: ['CJ제일제당', 'CJ제일제당', 'CJ제일제당', 'CJ제일제당'] },
+  { stage: '3단계 실전준비', item: '맞춤채용정보', values: ['식품 R&D 분야', '식품 R&D 분야', '식품 R&D 분야', '면접 예정'] },
   { stage: '3단계 실전준비', item: '이력서작성', values: ['', '', '', ''] },
   { stage: '마지막 점검 과제', item: '커리어로드맵', values: ['미완료', '미완료', '미완료', '미완료'] },
 ]
@@ -309,23 +309,23 @@ export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) 
           <div className="rounded-lg bg-white p-4 border border-[#dce4f3]">
             <div className="text-xs font-semibold text-[#3a5fd9] uppercase tracking-wide mb-2">역량 GAP 분석</div>
             <ul className="space-y-1.5 text-sm text-[#4a5568]">
-              <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f55d78]" />데이터 분석 도구(R·Python) 실습 이력 없음</li>
-              <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f55d78]" />영어 역량 증빙 갱신 필요 (TOEIC 유효기간 초과)</li>
-              <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f0b03f]" />산업 연계 프로젝트 경험 부족</li>
+              <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f55d78]" />식품기사 자격증 미보유 (합격자 78% 보유)</li>
+              <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f55d78]" />교내·외 식품 R&D 연구실 인턴 경험 없음</li>
+              <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f0b03f]" />관능평가·HACCP 실무 경험 증빙 미흡</li>
             </ul>
           </div>
           <div className="rounded-lg bg-white p-4 border border-[#dce4f3]">
             <div className="text-xs font-semibold text-[#3a5fd9] uppercase tracking-wide mb-2">자격증 취득 권장 순서</div>
             <ol className="space-y-1.5 text-sm text-[#4a5568]">
-              <li className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">1</span>ADsP (3개월, D-90)</li>
-              <li className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#6b8ef5] text-[10px] font-bold text-white">2</span>SQL 개발자 (4개월)</li>
-              <li className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#a0b4f5] text-[10px] font-bold text-white">3</span>TOEIC 갱신 (병행 가능)</li>
+              <li className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">1</span>식품기사 (3개월, D-60)</li>
+              <li className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#6b8ef5] text-[10px] font-bold text-white">2</span>영양사 면허 (국가시험 대비)</li>
+              <li className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#a0b4f5] text-[10px] font-bold text-white">3</span>HACCP 관리사 (병행 가능)</li>
             </ol>
           </div>
           <div className="rounded-lg bg-white p-4 border border-[#dce4f3]">
             <div className="text-xs font-semibold text-[#3a5fd9] uppercase tracking-wide mb-2">졸업까지 남은 학기 기준</div>
             <div className="text-3xl font-bold text-[#364457] mb-1">2학기</div>
-            <p className="text-sm text-[#64748b] leading-6">목표 기업(에스케이텔레콤) 상반기 공고 기준 역산 시, 자소서 완성 기한은 <span className="font-semibold text-[#3a5fd9]">2026년 8월</span>입니다.</p>
+            <p className="text-sm text-[#64748b] leading-6">목표 기업(CJ제일제당) 상반기 공고 기준 역산 시, 자소서 완성 기한은 <span className="font-semibold text-[#3a5fd9]">2026년 2월</span>입니다.</p>
           </div>
         </div>
       </div>
