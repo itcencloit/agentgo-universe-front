@@ -21,38 +21,38 @@ export const sidebarItems: SidebarItem[] = [
 ]
 
 export const dashboardMetrics: MetricCard[] = [
-  { title: '커리어 적합도', value: '84%', description: '목표 직무와 현재 역량의 정합도' },
-  { title: '보완 필요 항목', value: '3', description: '이번 학기 집중해야 할 핵심 과제' },
-  { title: '이번 주 추천 활동', value: '4', description: '즉시 실행 가능한 성장 액션' },
+  { title: '커리어 적합도', value: '84%', description: '코카콜라 음료 품질·연구 직무 기준 종합 정합도' },
+  { title: '보완 필요 항목', value: '3', description: '식품기사, 캡스톤 문서화, 자소서 초안이 우선 과제입니다.' },
+  { title: '이번 주 추천 활동', value: '4', description: '식품공학 4학년 1학기 일정에 맞춘 실행 과제입니다.' },
 ]
 
 export const smartFeed: FeedItem[] = [
   {
     category: '추천 액션',
     title: '식품위생학 및 품질평가 실습을 자소서 핵심 사례로 연결해보세요',
-    body: '위생관리 기준 이해와 품질평가 실험 경험이 품질관리·품질안전 직무 지원 근거로 직접 연결됩니다.',
-    cta: '자소서 설계로 이동',
+    body: '식품위생학, 품질평가, HACCP 수업 흐름을 하나의 사례로 묶으면 희창유업·CJ제일제당 품질 직무 문항 설득력이 높아집니다.',
+    cta: '자소서 설계 시작',
     tone: 'blue',
   },
   {
     category: '시장 분석',
     title: '식품 품질·안전 직무 채용 수요가 학과 게시판에서 꾸준히 확인됩니다',
-    body: '유업, 음료, 가공식품 기업을 중심으로 품질관리와 위생 관련 직무 공고가 지속적으로 등록되고 있습니다.',
+    body: '유업, 음료, 가공식품 기업 공고를 보면 부산권 품질관리와 서울권 품질·연구 직무가 동시에 열리고 있어 복수 지원 전략이 유효합니다.',
     tone: 'rose',
   },
   {
     category: '선배 경로',
     title: '유사 전공 선배들이 희창유업·코카콜라·삼양그룹으로 진출했습니다',
-    body: '식품기사 준비, 품질평가 실습, 캡스톤디자인 정리가 공통적인 취업 준비 요소로 확인됩니다.',
-    cta: '합격 경로 보기',
+    body: '식품기사 준비, 품질평가 실습, 캡스톤디자인 정리가 공통적인 취업 준비 요소로 확인되며, 지도교수 추천 채널 활용 빈도도 높습니다.',
+    cta: '선배 경로 확인',
     tone: 'emerald',
   },
 ]
 
 export const roadmapSteps: RoadmapStep[] = [
-  { id: 'r1', semester: '2026년 1학기', focus: '진로 계획 수립 및 식품기사 취득 준비', status: 'Completed' },
-  { id: 'r2', semester: '2026년 여름방학', focus: '품질·위생 실습 경험 정리 및 포트폴리오 구성', status: 'In Progress' },
-  { id: 'r3', semester: '2026년 2학기', focus: '자소서 완성 및 희창유업·코카콜라 모의 지원', status: 'Next' },
+  { id: 'r1', semester: '2026년 1학기', focus: '식품기사 접수와 품질관리 중심 지원 방향 확정', status: 'Completed' },
+  { id: 'r2', semester: '2026년 여름방학', focus: '캡스톤·품질평가 실험 결과를 포트폴리오로 문서화', status: 'In Progress' },
+  { id: 'r3', semester: '2026년 2학기', focus: '희창유업·코카콜라 기준 자소서 완성 및 모의 지원', status: 'Next' },
 ]
 
 export const recommendedActions: ActionItem[] = [
@@ -61,21 +61,21 @@ export const recommendedActions: ActionItem[] = [
     title: '식품기사 필기 접수',
     insight: '식품공학 계열 품질·연구 직무 지원 시 가장 활용도가 높은 자격증입니다. 다음 시험 일정을 기준으로 우선순위를 높게 유지하세요.',
     skills: ['식품기사', '자격증', '우선순위화'],
-    deadline: 'D-5',
+    deadline: '이번주',
   },
   {
     id: 'a2',
     title: '식품위생·품질관리 실습 경험 정리',
     insight: '식품위생학, 품질평가, HACCP 관련 수업 경험을 직무 기준으로 재정리하면 지원서 완성도가 높아집니다.',
     skills: ['품질관리', '위생관리', '경험정리'],
-    deadline: 'Open',
+    deadline: '상시',
   },
   {
     id: 'a3',
     title: '캡스톤디자인 결과 문서화',
     insight: '식품공정제어 또는 캡스톤디자인 결과를 공정개선·품질지표 중심으로 문서화하면 실무 연결성이 높아집니다.',
     skills: ['캡스톤', '문서화', '포트폴리오'],
-    deadline: '목요일',
+    deadline: '이번달',
   },
 ]
 
@@ -105,9 +105,9 @@ export const transferableSkills: TransferableSkill[] = [
 ]
 
 export const lifecycleScenarios: ScenarioCard[] = [
-  { id: 's1', target: '멘토 탐색', headline: '식품업계 품질·연구 선배 탐색과 질문 준비', summary: '직무 키워드와 선배 이력을 기반으로 희창유업·코카콜라·삼양그룹 출신 멘토를 찾고 질문 주제를 정리합니다.' },
-  { id: 's2', target: '멘토 상담', headline: '상담 요청과 후속 관리', summary: '상담 요청부터 대화 기록, 후속 액션까지 하나의 흐름으로 관리합니다.' },
-  { id: 's3', target: '합격 준비', headline: '품질·연구 직무 지원 단계별 전략 시뮬레이션', summary: '선배 사례를 바탕으로 식품기사 취득 시점과 자소서 준비 일정을 단계적으로 제안합니다.' },
+  { id: 's1', target: '멘토 탐색', headline: '품질관리·음료연구 선배 탐색과 질문 정리', summary: '희창유업, 코카콜라, 삼양그룹 선배 중 현재 전공 이력과 가장 가까운 멘토를 골라 질문 순서를 정리합니다.' },
+  { id: 's2', target: '멘토 상담', headline: '멘토 대화 전 준비 문서 정리', summary: '상담 전에 식품기사 준비 현황, 캡스톤 역할, 품질평가 실험 내용을 정리해 질문의 밀도를 높입니다.' },
+  { id: 's3', target: '합격 준비', headline: '품질·연구 직무 지원 일정 역산', summary: '식품기사 취득 시점, 포트폴리오 정리, 자소서 완성 일정을 묶어 실제 지원 가능한 상태로 전환합니다.' },
 ]
 
 export const alumniPath: AlumniPath[] = [

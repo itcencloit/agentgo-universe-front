@@ -5,7 +5,7 @@ import { SectionCard } from '../ui/SectionCard'
 
 const programCategories = [
   { label: '전체', value: '23', active: true },
-  { label: '관심 프로그램', value: '0' },
+  { label: '관심 프로그램', value: '5' },
   { label: 'My 프로그램', value: '4' },
 ]
 
@@ -36,6 +36,27 @@ const programCards = [
     applyPeriod: '2026.03.19(목) ~ 2026.04.12(일)',
     eduPeriod: '2026.04.14(화)',
     keyword: '#식품공학 #면접특강',
+  },
+]
+
+const companyFeedbackCards = [
+  {
+    company: '희창유업',
+    focus: '품질관리 자소서 포인트',
+    body: '식품위생학및종합설계, 품질평가 실험, HACCP 이해를 한 흐름으로 묶는 것이 좋습니다. 현장 점검과 기록 정확도를 강조하는 문장이 더 유리합니다.',
+    action: '지원동기보다 직무 이해 문항부터 먼저 정리',
+  },
+  {
+    company: '코카콜라음료',
+    focus: '품질·연구 직무 포인트',
+    body: '식품화학, 식품미생물학, 안정성 평가 경험을 연구 지원형 관점으로 다시 설명하는 편이 적합합니다. 실험 과정의 기준 준수와 결과 해석을 함께 넣는 것이 좋습니다.',
+    action: '실험 경험을 배합·평가 관점으로 재서술',
+  },
+  {
+    company: '삼양그룹',
+    focus: '신제품개발 문항 포인트',
+    body: '캡스톤디자인 경험을 단순 수업 사례가 아니라 공정 개선과 아이디어 검증 사례로 재해석해야 합니다. 변화 전후 수치가 들어가면 설득력이 올라갑니다.',
+    action: '캡스톤 결과를 문제-개선-성과 순서로 정리',
   },
 ]
 
@@ -72,8 +93,8 @@ export function ResumeLabPage() {
           <div className="grid gap-3 md:grid-cols-[1fr_170px_156px]">
             <input
               readOnly
-              value="프로그램명을 입력해주세요."
-              className="rounded border border-[#d6def0] bg-white px-4 py-3 text-sm text-[#7c8799]"
+              value="식품기사, 품질관리 자소서, 희창유업 면접 프로그램 중심으로 탐색 중입니다."
+              className="rounded border border-[#d6def0] bg-white px-4 py-3 text-sm text-[#4a5d8a]"
             />
             <div className="rounded border border-[#d6def0] bg-white px-4 py-3 text-sm text-[#5f6d82]">상세검색</div>
             <button type="button" className="rounded bg-[#5d84f0] px-4 py-3 text-sm font-semibold text-white">
@@ -86,7 +107,7 @@ export function ResumeLabPage() {
       <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] p-4">
         <div className="mb-3 flex items-center gap-2">
           <span className="rounded-full bg-[#3a5fd9] px-3 py-1 text-[11px] font-semibold text-white">AI 기능</span>
-          <span className="text-sm font-semibold text-[#364457]">취업 컨설팅 및 자소서 피드백 — 시나리오 시연</span>
+          <span className="text-sm font-semibold text-[#364457]">식품공학 4학년 기준 취업 컨설팅 및 자소서 피드백</span>
         </div>
         <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
           <AiChatPanel title="AI 자소서·취업 어시스턴트" placeholder="직무·자격증·자소서 문항 등 무엇이든 물어보세요." />
@@ -94,32 +115,47 @@ export function ResumeLabPage() {
             <div className="text-xs font-bold text-[#3a5fd9] mb-3 uppercase tracking-wider">AI STAR 코칭 가이드</div>
             <div className="space-y-3">
               {[
-                { label: 'Situation', desc: '경험의 배경과 상황 설명', status: '완료' },
-                { label: 'Task', desc: '해결해야 했던 과제/목표', status: '진행중' },
-                { label: 'Action', desc: '본인이 직접 수행한 구체적 행동', status: '대기' },
-                { label: 'Result', desc: '성과 및 배운 점 (수치 활용 추천)', status: '대기' },
+                { label: 'Situation', desc: '캡스톤에서 품질 편차 원인을 점검했던 배경 정리', status: '완료' },
+                { label: 'Task', desc: '품질 기준에 맞는 개선 목표와 역할 범위를 명확화', status: '진행중' },
+                { label: 'Action', desc: '실험 설계, 점검표 작성, 결과 비교 등 실제 수행 행동 정리', status: '진행중' },
+                { label: 'Result', desc: '오차 감소, 재작업률 개선 등 수치 중심 성과 보완 필요', status: '보완' },
               ].map(item => (
                 <div key={item.label} className="border-l-2 border-[#e8eef6] pl-3 py-1">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-[#364457]">{item.label}</span>
-                    <span className={`text-[10px] ${item.status === '완료' ? 'text-[#2e7d32]' : 'text-[#8a9ab5]'}`}>{item.status}</span>
+                    <span className={`text-[10px] ${item.status === '완료' ? 'text-[#2e7d32]' : item.status === '진행중' ? 'text-[#1a56b0]' : 'text-[#d97706]'}`}>{item.status}</span>
                   </div>
                   <div className="mt-0.5 text-[11px] text-[#64748b] leading-4">{item.desc}</div>
                 </div>
               ))}
             </div>
             <button className="mt-4 w-full rounded bg-[#eef2fb] py-2 text-[11px] font-semibold text-[#3a5fd9]">
-              STAR 구조로 자동 요약하기
+              품질관리 문항용 STAR 초안 만들기
             </button>
           </div>
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#dce4f3] bg-white p-5">
+      <SectionCard eyebrow="기업·산업 피드백" title="자소서 개선안">
+        <div className="grid gap-4 xl:grid-cols-3">
+          {companyFeedbackCards.map((card) => (
+            <div key={card.company} className="rounded-xl border border-[#dce4f3] bg-white p-5">
+              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#3a5fd9]">{card.company}</div>
+              <div className="mt-2 text-[18px] font-semibold text-[#1e2d45]">{card.focus}</div>
+              <p className="mt-3 text-sm leading-7 text-[#5f6f85]">{card.body}</p>
+              <div className="mt-4 rounded-lg bg-[#f3f6fb] px-4 py-3 text-sm font-medium text-[#3d4a5c]">
+                개선 포인트: {card.action}
+              </div>
+            </div>
+          ))}
+        </div>
+      </SectionCard>
+
+      <div className="rounded-xl border border-[#c9d9f8] bg-gradient-to-r from-[#eef3ff] to-[#f3f6fb] p-5">
         <div className="flex items-center gap-2 mb-4">
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
           <span className="text-sm font-semibold text-[#364457]">AI 전략 설계도 추천</span>
-          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
+          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">학생 기준 분석</span>
         </div>
         <div className="relative">
           <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
@@ -214,7 +250,7 @@ export function ResumeLabPage() {
                     <div className="rounded bg-white px-2 py-1 text-xs font-semibold text-[#6d7a8e]">
                       {question.id.toUpperCase()}
                     </div>
-                    <div className="text-xs text-[#7d8798]">{mappedNode ? '연결 완료' : '연결 대기'}</div>
+                    <div className="text-xs text-[#7d8798]">{mappedNode ? '문항 연결 완료' : '추천 경험 선택 필요'}</div>
                   </div>
                   <div className="mt-3 font-semibold text-[#344257]">{question.prompt}</div>
                   <div className="mt-2 text-sm text-[#647387]">{question.hint}</div>
@@ -251,7 +287,7 @@ export function ResumeLabPage() {
                   <div className="mt-4 rounded-md border border-dashed border-[#d6e0f0] bg-white p-4 text-sm text-[#647387]">
                     {mappedNode
                       ? `${mappedNode.title} 경험을 중심으로 상황, 역할, 실행, 결과 순서로 정리하는 구성을 권장합니다.`
-                      : '왼쪽에서 경험 노드를 선택한 뒤 현재 문항과 연결해 주세요.'}
+                      : '왼쪽에서 현재 학생 이력과 가장 가까운 경험을 선택하면 해당 문항에 맞는 초안 흐름을 만들 수 있습니다.'}
                   </div>
                 </div>
               )

@@ -57,10 +57,10 @@ export function RecruitmentPage() {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-[11px] font-bold tracking-wide text-[#3a5fd9] uppercase">오늘의 AI Insight</span>
-              <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
+              <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">학생 기준 분석</span>
             </div>
             <p className="mt-1 text-sm font-semibold text-[#364457]">
-              AI가 {studentProfile.name}님의 이력과 관심 활동을 분석해 맞춤 공고를 선별했어요.
+              AI가 {studentProfile.name}님의 전공 교과, 관심 직무, 선호 지역을 기준으로 우선 지원 공고를 선별했습니다.
             </p>
             <p className="mt-0.5 text-xs text-[#64748b]">
               전공 {studentProfile.major} · 목표직무 {studentProfile.targetRole} · 선호지역 {studentProfile.preferredRegions.join('·')} 기준
@@ -204,7 +204,7 @@ export function RecruitmentPage() {
               type="button"
               className="mt-3 w-full rounded-lg border border-white/30 bg-white/15 py-1.5 text-[11px] font-semibold text-white hover:bg-white/25 transition-colors"
             >
-              커리어 위험 성장 공고 받기 →
+              커리어 성장 공고 받기 →
             </button>
           </div>
 

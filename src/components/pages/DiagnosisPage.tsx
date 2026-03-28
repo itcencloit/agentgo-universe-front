@@ -57,6 +57,30 @@ const weaknessMetrics = [
   { label: '성과 정리 수준', score: 66, color: '#d97706', pct: '66%' },
 ]
 
+const personalReportHighlights = [
+  { label: '현재 1순위 직무', value: '품질관리', note: '적합도 94%' },
+  { label: '연동 학사 데이터', value: '교과 6 · 프로젝트 3', note: '전공 평균 4.12/4.5 반영' },
+  { label: '조치 필요 항목', value: '증빙 공백 3건', note: '식품기사, 포트폴리오, 자소서' },
+]
+
+const personalReportSteps = [
+  {
+    step: '01',
+    title: '학사 기반 적합도 판정',
+    body: '전공 평균 4.12/4.5, 품질·위생 계열 핵심 교과 6과목, 프로젝트 3건이 반영돼 현재 프로필은 품질관리 직무에 가장 안정적으로 연결됩니다.',
+  },
+  {
+    step: '02',
+    title: '지원 단계 공백 확인',
+    body: '직무 적합도 자체는 높지만 식품기사 미취득, 캡스톤 결과 수치 미정리, 품질관리 자소서 초안 부재로 인해 강점이 아직 제출 가능한 형태로 완성되지 않았습니다.',
+  },
+  {
+    step: '03',
+    title: '학기 내 실행 전환',
+    body: '남은 학기 동안 식품기사 1건, 정량 포트폴리오 1건, 지원 문서 초안 1건을 확보하면 현재 강점을 실제 지원 경쟁력으로 전환할 수 있습니다.',
+  },
+]
+
 const areaDetailContent = {
   strength: {
     label: 'AI 판정 근거',
@@ -121,18 +145,18 @@ export function DiagnosisPage() {
               <div className="mt-3 text-sm leading-6 text-[#647387]">{card.description}</div>
               <div className="mt-5 text-3xl font-bold text-[#316bff]">{card.score}</div>
               <button type="button" className="mt-4 rounded border border-[#cdd8ec] bg-white px-4 py-2 text-sm font-semibold text-[#536174]">
-                결과 보기
+                진단 결과 확인
               </button>
             </div>
           ))}
         </div>
       </SectionCard>
 
-      <div className="rounded-xl border border-[#dce4f3] bg-white px-5 py-5">
+      <div className="rounded-xl border border-[#c9d9f8] bg-gradient-to-r from-[#eef3ff] to-[#f3f6fb] px-5 py-5">
         <div className="flex items-center gap-2 mb-4">
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
           <span className="text-sm font-semibold text-[#364457]">AI 진단 요약</span>
-          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
+          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">학생 기준 분석</span>
         </div>
         <p className="text-sm leading-6 text-[#64748b]">
           수강 이력, 전공 교과, 실험 경험을 바탕으로 적합 직무와 현재 준비 상태를 분석했습니다.
@@ -147,7 +171,7 @@ export function DiagnosisPage() {
                 onClick={() => setIsFitReportOpen(true)}
                 className="text-xs font-semibold text-[#3a5fd9] hover:underline"
               >
-                더보기 &gt;
+                더보기&gt;
               </button>
             </div>
             <div className="mt-4 flex flex-col items-center">
@@ -184,7 +208,7 @@ export function DiagnosisPage() {
                   onClick={() => setOpenAreaDetail('strength')}
                   className="text-xs font-semibold text-[#2e7d32] hover:underline"
                 >
-                  더보기 &gt;
+                  더보기&gt;
                 </button>
               </div>
               <div className="space-y-3">
@@ -214,7 +238,7 @@ export function DiagnosisPage() {
                   onClick={() => setOpenAreaDetail('weakness')}
                   className="text-xs font-semibold text-[#f55d78] hover:underline"
                 >
-                  더보기 &gt;
+                  더보기&gt;
                 </button>
               </div>
               <div className="space-y-3">
@@ -237,6 +261,83 @@ export function DiagnosisPage() {
           </div>
         </div>
       </div>
+
+      <SectionCard eyebrow="개인별 리포트" title="맞춤 취업 준비 리포트">
+        <div className="space-y-4">
+          <div className="rounded-xl border border-[#dce4f3] bg-[#f8fbff] px-5 py-5">
+            <div className="text-sm font-semibold text-[#364457]">
+              현재 프로필은 품질관리 직무에 적합하지만, 지원 단계에서 필요한 증빙 3건이 아직 비어 있습니다.
+            </div>
+            <p className="mt-3 text-sm leading-7 text-[#64748b]">
+              수강 이력, 전공 평균, 프로젝트 경험, 자격 준비 상태를 종합하면 방향성 자체는 이미 명확합니다. 현재 리포트는 직무 적합도를 다시 설명하기보다,
+              학사 이력을 실제 지원 경쟁력으로 전환하기 위해 먼저 채워야 할 공백을 정리한 결과입니다.
+            </p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            {personalReportHighlights.map((item) => (
+              <div key={item.label} className="rounded-xl border border-[#dce4f3] bg-white px-4 py-4">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#7d8798]">{item.label}</div>
+                <div className="mt-2 text-[18px] font-bold text-[#1e2d45]">{item.value}</div>
+                <div className="mt-1 text-xs text-[#64748b]">{item.note}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-4 xl:grid-cols-[1.12fr_0.88fr]">
+            <div className="rounded-xl border border-[#dce4f3] bg-white p-5">
+              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#3a5fd9]">판정 흐름</div>
+              <div className="mt-4 space-y-3">
+                {personalReportSteps.map((item) => (
+                  <div key={item.step} className="rounded-lg border border-[#e8eef6] bg-[#fbfcfe] px-4 py-4">
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eef4ff] text-xs font-bold text-[#3a5fd9]">
+                        {item.step}
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-[#1e2d45]">{item.title}</div>
+                        <p className="mt-2 text-sm leading-6 text-[#5f6f85]">{item.body}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-[#dce4f3] bg-white p-5">
+              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#3a5fd9]">우선 확보할 자료</div>
+              <div className="mt-4 space-y-3">
+                {[
+                  {
+                    title: '식품기사 취득 완료',
+                    note: '자격 기반 신뢰도 확보',
+                  },
+                  {
+                    title: '캡스톤 결과 수치화 포트폴리오',
+                    note: '프로젝트 경험의 정량 증빙',
+                  },
+                  {
+                    title: '품질관리 자소서 초안',
+                    note: '강점 교과를 지원 문서로 연결',
+                  },
+                ].map((item, index) => (
+                  <div key={item.title} className="rounded-lg border border-[#e8eef6] bg-[#f8fbff] px-4 py-4">
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#316bff] text-xs font-bold text-white">
+                        {index + 1}
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-[#1e2d45]">{item.title}</div>
+                        <div className="mt-1 text-xs leading-5 text-[#64748b]">{item.note}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionCard>
 
       <SectionCard eyebrow="액션 연결" title="AI 추천 액션">
         <div className="grid gap-4 xl:grid-cols-3">
@@ -299,7 +400,7 @@ export function DiagnosisPage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="rounded-xl border border-[#c9d9f8] bg-[#eef3ff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#3a5fd9]">
-                        미리보기
+                        핵심 요약
                       </span>
                       <span className="text-[10px] font-black uppercase tracking-[0.16em] text-[#7a8699]">
                         {openAreaDetail === 'strength' ? '강점 리포트' : '취약점 리포트'}
@@ -310,8 +411,8 @@ export function DiagnosisPage() {
                     </h2>
                     <p className="mt-2 max-w-xl text-[14px] font-medium leading-6 text-[#6a768a]">
                       {openAreaDetail === 'strength'
-                        ? '현재 전공 교과와 실험 경험이 품질관리 직무에서 어떤 강점으로 읽히는지 요약한 미리보기입니다.'
-                        : '현재 지원 단계에서 부족한 자격, 문서, 성과 정리 요소를 빠르게 확인할 수 있는 미리보기입니다.'}
+                        ? '현재 전공 교과와 실험 경험이 품질관리 직무에서 어떤 강점으로 읽히는지 빠르게 확인하는 요약 화면입니다.'
+                        : '현재 지원 단계에서 부족한 자격, 문서, 성과 정리 요소를 먼저 확인하는 요약 화면입니다.'}
                     </p>
                   </div>
                 </div>
@@ -393,7 +494,7 @@ export function DiagnosisPage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="rounded-xl border border-[#c9d9f8] bg-[#eef3ff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#3a5fd9]">
-                        리포트 미리보기
+                        리포트 요약본
                       </span>
                       <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[#7a8699]">직무 적합도 분석</span>
                     </div>

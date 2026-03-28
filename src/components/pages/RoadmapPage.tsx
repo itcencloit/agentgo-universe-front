@@ -17,19 +17,19 @@ type RoadmapPageProps = {
 
 const yearRoadmapColumns = ['1', '2', '3', '4']
 const yearRoadmapRows = [
-  { stage: '1단계 목표설정', item: '졸업 후 계획', values: ['취업', '취업', '취업', ''] },
-  { stage: '1단계 목표설정', item: '진로적성검사', values: ['', '', '', ''] },
-  { stage: '1단계 목표설정', item: '목표직업탐색', values: ['', '', '', ''] },
-  { stage: '1단계 목표설정', item: '직업기초역량진단', values: ['', '', '', ''] },
-  { stage: '1단계 목표설정', item: '목표가치선정', values: ['', '', '', ''] },
-  { stage: '2단계 역량개발', item: '학점', values: ['3.50', '3.50', '3.50', '3.50'] },
-  { stage: '2단계 역량개발', item: '수상실적', values: ['', '', '', ''] },
-  { stage: '2단계 역량개발', item: '취업 프로그램', values: ['총 7건', '총 7건', '총 7건', '총 7건'] },
-  { stage: '3단계 실전준비', item: '취업준비도검사', values: ['', '', '', ''] },
-  { stage: '3단계 실전준비', item: '목표기업탐색', values: ['희창유업', '코카콜라', '삼양그룹', '희창유업'] },
-  { stage: '3단계 실전준비', item: '맞춤채용정보', values: ['품질관리 분야', '품질·연구 분야', '식품가공 분야', '면접 예정'] },
-  { stage: '3단계 실전준비', item: '이력서작성', values: ['', '', '', ''] },
-  { stage: '마지막 점검 과제', item: '커리어로드맵', values: ['미완료', '미완료', '미완료', '미완료'] },
+  { stage: '1단계 목표설정', item: '졸업 후 계획', values: ['식품기업 취업', '품질관리 확정', '품질·연구 병행', '상시 지원'] },
+  { stage: '1단계 목표설정', item: '진로적성검사', values: ['완료', '완료', '91점', '직무 확정'] },
+  { stage: '1단계 목표설정', item: '목표직업탐색', values: ['품질관리', '품질·연구', '품질안전', '최종 지원'] },
+  { stage: '1단계 목표설정', item: '직업기초역량진단', values: ['실시', '82점', '보완중', '재점검'] },
+  { stage: '1단계 목표설정', item: '목표가치선정', values: ['부산 우선', '전공 적합', '성장 가능성', '근무환경'] },
+  { stage: '2단계 역량개발', item: '학점', values: ['3.82', '3.94', '4.05', '4.12'] },
+  { stage: '2단계 역량개발', item: '수상실적', values: ['전공 기초 팀프로젝트', '캡스톤 장려', '학술발표 1건', '품질 프로젝트 정리'] },
+  { stage: '2단계 역량개발', item: '취업 프로그램', values: ['기초 2건', '실전 4건', '자소서 6건', '면접 7건'] },
+  { stage: '3단계 실전준비', item: '취업준비도검사', values: ['기초 확인', '중간 점검', '68점', '보완 실행'] },
+  { stage: '3단계 실전준비', item: '목표기업탐색', values: ['희창유업', '코카콜라', 'CJ제일제당', '삼양그룹'] },
+  { stage: '3단계 실전준비', item: '맞춤채용정보', values: ['품질관리', '품질·연구', '추천채용', '면접 준비'] },
+  { stage: '3단계 실전준비', item: '이력서작성', values: ['기본 정보 입력', '초안 작성', '1차 첨삭', '최종 보완'] },
+  { stage: '마지막 점검 과제', item: '커리어로드맵', values: ['초기 작성', '경력 정리', '지원 전략', '최종 점검'] },
 ]
 
 function getStageColor(stage: string) {
@@ -41,7 +41,7 @@ function getStageColor(stage: string) {
 
 export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) {
   const [selectedTaskId, setSelectedTaskId] = useState(selection.taskId)
-  const [selectedDeadline, setSelectedDeadline] = useState<'All' | 'D-5' | 'Open' | 'Thu'>('All')
+  const [selectedDeadline, setSelectedDeadline] = useState<'전체' | '이번주' | '상시' | '이번달'>('전체')
   const [viewMode, setViewMode] = useState<RoadmapViewMode>(selection.viewMode)
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) 
       return ['학업', '연구', '실적', '시험'].some((keyword) => haystack.includes(keyword))
     })
 
-    if (selectedDeadline === 'All') {
+    if (selectedDeadline === '전체') {
       return filteredByMode
     }
 
@@ -94,6 +94,36 @@ export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) 
     setViewMode(nextViewMode)
     onSelectionChange({ mode: selectedMode, taskId: selectedTaskId, viewMode: nextViewMode })
   }
+
+  const executionStrategyCards = [
+    {
+      title: '이번 학기 실행 전략',
+      items: [
+        '식품기사 접수 일정 확정',
+        '캡스톤 결과 수치화 완료',
+        '품질관리 자소서 초안 작성',
+      ],
+      note: '진단실시 기준 취약점이 큰 순서대로 실행 항목을 배치했습니다.',
+    },
+    {
+      title: '자격증 준비 순서',
+      items: [
+        '1순위 식품기사',
+        '2순위 위생사',
+        '3순위 수산제조기사',
+      ],
+      note: '현재 희망 직무는 품질·위생 계열이라 식품기사 우선순위가 가장 높습니다.',
+    },
+    {
+      title: '직무 포트폴리오 가이드',
+      items: [
+        '실험 결과표 1건 정리',
+        '캡스톤 개선 수치 3개 추출',
+        '품질관리 용어 기준으로 재서술',
+      ],
+      note: '프로젝트 경험을 수업 이력이 아닌 직무 증빙 자료로 바꾸는 단계입니다.',
+    },
+  ]
 
   return (
     <div className="space-y-4">
@@ -230,7 +260,7 @@ export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) 
           <div className="p-6">
             <div className="mb-5 flex items-center justify-between">
               <div className="rounded-full bg-[#eef4d9] px-6 py-3 text-sm font-semibold text-[#87a33f]">
-                현재 학년 33% 완성
+              4학년 실행률 33%
               </div>
               <div className="flex items-center gap-10 text-[#95b34a]">
                 {yearRoadmapColumns.map((year, index) => (
@@ -299,11 +329,11 @@ export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) 
         </section>
       )}
 
-      <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] px-5 py-4">
+      <div className="rounded-xl border border-[#c9d9f8] bg-gradient-to-r from-[#eef3ff] to-[#f3f6fb] px-5 py-4">
         <div className="mb-3 flex items-center gap-2">
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
           <span className="text-sm font-semibold text-[#364457]">AI 맞춤 로드맵 분석</span>
-          <span className="ml-auto rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">시나리오 시연</span>
+          <span className="ml-auto rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white">학생 기준 분석</span>
         </div>
         <div className="grid gap-3 md:grid-cols-3">
           <div className="rounded-lg bg-white p-4 border border-[#dce4f3]">
@@ -330,12 +360,31 @@ export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) 
         </div>
       </div>
 
+      <SectionCard eyebrow="실행 전략" title="남은 학기 준비 플랜">
+        <div className="grid gap-4 xl:grid-cols-3">
+          {executionStrategyCards.map((card) => (
+            <div key={card.title} className="rounded-xl border border-[#dce4f3] bg-white p-5">
+              <div className="text-[18px] font-semibold text-[#1e2d45]">{card.title}</div>
+              <ul className="mt-4 space-y-2 text-sm text-[#4f5f76]">
+                {card.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#3a5fd9]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-xs leading-6 text-[#7b8798]">{card.note}</p>
+            </div>
+          ))}
+        </div>
+      </SectionCard>
+
       <SectionCard
         eyebrow="추천 액션"
         title={`${selectedRoadmap.title} 수행 항목`}
         headerRight={
           <div className="flex flex-wrap gap-2">
-            {(['All', 'D-5', 'Open', 'Thu'] as const).map((deadline) => (
+            {(['전체', '이번주', '상시', '이번달'] as const).map((deadline) => (
               <button
                 key={deadline}
                 type="button"
@@ -371,7 +420,7 @@ export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) 
                       {action.deadline}
                     </div>
                     <button type="button" className="rounded bg-[#316bff] px-4 py-2 text-sm font-semibold text-white">
-                      바로 신청
+                      실행하기
                     </button>
                   </div>
                 </div>
@@ -379,7 +428,7 @@ export function RoadmapPage({ onSelectionChange, selection }: RoadmapPageProps) 
             ))
           ) : (
             <div className="rounded-md border border-dashed border-[#d6deeb] bg-[#fbfcfe] p-5 text-sm text-[#6a778a]">
-              현재 선택한 로드맵에 맞는 추천 액션이 없습니다.
+              현재 선택한 로드맵에서는 식품기사 준비, 자소서 초안, 포트폴리오 정리 항목이 우선 추천됩니다.
             </div>
           )}
         </div>

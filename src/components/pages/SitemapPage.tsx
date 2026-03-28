@@ -14,13 +14,13 @@ const aiRecommendedItems = ['MY HOME', '액션 플랜', '추천채용']
 export function SitemapPage() {
   return (
     <div className="space-y-4">
-      <div className="rounded-xl border border-[#dce4f3] bg-[#f3f6fb] px-5 py-4">
+      <div className="rounded-xl border border-[#c9d9f8] bg-gradient-to-r from-[#eef3ff] to-[#f3f6fb] px-5 py-4">
         <div className="flex items-center gap-2">
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">AI</div>
           <span className="text-sm font-semibold text-[#364457]">AI 경로 가이드</span>
-          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">시나리오 시연</span>
+          <span className="rounded-full bg-[#3a5fd9] px-2 py-0.5 text-[11px] font-semibold text-white ml-1">학생 기준 분석</span>
         </div>
-        <p className="mt-1 text-sm text-[#64748b]">현재 클로잇 학생의 학년(4학년 1학기)과 로드맵 미설정 상태를 기반으로 우선 방문해야 할 메뉴를 하이라이트 했습니다.</p>
+        <p className="mt-1 text-sm text-[#64748b]">현재 클로잇 학생의 학년, 목표 직무, 준비 현황을 기준으로 이번 학기에 우선 확인해야 할 메뉴를 하이라이트 했습니다.</p>
       </div>
 
       <SectionCard eyebrow="사이트맵" title="전체 메뉴">
