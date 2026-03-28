@@ -1,5 +1,12 @@
 import { useState } from 'react'
 
+const myRoadmapItems = [
+  { title: '진로설계', status: '진행', tone: 'text-[#0f9f8f]' },
+  { title: '경력개발', status: '진행', tone: 'text-[#3a5fd9]' },
+  { title: '연구수행', status: '진행', tone: 'text-[#f59e0b]' },
+  { title: '학년별 로드맵', status: '보기', tone: 'text-[#7cb342]' },
+]
+
 const roadmapBoxes = [
   { title: '졸업 후 커리어 설계', status: '품질관리 중심', icon: '🎓', ai: '희창유업·CJ 우선 경로 정리' },
   { title: '목표기업 분석', status: '코카콜라·CJ 비교중', badge: 'GAP', icon: '🏢', ai: 'AI 기업 분석 92%' },
@@ -68,7 +75,7 @@ export function DashboardPage() {
                 { label: '이름', value: '클로잇' },
                 { label: '학번', value: '2023304032' },
                 { label: '학년', value: '4학년' },
-                { label: '소속', value: '식품과학부' },
+                { label: '소속', value: '식품공학과' },
               ].map((item) => (
                 <div key={item.label}>
                   <div className="text-[#7b8597]">{item.label}</div>
@@ -76,18 +83,23 @@ export function DashboardPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-auto pt-5">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-md bg-[#f3f5f8] px-4 py-3 text-center text-sm text-[#566274] border border-[#eef2f6]">
-                  <div className="text-[11px] uppercase tracking-wider mb-1">진로취업상담 (4/4)</div>
-                  <div className="font-bold text-[#3b4658]">2026-04-03 김지원 컨설턴트</div>
-                </div>
-                <div className="rounded-md bg-[#f3f5f8] px-4 py-3 text-center text-sm text-[#566274] border border-[#eef2f6]">
-                  <div className="text-[11px] uppercase tracking-wider mb-1">교수님 상담</div>
-                  <div className="font-bold text-[#3b4658]">2026-04-01 지도교수 면담</div>
-                </div>
+            {/* My로드맵 */}
+            <div className="mt-5 border-b border-[#e4e9f2] pb-5">
+              <div className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-[#7b8597]">My로드맵</div>
+              <div className="grid grid-cols-2 gap-2">
+                {myRoadmapItems.map((item) => (
+                  <button
+                    key={item.title}
+                    type="button"
+                    className="rounded-md border border-[#e4e9f2] bg-[#f8fafd] px-3 py-3 text-left hover:border-[#c9d9f8] hover:bg-[#eef4ff] transition-colors"
+                  >
+                    <div className={`text-xs font-bold ${item.tone}`}>{item.title}</div>
+                    <div className="mt-1 text-[10px] text-[#8a9ab5]">{item.status}</div>
+                  </button>
+                ))}
               </div>
             </div>
+
           </div>
         </section>
 
