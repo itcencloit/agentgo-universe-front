@@ -3,6 +3,7 @@ export type AppSection = "dashboard" | "roadmap" | "resumeLab" | "pivotLab" | "m
 export type GlobalPage =
   | "home"
   | "roadmap"
+  | "resumeLab"
   | "mentoring"
   | "employment"
   | "recruitment"
