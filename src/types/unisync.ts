@@ -76,6 +76,10 @@ export type TransferableSkill = {
   id: string
   skill: string
   to: string
+  evidence: string
+  interviewTip: string
+  consultingCheck: string[]
+  relatedCompanies: string[]
 }
 
 export type ScenarioCard = {

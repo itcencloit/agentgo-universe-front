@@ -76,6 +76,7 @@ export function PivotLabPage() {
   const [selectedMatchId, setSelectedMatchId] = useState(pivotMatches[0]?.id ?? '')
   const [selectedMentorName, setSelectedMentorName] = useState<string | null>(null)
   const [mentorPage, setMentorPage] = useState(0)
+  const [openedSkillId, setOpenedSkillId] = useState<string | null>(null)
 
   // 김민서 멘토 데이터 (요청 사양 반영)
   const minseoMentor = {
@@ -228,7 +229,7 @@ export function PivotLabPage() {
               type="button"
               onClick={() => setMentorPage((current) => Math.max(0, current - 1))}
               disabled={mentorPage === 0}
-              className="rounded border border-[#d6def0] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#536174] disabled:opacity-40"
+              className="px-2.5 py-1 text-[11px] font-semibold text-[#536174] disabled:opacity-40"
             >
               이전
             </button>
@@ -242,8 +243,8 @@ export function PivotLabPage() {
                   <button
                     type="button"
                     onClick={() => setMentorPage(pageNumber)}
-                    className={`min-w-8 rounded px-2.5 py-1 text-[11px] font-semibold ${
-                      pageNumber === mentorPage ? 'bg-[#3a5fd9] text-white' : 'bg-white text-[#536174] border border-[#d6def0]'
+                    className={`min-w-8 px-2.5 py-1 text-[11px] font-semibold ${
+                      pageNumber === mentorPage ? 'text-[#3a5fd9]' : 'text-[#536174]'
                     }`}
                   >
                     {pageNumber + 1}
@@ -255,7 +256,7 @@ export function PivotLabPage() {
               type="button"
               onClick={() => setMentorPage((current) => Math.min(totalMentorPages - 1, current + 1))}
               disabled={mentorPage === totalMentorPages - 1}
-              className="rounded border border-[#d6def0] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#536174] disabled:opacity-40"
+              className="px-2.5 py-1 text-[11px] font-semibold text-[#536174] disabled:opacity-40"
             >
               다음
             </button>
@@ -291,13 +292,66 @@ export function PivotLabPage() {
 
           <SectionCard eyebrow="상담 준비" title="전환 가능 역량">
             <div className="space-y-3">
-              {transferableSkills.map((skill) => (
-                <div key={skill.id} className="rounded-md border border-[#dce4f3] bg-[#f8fbff] p-4">
-                  <div className="text-sm text-[#6d7a8e]">{skill.from}</div>
-                  <div className="mt-1 font-semibold text-[#344257]">{skill.skill}</div>
-                  <div className="mt-2 text-sm text-[#647387]">연결 항목: {skill.to}</div>
-                </div>
-              ))}
+              {transferableSkills.map((skill) => {
+                const isOpen = openedSkillId === skill.id
+                return (
+                  <div key={skill.id} className={`rounded-xl border transition-colors ${isOpen ? 'border-[#a8c8f0] bg-[#eef6ff]' : 'border-[#c8dff8] bg-[#f0f7ff]'}`}>
+                    <button
+                      type="button"
+                      onClick={() => setOpenedSkillId(isOpen ? null : skill.id)}
+                      className="w-full px-4 py-3.5 text-left"
+                    >
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          {/* AI 동그라미 버튼 */}
+                          <div className="shrink-0 flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">
+                            AI
+                          </div>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="text-xs text-[#7a92b0]">{skill.from}</span>
+                              <span className="text-[#b0c4d8]">→</span>
+                              <span className="text-sm font-bold text-[#1e2d45]">{skill.skill}</span>
+                            </div>
+                            <div className="mt-0.5 text-[11px] text-[#7a92b0]">{skill.to}</div>
+                          </div>
+                        </div>
+                        <span className="shrink-0 text-[11px] font-semibold text-[#5b86f7]">
+                          {isOpen ? '닫기' : '상세 보기'}
+                        </span>
+                      </div>
+                    </button>
+
+                    {isOpen && (
+                      <div className="border-t border-[#cce0f5] px-4 pb-4 pt-3 space-y-3">
+                        <div>
+                          <div className="mb-1 text-[10px] font-bold uppercase tracking-wide text-[#7b8597]">보유 근거</div>
+                          <p className="text-[12px] leading-5 text-[#536174]">{skill.evidence}</p>
+                        </div>
+                        <div>
+                          <div className="mb-1 text-[10px] font-bold uppercase tracking-wide text-[#7b8597]">면접 활용 포인트</div>
+                          <p className="text-[12px] leading-5 text-[#3a5fd9]">{skill.interviewTip}</p>
+                        </div>
+                        <div>
+                          <div className="mb-1 text-[10px] font-bold uppercase tracking-wide text-[#7b8597]">상담 전 준비 항목</div>
+                          <ul className="space-y-1">
+                            {skill.consultingCheck.map((item) => (
+                              <li key={item} className="flex items-start gap-1.5 text-[12px] text-[#64748b]">
+                                <span className="shrink-0 text-[#aab4c4]">·</span>{item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="flex flex-wrap gap-1 pt-1">
+                          {skill.relatedCompanies.map((c) => (
+                            <span key={c} className="rounded bg-[#dbeeff] px-2 py-0.5 text-[10px] text-[#3a5fd9]">{c}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </SectionCard>
         </div>
