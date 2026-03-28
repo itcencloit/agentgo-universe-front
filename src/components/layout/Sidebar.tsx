@@ -1,12 +1,13 @@
-import { studentProfile } from '../../data/foodEngineering'
-import type { AppSection } from '../../types/unisync'
+import React from "react";
+import { studentProfile } from "../../data/foodEngineering";
+import type { AppSection } from "../../types/unisync";
 
 type SidebarProps = {
-  activeSection: AppSection
-  onSectionChange: (section: AppSection) => void
-}
+  activeSection: AppSection;
+  onSectionChange: (section: AppSection) => void;
+};
 
-export function Sidebar(_: SidebarProps) {
+export const Sidebar: React.FC<SidebarProps> = (_) => {
   return (
     <aside className="hidden lg:fixed lg:bottom-0 lg:left-0 lg:top-[121px] lg:block lg:w-60 lg:overflow-y-auto lg:border-r lg:border-[#DCE4F3] lg:bg-white">
       <div className="border-b border-[#DCE4F3] p-6">
@@ -16,7 +17,9 @@ export function Sidebar(_: SidebarProps) {
           </div>
           <div>
             <div className="font-semibold text-gray-900">{studentProfile.name}</div>
-            <div className="mt-0.5 text-xs text-gray-500">{studentProfile.major} / {studentProfile.targetRole} 트랙</div>
+            <div className="mt-0.5 text-xs text-gray-500">
+              {studentProfile.major} / {studentProfile.targetRole} 트랙
+            </div>
           </div>
         </div>
         <div className="space-y-1 text-xs text-gray-600">
@@ -47,5 +50,5 @@ export function Sidebar(_: SidebarProps) {
         </ul>
       </div>
     </aside>
-  )
+  );
 }

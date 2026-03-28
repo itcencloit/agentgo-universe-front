@@ -1,45 +1,45 @@
-import { useState } from 'react'
+import React, { useState } from "react";
 import {
   roadmapItems,
   roadmapModes,
   type RoadmapMode,
   type RoadmapSelection,
-} from '../../data/roadmap'
-import type { GlobalPage } from '../../types/unisync'
+} from "../../data/roadmap";
+import type { GlobalPage } from "../../types/unisync";
 
 type HeaderProps = {
-  activePage: GlobalPage
-  onPageChange: (page: GlobalPage) => void
-  onRoadmapSelect: (selection: RoadmapSelection) => void
-}
+  activePage: GlobalPage;
+  onPageChange: (page: GlobalPage) => void;
+  onRoadmapSelect: (selection: RoadmapSelection) => void;
+};
 
-const utilityLinks = ['MAIN', '로그아웃', '사용자 가이드', '학교홈페이지', '화면오류해결']
+const utilityLinks = ["MAIN", "로그아웃", "사용자 가이드", "학교홈페이지", "화면오류해결"];
 
 const primaryMenus: Array<{ id: GlobalPage; label: string }> = [
-  { id: 'home', label: 'HOME' },
-  { id: 'roadmap', label: 'My로드맵' },
-  { id: 'mentoring', label: '졸업선배 노하우·멘토링' },
-  { id: 'employment', label: '취업자료·기업분석' },
-  { id: 'recruitment', label: '채용정보' },
-  { id: 'diagnosis', label: '진단실시' },
-  { id: 'sitemap', label: '사이트맵' },
-]
+  { id: "home", label: "HOME" },
+  { id: "roadmap", label: "My로드맵" },
+  { id: "mentoring", label: "졸업선배 노하우·멘토링" },
+  { id: "employment", label: "취업자료·기업분석" },
+  { id: "recruitment", label: "채용정보" },
+  { id: "diagnosis", label: "역량진단" },
+  { id: "sitemap", label: "사이트맵" },
+];
 
 const yearlyRoadmapCard = {
-  gradient: 'from-[#a5be4f] to-[#ddd371]',
-  label: '학년별로드맵',
-  step: 'step 4.',
-  items: ['My로드맵'],
-}
+  gradient: "from-[#a5be4f] to-[#ddd371]",
+  label: "학년별로드맵",
+  step: "step 4.",
+  items: ["My로드맵"],
+};
 
 const roadmapItemHoverClass: Record<RoadmapMode, string> = {
-  career: 'hover:text-[#4ea29a]',
-  growth: 'hover:text-[#5b86f7]',
-  research: 'hover:text-[#f0b03f]',
-}
+  career: "hover:text-[#4ea29a]",
+  growth: "hover:text-[#5b86f7]",
+  research: "hover:text-[#f0b03f]",
+};
 
-export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProps) {
-  const [isRoadmapOpen, setIsRoadmapOpen] = useState(false)
+export const Header: React.FC<HeaderProps> = ({ activePage, onPageChange, onRoadmapSelect }) => {
+  const [isRoadmapOpen, setIsRoadmapOpen] = useState(false);
 
   return (
     <header className="relative z-40 bg-[#0f2238] text-white">
@@ -61,15 +61,19 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
               PK
             </div>
             <div className="flex items-center gap-6">
-              <div className="text-[22px] font-semibold tracking-[-0.02em]">국립부경대학교 PKNU 시스템</div>
-              <div className="hidden text-[15px] font-semibold text-white/85 xl:block">대학생 서비스</div>
+              <div className="text-[22px] font-semibold tracking-[-0.02em]">
+                국립부경대학교 PKNU 시스템
+              </div>
+              <div className="hidden text-[15px] font-semibold text-white/85 xl:block">
+                대학생 서비스
+              </div>
             </div>
           </div>
 
           <nav className="hidden items-center gap-6 text-[15px] font-semibold lg:flex">
             {primaryMenus.map((menu) => {
-              const isActive = menu.id === activePage
-              const isRoadmap = menu.id === 'roadmap'
+              const isActive = menu.id === activePage;
+              const isRoadmap = menu.id === "roadmap";
 
               if (isRoadmap) {
                 return (
@@ -83,11 +87,17 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                       type="button"
                       onClick={() => setIsRoadmapOpen((current) => !current)}
                       className={`flex items-center gap-2 ${
-                        isActive || isRoadmapOpen ? 'text-[#88b5ff]' : 'transition hover:text-[#88b5ff]'
+                        isActive || isRoadmapOpen
+                          ? "text-[#88b5ff]"
+                          : "transition hover:text-[#88b5ff]"
                       }`}
                     >
                       <span>{menu.label}</span>
-                      <span className={`text-xs transition-transform ${isRoadmapOpen ? 'rotate-180' : ''}`}>▼</span>
+                      <span
+                        className={`text-xs transition-transform ${isRoadmapOpen ? "rotate-180" : ""}`}
+                      >
+                        ▼
+                      </span>
                     </button>
 
                     {isRoadmapOpen ? (
@@ -102,14 +112,16 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                                     onRoadmapSelect({
                                       mode: mode.id,
                                       taskId: roadmapItems[mode.id][0].id,
-                                      viewMode: 'detail',
-                                    })
-                                    setIsRoadmapOpen(false)
+                                      viewMode: "detail",
+                                    });
+                                    setIsRoadmapOpen(false);
                                   }}
                                   className={`flex w-full flex-col rounded-xl bg-gradient-to-r ${mode.gradient} px-5 py-4 text-left text-white`}
                                 >
                                   <span className="text-sm font-semibold">{mode.step}</span>
-                                  <span className="mt-1 text-[28px] font-semibold tracking-[-0.03em]">{mode.title}</span>
+                                  <span className="mt-1 text-[28px] font-semibold tracking-[-0.03em]">
+                                    {mode.title}
+                                  </span>
                                 </button>
                                 <div className="mt-4 space-y-1">
                                   {roadmapItems[mode.id].map((item) => (
@@ -120,9 +132,9 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                                         onRoadmapSelect({
                                           mode: mode.id,
                                           taskId: item.id,
-                                          viewMode: 'detail',
-                                        })
-                                        setIsRoadmapOpen(false)
+                                          viewMode: "detail",
+                                        });
+                                        setIsRoadmapOpen(false);
                                       }}
                                       className={`flex w-full items-center justify-between border-b border-[#edf1f6] py-2 text-left text-[15px] text-[#46566d] transition hover:translate-x-0.5 ${roadmapItemHoverClass[mode.id]}`}
                                     >
@@ -139,15 +151,17 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                                 type="button"
                                 onClick={() => {
                                   onRoadmapSelect({
-                                    mode: 'research',
+                                    mode: "research",
                                     taskId: roadmapItems.research[0].id,
-                                    viewMode: 'yearly',
-                                  })
-                                  setIsRoadmapOpen(false)
+                                    viewMode: "yearly",
+                                  });
+                                  setIsRoadmapOpen(false);
                                 }}
                                 className="rounded-xl border border-[#e2e7f0] bg-[#fafbfd] px-5 py-6 text-left transition hover:border-[#cfd7e5] hover:bg-white"
                               >
-                                <div className="text-[22px] font-semibold text-[#49586d]">{yearlyRoadmapCard.label}</div>
+                                <div className="text-[22px] font-semibold text-[#49586d]">
+                                  {yearlyRoadmapCard.label}
+                                </div>
                                 <div className="mt-3 text-sm leading-6 text-[#6d7a8d]">
                                   학년별 이력과 진행 현황을 확인합니다.
                                 </div>
@@ -162,7 +176,7 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                       </div>
                     ) : null}
                   </div>
-                )
+                );
               }
 
               return (
@@ -170,11 +184,11 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                   key={menu.id}
                   type="button"
                   onClick={() => onPageChange(menu.id)}
-                  className={isActive ? 'text-[#88b5ff]' : 'transition hover:text-[#88b5ff]'}
+                  className={isActive ? "text-[#88b5ff]" : "transition hover:text-[#88b5ff]"}
                 >
                   {menu.label}
                 </button>
-              )
+              );
             })}
           </nav>
         </div>
@@ -196,15 +210,17 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                       onRoadmapSelect({
                         mode: mode.id,
                         taskId: roadmapItems[mode.id][0].id,
-                        viewMode: 'detail',
-                      })
-                      setIsRoadmapOpen(false)
+                        viewMode: "detail",
+                      });
+                      setIsRoadmapOpen(false);
                     }}
                     className={`flex w-full items-center justify-between rounded-md bg-gradient-to-r ${mode.gradient} px-4 py-4 text-left text-white`}
                   >
                     <div>
                       <div className="text-sm text-white/80">{mode.step}</div>
-                      <div className="mt-1 text-[18px] font-semibold tracking-[-0.03em]">{mode.title}</div>
+                      <div className="mt-1 text-[18px] font-semibold tracking-[-0.03em]">
+                        {mode.title}
+                      </div>
                     </div>
                     <span className="text-xl font-light">↗</span>
                   </button>
@@ -218,9 +234,9 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                           onRoadmapSelect({
                             mode: mode.id,
                             taskId: item.id,
-                            viewMode: 'detail',
-                          })
-                          setIsRoadmapOpen(false)
+                            viewMode: "detail",
+                          });
+                          setIsRoadmapOpen(false);
                         }}
                         className={`flex w-full items-center justify-between border-b border-[#e9edf3] py-2 text-left text-[15px] text-[#5c6a7d] transition hover:translate-x-0.5 ${roadmapItemHoverClass[mode.id]}`}
                       >
@@ -237,17 +253,19 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                   type="button"
                   onClick={() => {
                     onRoadmapSelect({
-                      mode: 'research',
+                      mode: "research",
                       taskId: roadmapItems.research[0].id,
-                      viewMode: 'yearly',
-                    })
-                    setIsRoadmapOpen(false)
+                      viewMode: "yearly",
+                    });
+                    setIsRoadmapOpen(false);
                   }}
                   className={`flex w-full items-center justify-between rounded-md bg-gradient-to-r ${yearlyRoadmapCard.gradient} px-4 py-4 text-left text-white`}
                 >
                   <div>
                     <div className="text-sm text-white/80">{yearlyRoadmapCard.step}</div>
-                    <div className="mt-1 text-[18px] font-semibold tracking-[-0.03em]">{yearlyRoadmapCard.label}</div>
+                    <div className="mt-1 text-[18px] font-semibold tracking-[-0.03em]">
+                      {yearlyRoadmapCard.label}
+                    </div>
                   </div>
                   <span className="text-xl font-light">▮▮▮</span>
                 </button>
@@ -259,11 +277,11 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
                       type="button"
                       onClick={() => {
                         onRoadmapSelect({
-                          mode: 'research',
+                          mode: "research",
                           taskId: roadmapItems.research[0].id,
-                          viewMode: 'yearly',
-                        })
-                        setIsRoadmapOpen(false)
+                          viewMode: "yearly",
+                        });
+                        setIsRoadmapOpen(false);
                       }}
                       className="flex w-full items-center justify-between border-b border-[#e9edf3] py-2 text-left text-[15px] text-[#5c6a7d] transition hover:translate-x-0.5 hover:text-[#8ca53d]"
                     >
@@ -278,5 +296,5 @@ export function Header({ activePage, onPageChange, onRoadmapSelect }: HeaderProp
         </div>
       ) : null}
     </header>
-  )
+  );
 }
