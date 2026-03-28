@@ -172,29 +172,28 @@ export function AppShell({
               식품과학부/식품공학전공
             </div>
             <div className="mt-2 text-sm text-[#5e6d83]">{studentProfile.grade}</div>
-            <div className="mt-1 text-sm text-[#5e6d83]">전공지도교수</div>
+            <div className="mt-1 text-sm text-[#5e6d83]">아이티센 교수</div>
           </section>
 
-          <section className="rounded-md border border-[#e1e6ef] bg-white p-3 shadow-sm">
-            <div className="mb-3 flex items-center gap-2 text-[17px] font-semibold text-[#3e4b60]">
+          <section className="rounded-md border border-[#e1e6ef] p-3 shadow-sm">
+            <div className="mb-3 flex items-center gap-2 text-[15px] font-semibold text-[#3e4b60]">
               <span>My로드맵</span>
-              <span className="text-[#7d8798]">?</span>
             </div>
-            <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-2">
               {roadmapShortcuts.map((item) => (
                 <button
                   key={item.label}
                   type="button"
-                  className={`flex w-full items-center justify-between rounded-md border px-3 py-3 text-sm font-semibold ${toneClassMap[item.tone]}`}
+                  className={`rounded-md border px-2 py-3 text-center ${toneClassMap[item.tone]}`}
                 >
-                  <span>{item.label}</span>
-                  <span className="text-[11px]">진행</span>
+                  <div className="text-xs font-bold leading-snug">{item.label}</div>
+                  <div className="mt-1 text-[10px] opacity-70">진행</div>
                 </button>
               ))}
             </div>
           </section>
 
-          <section className="rounded-md border border-[#e1e6ef] bg-white shadow-sm">
+          <section className="rounded-md border border-[#e1e6ef] shadow-sm overflow-hidden">
             <div
               className="px-4 py-3 text-[15px] font-semibold text-white"
               style={{ backgroundColor: sectionMenu.accent }}

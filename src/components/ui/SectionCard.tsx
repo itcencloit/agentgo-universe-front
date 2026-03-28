@@ -3,10 +3,11 @@ import type { PropsWithChildren, ReactNode } from 'react'
 type SectionCardProps = PropsWithChildren<{
   eyebrow?: string
   headerRight?: ReactNode
+  subtitle?: string
   title: string
 }>
 
-export function SectionCard({ children, eyebrow, headerRight, title }: SectionCardProps) {
+export function SectionCard({ children, eyebrow, headerRight, subtitle, title }: SectionCardProps) {
   return (
     <section className="rounded-md border border-[#d6def0] bg-white shadow-sm">
       <div className="mb-4 flex items-start justify-between gap-4 border-b border-[#e5ecf7] px-5 py-4">
@@ -16,6 +17,7 @@ export function SectionCard({ children, eyebrow, headerRight, title }: SectionCa
             <span className="h-4 w-1 bg-[#4f6da1]" />
             {title}
           </h2>
+          {subtitle ? <p className="mt-1 text-[11px] text-[#8a9ab5]">{subtitle}</p> : null}
         </div>
         {headerRight}
       </div>
