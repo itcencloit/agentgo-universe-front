@@ -273,7 +273,7 @@ export function PivotLabPage() {
                   key={match.id}
                   type="button"
                   onClick={() => setSelectedMatchId(match.id)}
-                  className={`block w-full rounded-md border p-4 text-left ${
+                  className={`block w-full rounded-xl border p-4 text-left transition-colors ${
                     selectedMatchId === match.id ? 'border-[#bfd4ff] bg-[#eef4ff]' : 'border-[#dce4f3] bg-[#f8fbff]'
                   }`}
                 >
@@ -295,31 +295,27 @@ export function PivotLabPage() {
               {transferableSkills.map((skill) => {
                 const isOpen = openedSkillId === skill.id
                 return (
-                  <div key={skill.id} className={`rounded-xl border transition-colors ${isOpen ? 'border-[#a8c8f0] bg-[#eef6ff]' : 'border-[#c8dff8] bg-[#f0f7ff]'}`}>
+                  <div key={skill.id} className={`rounded-xl border transition-colors ${isOpen ? 'border-[#bfd4ff] bg-[#eef4ff]' : 'border-[#dce4f3] bg-[#f8fbff]'}`}>
                     <button
                       type="button"
                       onClick={() => setOpenedSkillId(isOpen ? null : skill.id)}
-                      className="w-full px-4 py-3.5 text-left"
+                      className="w-full p-4 text-left"
                     >
                       <div className="flex items-center justify-between gap-3">
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          {/* AI 동그라미 버튼 */}
-                          <div className="shrink-0 flex h-7 w-7 items-center justify-center rounded-full bg-[#3a5fd9] text-[10px] font-bold text-white">
-                            AI
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <div className="shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-[#3a5fd9] text-[9px] font-bold text-white">AI</div>
+                            <span className="text-sm text-[#6d7a8e]">{skill.from}</span>
                           </div>
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <span className="text-xs text-[#7a92b0]">{skill.from}</span>
-                              <span className="text-[#b0c4d8]">→</span>
-                              <span className="text-sm font-bold text-[#1e2d45]">{skill.skill}</span>
-                            </div>
-                            <div className="mt-0.5 text-[11px] text-[#7a92b0]">{skill.to}</div>
-                          </div>
+                          <div className="mt-1 font-semibold text-[#344257]">{skill.skill}</div>
                         </div>
                         <span className="shrink-0 text-[11px] font-semibold text-[#5b86f7]">
                           {isOpen ? '닫기' : '상세 보기'}
                         </span>
                       </div>
+                      {!isOpen && (
+                        <div className="mt-3 text-sm text-[#647387]">{skill.evidence}</div>
+                      )}
                     </button>
 
                     {isOpen && (
