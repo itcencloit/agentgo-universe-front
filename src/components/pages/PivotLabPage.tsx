@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { pivotMatches, transferableSkills } from "../../data/unisync";
 import { mentorProfiles } from "../../data/foodEngineering";
+import { InteractionToast } from "../ui/InteractionToast";
 import { SectionCard } from "../ui/SectionCard";
 
 const MENTORS_PER_PAGE = 4;
@@ -88,6 +89,7 @@ export const PivotLabPage: React.FC = () => {
   const [selectedMentorName, setSelectedMentorName] = useState<string | null>(null);
   const [mentorPage, setMentorPage] = useState(0);
   const [openedSkillId, setOpenedSkillId] = useState<string | null>(null);
+  const [feedback, setFeedback] = useState<string | null>(null);
 
   // 김민서 멘토 데이터 (요청 사양 반영)
   const minseoMentor = {
@@ -126,8 +128,15 @@ export const PivotLabPage: React.FC = () => {
     setSelectedMentorName((current) => (current === name ? null : name));
   };
 
+  useEffect(() => {
+    if (!feedback) return;
+    const timer = window.setTimeout(() => setFeedback(null), 1800);
+    return () => window.clearTimeout(timer);
+  }, [feedback]);
+
   return (
     <div className="space-y-4">
+      <InteractionToast message={feedback} />
       <SectionCard eyebrow="졸업생 노하우" title="클로잇 학생에게 바로 연결되는 선배 인사이트">
         <div className="rounded-xl border border-[#c9d9f8] bg-gradient-to-r from-[#eef3ff] to-[#f3f6fb] px-5 py-4">
           <div className="flex items-start gap-3">
@@ -174,7 +183,10 @@ export const PivotLabPage: React.FC = () => {
                 <div key={mentor.mentor} className="overflow-hidden">
                   <button
                     type="button"
-                    onClick={() => openMentorPanel(mentor.mentor)}
+                    onClick={() => {
+                      openMentorPanel(mentor.mentor);
+                      setFeedback(`${mentor.mentor} 선배의 상세 인사이트를 ${selectedMentor?.mentor === mentor.mentor ? "닫습니다" : "확인합니다"}.`);
+                    }}
                     className={`grid w-full grid-cols-[120px_220px_1fr_92px_56px] items-center gap-4 px-5 py-4 text-left transition-all ${
                       isOpen ? "bg-[#f7fbff]" : "hover:bg-[#f8fbff]"
                     }`}
@@ -288,7 +300,10 @@ export const PivotLabPage: React.FC = () => {
           <div className="flex items-center justify-center gap-1.5 border-t border-[#e8eef6] bg-[#fbfcfe] px-4 py-3">
             <button
               type="button"
-              onClick={() => setMentorPage((current) => Math.max(0, current - 1))}
+              onClick={() => {
+                setMentorPage((current) => Math.max(0, current - 1));
+                setFeedback("이전 추천 선배 페이지로 이동했습니다.");
+              }}
               disabled={mentorPage === 0}
               className="px-2.5 py-1 text-[11px] font-semibold text-[#536174] disabled:opacity-40"
             >
@@ -305,7 +320,10 @@ export const PivotLabPage: React.FC = () => {
                   ) : null}
                   <button
                     type="button"
-                    onClick={() => setMentorPage(pageNumber)}
+                    onClick={() => {
+                      setMentorPage(pageNumber);
+                      setFeedback(`${pageNumber + 1}페이지 선배 목록으로 이동했습니다.`);
+                    }}
                     className={`min-w-8 px-2.5 py-1 text-[11px] font-semibold ${
                       pageNumber === mentorPage ? "text-[#3a5fd9]" : "text-[#536174]"
                     }`}
@@ -317,9 +335,10 @@ export const PivotLabPage: React.FC = () => {
             })}
             <button
               type="button"
-              onClick={() =>
-                setMentorPage((current) => Math.min(totalMentorPages - 1, current + 1))
-              }
+              onClick={() => {
+                setMentorPage((current) => Math.min(totalMentorPages - 1, current + 1));
+                setFeedback("다음 추천 선배 페이지로 이동했습니다.");
+              }}
               disabled={mentorPage === totalMentorPages - 1}
               className="px-2.5 py-1 text-[11px] font-semibold text-[#536174] disabled:opacity-40"
             >
@@ -337,7 +356,10 @@ export const PivotLabPage: React.FC = () => {
                 <button
                   key={match.id}
                   type="button"
-                  onClick={() => setSelectedMatchId(match.id)}
+                  onClick={() => {
+                    setSelectedMatchId(match.id);
+                    setFeedback(`${match.company} ${match.role} 상담 매칭 근거를 기준으로 선택했습니다.`);
+                  }}
                   className={`block w-full rounded-xl border p-4 text-left transition-colors ${
                     selectedMatchId === match.id
                       ? "border-[#bfd4ff] bg-[#eef4ff]"

@@ -44,7 +44,7 @@ export const dashboardMetrics: MetricCard[] = [
   {
     title: "커리어 적합도",
     value: "84%",
-    description: "코카콜라 음료 품질·연구 직무 기준 종합 정합도",
+    description: "CJ제일제당 식품R&D 직무 기준 종합 정합도",
   },
   {
     title: "보완 필요 항목",

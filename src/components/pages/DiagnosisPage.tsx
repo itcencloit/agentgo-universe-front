@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { InteractionToast } from "../ui/InteractionToast";
 import { SectionCard } from "../ui/SectionCard";
 
 const diagnosisCards = [
@@ -20,20 +21,20 @@ const fitReportSections = [
   {
     title: "학점 및 교과 이수",
     summary:
-      "전공 평점과 핵심 교과 이수 흐름이 품질관리 직무의 기본 적합도를 안정적으로 지지합니다.",
+      "전공 평점과 핵심 교과 이수 흐름이 식품 연구개발 직무의 기본 적합도를 안정적으로 지지합니다.",
     items: [
-      "전공 평균 4.12/4.5로 위생·품질 관련 과목에서 높은 성취를 보였습니다.",
-      "식품위생학, 품질평가, HACCP 실무 과목 이수 흐름이 직무 요구 역량과 직접 연결됩니다.",
-      "실험·검증 중심 과목 비중이 높아 품질 데이터 해석 역량의 근거가 충분합니다.",
+      "전공 평균 4.12/4.5로 식품화학, 식품미생물학 등 R&D 관련 과목에서 높은 성취를 보였습니다.",
+      "식품화학, 식품가공학, 기능성식품학 이수 흐름이 신제품 개발·성분 분석 직무와 직접 연결됩니다.",
+      "실험·분석 중심 과목 비중이 높아 연구개발형 데이터 해석 역량의 근거가 충분합니다.",
     ],
   },
   {
     title: "활동 및 프로젝트",
-    summary: "전공 활동은 연구개발보다 품질관리 쪽에 더 직접적인 설명력을 가집니다.",
+    summary: "전공 활동은 식품 연구개발 방향에 직접적인 설명력을 가집니다.",
     items: [
-      "캡스톤 프로젝트에서 공정 점검과 결과 기록을 맡아 품질관리형 역할 경험을 확보했습니다.",
-      "식품안전 관련 비교과 프로그램 참여 이력이 직무 관심도의 지속성을 보여줍니다.",
-      "실험 결과를 표준 기준에 맞춰 정리한 경험이 검수·기록 업무 적합도로 반영됐습니다.",
+      "캡스톤 프로젝트에서 공정 개선 및 성분 분석 실험을 주도해 R&D 역할 경험을 확보했습니다.",
+      "식품 신소재·기능성 관련 비교과 프로그램 참여 이력이 연구 관심도의 지속성을 보여줍니다.",
+      "실험 설계부터 결과 해석까지 수행한 경험이 연구개발 직무 적합도로 직접 반영됐습니다.",
     ],
   },
   {
@@ -41,8 +42,8 @@ const fitReportSections = [
     summary: "현재 적합도는 높지만 자격과 성과 문서화 수준이 올라가면 경쟁력이 더 분명해집니다.",
     items: [
       "식품기사 준비 이력이 있어 직무 연계성은 높게 평가되지만 취득 완료 전이라 가산점은 제한적입니다.",
-      "정량 성과가 포함된 포트폴리오가 부족해 연구개발 직무 점수는 상대적으로 낮게 계산됐습니다.",
-      "현장형 실습 시간과 개선 성과 수치가 추가되면 품질안전 점수 상승 여지가 큽니다.",
+      "정량 성과가 포함된 포트폴리오가 보완되면 연구개발 직무 점수가 추가 상승할 여지가 큽니다.",
+      "현장형 실험 데이터와 개선 수치가 추가되면 품질관리·품질안전 점수도 함께 올라옵니다.",
     ],
   },
 ];
@@ -67,7 +68,7 @@ const weaknessMetrics = [
 ];
 
 const personalReportHighlights = [
-  { label: "현재 1순위 직무", value: "품질관리", note: "적합도 94%" },
+  { label: "현재 1순위 직무", value: "식품 연구개발", note: "적합도 94%" },
   { label: "연동 학사 데이터", value: "교과 6 · 프로젝트 3", note: "전공 평균 4.12/4.5 반영" },
   { label: "조치 필요 항목", value: "증빙 공백 3건", note: "식품기사, 포트폴리오, 자소서" },
 ];
@@ -76,12 +77,12 @@ const personalReportSteps = [
   {
     step: "01",
     title: "학사 기반 적합도 판정",
-    body: "전공 평균 4.12/4.5, 품질·위생 계열 핵심 교과 6과목, 프로젝트 3건이 반영돼 현재 프로필은 품질관리 직무에 가장 안정적으로 연결됩니다.",
+    body: "전공 평균 4.12/4.5, 식품화학·가공·기능성 계열 핵심 교과 6과목, 프로젝트 3건이 반영돼 현재 프로필은 식품 연구개발 직무에 가장 안정적으로 연결됩니다.",
   },
   {
     step: "02",
     title: "지원 단계 공백 확인",
-    body: "직무 적합도 자체는 높지만 식품기사 미취득, 캡스톤 결과 수치 미정리, 품질관리 자소서 초안 부재로 인해 강점이 아직 제출 가능한 형태로 완성되지 않았습니다.",
+    body: "직무 적합도 자체는 높지만 식품기사 미취득, 캡스톤 결과 수치 미정리, R&D 직무 자소서 초안 부재로 인해 강점이 아직 제출 가능한 형태로 완성되지 않았습니다.",
   },
   {
     step: "03",
@@ -104,7 +105,7 @@ const areaDetailContent = {
     bullets: [
       "식품기사 준비는 진행 중이지만 취득 완료 전이라 자격 근거가 아직 서류에 반영되지 않습니다.",
       "캡스톤 결과가 수치와 역할 기준으로 정리되지 않아 프로젝트 경험의 증빙력이 약합니다.",
-      "품질관리 직무용 자기소개서 초안이 없어 전공 강점을 지원 문서로 연결하는 단계가 비어 있습니다.",
+      "식품 R&D 직무용 자기소개서 초안이 없어 전공 강점을 지원 문서로 연결하는 단계가 비어 있습니다.",
     ],
   },
 } as const;
@@ -114,7 +115,7 @@ const recommendedActions = [
     title: "식품기사 접수 일정 확정",
     priority: "우선순위 1",
     badgeTone: "bg-[#3a5fd9] text-white",
-    summary: "품질관리 직무 기준으로 가장 먼저 보완해야 할 항목은 자격 근거입니다.",
+    summary: "식품 연구개발 직무 기준으로 가장 먼저 보완해야 할 항목은 자격 근거입니다.",
     evidence: "지원 준비도 68점, 식품기사 취득 전 단계",
     tasks: ["원서 접수 일정 확정", "학습 계획 재배치", "상담 시 일정 공유"],
     impact: "자격 기반 신뢰도를 빠르게 높일 수 있습니다.",
@@ -123,29 +124,37 @@ const recommendedActions = [
     title: "캡스톤 결과 수치화",
     priority: "우선순위 2",
     badgeTone: "bg-[#e3f0ff] text-[#1a56b0]",
-    summary: "프로젝트 경험은 있으나 성과와 역할이 정량화되지 않아 활용도가 낮습니다.",
+    summary: "프로젝트 경험은 있으나 성과와 역할이 정량화되지 않아 R&D 직무 활용도가 낮습니다.",
     evidence: "프로젝트 3건 반영, 포트폴리오 정리 필요",
     tasks: ["성과 수치 추출", "역할 구분 정리", "직무 용어로 재서술"],
-    impact: "캡스톤 경험이 지원서 증빙 자료로 전환됩니다.",
+    impact: "캡스톤 경험이 연구개발 직무 증빙 자료로 전환됩니다.",
   },
   {
-    title: "품질관리 자소서 초안 작성",
+    title: "식품 R&D 자소서 초안 작성",
     priority: "우선순위 3",
     badgeTone: "bg-[#eef2fb] text-[#546173]",
-    summary: "강점은 충분하지만 이를 지원 문서로 연결하는 단계가 아직 비어 있습니다.",
+    summary: "강점은 충분하지만 이를 R&D 지원 문서로 연결하는 단계가 아직 비어 있습니다.",
     evidence: "직무 적합 강점 91점, 지원서 완성도 66점",
     tasks: ["지원동기 1문항 작성", "교과 강점 연결", "초안 1차 완성"],
-    impact: "추천채용 공고에 바로 적용 가능한 초안을 확보할 수 있습니다.",
+    impact: "CJ제일제당·삼양그룹 공고에 바로 적용 가능한 초안을 확보할 수 있습니다.",
   },
 ] as const;
 
 export const DiagnosisPage: React.FC = () => {
   const [isFitReportOpen, setIsFitReportOpen] = useState(false);
   const [openAreaDetail, setOpenAreaDetail] = useState<keyof typeof areaDetailContent | null>(null);
+  const [feedback, setFeedback] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!feedback) return;
+    const timer = window.setTimeout(() => setFeedback(null), 1800);
+    return () => window.clearTimeout(timer);
+  }, [feedback]);
 
   return (
     <>
       <div className="space-y-4">
+        <InteractionToast message={feedback} />
         <SectionCard eyebrow="역량진단" title="역량 진단">
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {diagnosisCards.map((card) => (
@@ -155,6 +164,7 @@ export const DiagnosisPage: React.FC = () => {
                 <div className="mt-5 text-3xl font-bold text-[#316bff]">{card.score}</div>
                 <button
                   type="button"
+                  onClick={() => setFeedback(`${card.title} 상세 결과는 단계별 리포트로 연결됩니다.`)}
                   className="mt-4 rounded border border-[#cdd8ec] bg-white px-4 py-2 text-sm font-semibold text-[#536174]"
                 >
                   진단 결과 확인
@@ -198,14 +208,14 @@ export const DiagnosisPage: React.FC = () => {
                     <div className="text-[11px] font-semibold uppercase tracking-wide text-[#7d8798]">
                       Best Fit
                     </div>
-                    <div className="mt-1 text-2xl font-bold text-[#1e2d45]">품질관리</div>
+                    <div className="mt-1 text-2xl font-bold text-[#1e2d45]">식품 연구개발</div>
                     <div className="mt-1 text-4xl font-black text-[#316bff]">94%</div>
                   </div>
                 </div>
                 <div className="mt-5 grid w-full gap-2">
                   {[
-                    { label: "품질안전", score: "88%", tone: "bg-[#eef4ff] text-[#316bff]" },
-                    { label: "식품 연구개발", score: "82%", tone: "bg-[#f3f6fb] text-[#536174]" },
+                    { label: "품질관리", score: "88%", tone: "bg-[#eef4ff] text-[#316bff]" },
+                    { label: "품질안전", score: "82%", tone: "bg-[#f3f6fb] text-[#536174]" },
                   ].map((item) => (
                     <div
                       key={item.label}
@@ -219,7 +229,7 @@ export const DiagnosisPage: React.FC = () => {
                   ))}
                 </div>
                 <p className="mt-4 text-center text-sm leading-6 text-[#64748b]">
-                  식품위생학·품질평가·HACCP 이수 흐름이 품질관리 직무와 가장 높은 정합도를 보입니다.
+                  식품화학·식품가공학·기능성식품학 이수 흐름이 식품 연구개발 직무와 가장 높은 정합도를 보입니다.
                 </p>
               </div>
             </div>
@@ -301,7 +311,7 @@ export const DiagnosisPage: React.FC = () => {
                   ))}
                 </div>
                 <p className="mt-3 text-xs text-[#64748b] leading-5">
-                  식품기사 미취득, 캡스톤 결과 미정리, 품질관리 자소서 초안 부재로 인해 전공 강점을
+                  식품기사 미취득, 캡스톤 결과 미정리, R&D 자소서 초안 부재로 인해 전공 강점을
                   실제 지원서와 포트폴리오로 전환하는 준비가 아직 부족합니다.
                 </p>
               </div>
@@ -313,7 +323,7 @@ export const DiagnosisPage: React.FC = () => {
           <div className="space-y-4">
             <div className="rounded-xl border border-[#dce4f3] bg-[#f8fbff] px-5 py-5">
               <div className="text-sm font-semibold text-[#364457]">
-                현재 프로필은 품질관리 직무에 적합하지만, 지원 단계에서 필요한 증빙 3건이 아직 비어
+                현재 프로필은 식품 연구개발 직무에 적합하지만, 지원 단계에서 필요한 증빙 3건이 아직 비어
                 있습니다.
               </div>
               <p className="mt-3 text-sm leading-7 text-[#64748b]">
@@ -408,10 +418,13 @@ export const DiagnosisPage: React.FC = () => {
             {recommendedActions.map((item) => (
               <div
                 key={item.title}
-                className="relative overflow-hidden rounded-xl border border-[#dce4f3] bg-white p-4 shadow-sm transition-all hover:border-[#a8c0f0] hover:shadow-md"
+                className="relative overflow-hidden rounded-xl border border-[#c9d9f8] bg-gradient-to-br from-[#eef3ff] to-[#f3f6fb] p-4 shadow-sm transition-all hover:border-[#a8c0f0] hover:shadow-md"
               >
                 <div className="flex items-center gap-2">
-                  <span className="rounded bg-[#eef2fb] px-2 py-0.5 text-[11px] font-semibold text-[#3a5fd9]">
+                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3a5fd9] text-[9px] font-bold text-white">
+                    AI
+                  </div>
+                  <span className="rounded bg-[#dce8ff] px-2 py-0.5 text-[11px] font-semibold text-[#3a5fd9]">
                     액션 추천
                   </span>
                   <span
@@ -427,7 +440,7 @@ export const DiagnosisPage: React.FC = () => {
 
                 <p className="mt-3 text-sm leading-6 text-[#556276]">{item.summary}</p>
 
-                <div className="mt-4 rounded-lg border border-[#e8eef6] bg-[#f8fafd] px-3 py-3">
+                <div className="mt-4 rounded-lg border border-[#dce4f3] bg-white px-3 py-3">
                   <div className="flex items-center gap-2 mb-1.5">
                     <span className="text-[10px] font-semibold uppercase tracking-wide text-[#7d8798]">
                       AI 판정 근거
@@ -446,11 +459,9 @@ export const DiagnosisPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-4 flex items-start justify-between gap-3 text-xs">
-                  <span className="text-[#8a9ab5] shrink-0">예상 효과</span>
-                  <span className="text-right leading-5 text-[#2e7d32] font-semibold">
-                    {item.impact}
-                  </span>
+                <div className="mt-4 text-xs">
+                  <span className="text-[#8a9ab5]">예상 효과&nbsp;&nbsp;</span>
+                  <span className="leading-5 text-[#2e7d32] font-semibold">{item.impact}</span>
                 </div>
               </div>
             ))}
@@ -483,7 +494,7 @@ export const DiagnosisPage: React.FC = () => {
                     </h2>
                     <p className="mt-2 max-w-xl text-[14px] font-medium leading-6 text-[#6a768a]">
                       {openAreaDetail === "strength"
-                        ? "현재 전공 교과와 실험 경험이 품질관리 직무에서 어떤 강점으로 읽히는지 빠르게 확인하는 요약 화면입니다."
+                        ? "현재 전공 교과와 실험 경험이 식품 연구개발 직무에서 어떤 강점으로 읽히는지 빠르게 확인하는 요약 화면입니다."
                         : "현재 지원 단계에서 부족한 자격, 문서, 성과 정리 요소를 먼저 확인하는 요약 화면입니다."}
                     </p>
                   </div>
@@ -506,7 +517,7 @@ export const DiagnosisPage: React.FC = () => {
                     </div>
                     <p className="mt-2 text-[16px] font-black leading-7 text-[#344257]">
                       {openAreaDetail === "strength"
-                        ? "교과 이수와 실험 기록 경험이 품질관리 업무 설명력으로 바로 연결되는 상태입니다."
+                        ? "교과 이수와 실험 분석 경험이 식품 연구개발 업무 설명력으로 바로 연결되는 상태입니다."
                         : "직무 적합도는 높지만 자격, 문서, 성과 정리 단계가 아직 서류 제출 수준까지 올라오지 않은 상태입니다."}
                     </p>
                   </div>
@@ -579,7 +590,7 @@ export const DiagnosisPage: React.FC = () => {
                       </span>
                     </div>
                     <h2 className="mt-3 text-[30px] font-black tracking-tight text-[#2b3954]">
-                      품질관리 직무 상세 리포트
+                      식품 연구개발 직무 상세 리포트
                     </h2>
                     <p className="mt-2 max-w-2xl text-[14px] font-medium leading-6 text-[#6a768a]">
                       학점, 전공 이수, 프로젝트 경험, 자격 준비 상태를 종합해 현재 직무 정합도를
@@ -607,10 +618,10 @@ export const DiagnosisPage: React.FC = () => {
                           종합 판정
                         </div>
                         <div className="mt-3 text-[34px] font-black tracking-tight text-[#1e2d45]">
-                          품질관리
+                          식품 연구개발
                         </div>
                         <p className="mt-3 max-w-md text-[14px] leading-6 text-[#5c697d]">
-                          교과 이수 흐름과 실험·기록형 활동이 품질관리 핵심 역할과 가장 높은
+                          교과 이수 흐름과 실험·분석형 활동이 식품 연구개발 핵심 역할과 가장 높은
                           정합도를 보입니다.
                         </p>
                       </div>
@@ -626,9 +637,9 @@ export const DiagnosisPage: React.FC = () => {
 
                     <div className="mt-5 grid gap-3 md:grid-cols-3">
                       {[
-                        { label: "품질관리", score: "94%", active: true },
-                        { label: "품질안전", score: "88%" },
-                        { label: "식품 연구개발", score: "82%" },
+                        { label: "식품 연구개발", score: "94%", active: true },
+                        { label: "품질관리", score: "88%" },
+                        { label: "품질안전", score: "82%" },
                       ].map((item) => (
                         <div
                           key={item.label}
@@ -739,7 +750,7 @@ export const DiagnosisPage: React.FC = () => {
                       {[
                         "식품기사 취득 일정을 확정해 자격 기반 가산점을 실제 경쟁력으로 전환",
                         "캡스톤과 실험 경험을 수치 중심 포트폴리오로 재정리",
-                        "품질관리 직무용 자기소개서 초안을 작성한 뒤 진로취업 상담에서 검토",
+                        "식품 R&D 직무용 자기소개서 초안을 작성한 뒤 진로취업 상담에서 검토",
                       ].map((item) => (
                         <div
                           key={item}

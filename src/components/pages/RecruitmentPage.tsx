@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { departmentRecruitments, studentProfile } from "../../data/foodEngineering";
+import { InteractionToast } from "../ui/InteractionToast";
 
 const quickMenus = [
   { label: "이번 달\n공채 일정", icon: "📅" },
@@ -33,6 +34,7 @@ function AiScoreBadge({ score }: { score: number }) {
 export const RecruitmentPage: React.FC = () => {
   const [bookmarked, setBookmarked] = useState<Set<string>>(new Set());
   const [expandedReasons, setExpandedReasons] = useState<Set<string>>(new Set());
+  const [feedback, setFeedback] = useState<string | null>(null);
 
   const toggleBookmark = (id: string) =>
     setBookmarked((prev) => {
@@ -48,8 +50,15 @@ export const RecruitmentPage: React.FC = () => {
       return next;
     });
 
+  useEffect(() => {
+    if (!feedback) return;
+    const timer = window.setTimeout(() => setFeedback(null), 1800);
+    return () => window.clearTimeout(timer);
+  }, [feedback]);
+
   return (
     <div className="space-y-4">
+      <InteractionToast message={feedback} />
       {/* AI Insight 배너 */}
       <div className="rounded-xl border border-[#c9d9f8] bg-gradient-to-r from-[#eef3ff] to-[#f3f6fb] px-5 py-4">
         <div className="flex items-start gap-3">
@@ -78,6 +87,7 @@ export const RecruitmentPage: React.FC = () => {
                 <button
                   key={chip}
                   type="button"
+                  onClick={() => setFeedback(`${chip} 기준으로 추천 공고를 다시 정렬하는 영역입니다.`)}
                   className="rounded-full border border-[#c5d5f7] bg-white px-3 py-1 text-[11px] font-semibold text-[#3a5fd9] hover:bg-[#eef3ff]"
                 >
                   {chip}
@@ -101,6 +111,7 @@ export const RecruitmentPage: React.FC = () => {
                 <button
                   key={tab}
                   type="button"
+                  onClick={() => setFeedback(`${tab} 조건으로 공고를 탐색하는 인터랙션입니다.`)}
                   className={`rounded-full px-3 py-1 text-[11px] font-semibold ${i === 0 ? "bg-[#3a5fd9] text-white" : "bg-[#f1f3f7] text-[#546173] hover:bg-[#e8eef6]"}`}
                 >
                   {tab}
@@ -122,7 +133,14 @@ export const RecruitmentPage: React.FC = () => {
                   {/* 북마크 */}
                   <button
                     type="button"
-                    onClick={() => toggleBookmark(row.id)}
+                    onClick={() => {
+                      toggleBookmark(row.id);
+                      setFeedback(
+                        bookmarked.has(row.id)
+                          ? `${row.company} 공고를 관심 목록에서 해제했습니다.`
+                          : `${row.company} 공고를 관심 목록에 저장했습니다.`
+                      );
+                    }}
                     className="absolute right-3 top-3 text-lg leading-none"
                     aria-label="북마크"
                   >
@@ -173,7 +191,14 @@ export const RecruitmentPage: React.FC = () => {
                     </div>
                     <button
                       type="button"
-                      onClick={() => toggleReason(row.id)}
+                      onClick={() => {
+                        toggleReason(row.id);
+                        setFeedback(
+                          expandedReasons.has(row.id)
+                            ? `${row.company} 공고의 AI 분석 요약을 닫았습니다.`
+                            : `${row.company} 공고의 AI 분석 요약을 열었습니다.`
+                        );
+                      }}
                       className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-[#3a5fd9] hover:underline"
                     >
                       {isReasonOpen ? "상세 분석 닫기" : "상세 분석 보기"}
@@ -202,6 +227,7 @@ export const RecruitmentPage: React.FC = () => {
                   {/* CTA */}
                   <button
                     type="button"
+                    onClick={() => setFeedback(`${row.company} 채용 페이지로 이어지는 버튼입니다.`)}
                     className="mt-3 w-full rounded-lg bg-[#3a5fd9] py-2 text-sm font-semibold text-white hover:bg-[#2e4dbf] transition-colors"
                   >
                     공고 바로가기
@@ -224,6 +250,7 @@ export const RecruitmentPage: React.FC = () => {
             </div>
             <button
               type="button"
+              onClick={() => setFeedback("맞춤 공고 알림 신청 인터랙션입니다.")}
               className="mt-3 w-full rounded-lg border border-white/30 bg-white/15 py-1.5 text-[11px] font-semibold text-white hover:bg-white/25 transition-colors"
             >
               커리어 성장 공고 받기 →
@@ -237,6 +264,7 @@ export const RecruitmentPage: React.FC = () => {
                 <button
                   key={m.label}
                   type="button"
+                  onClick={() => setFeedback(`${m.label.replace("\n", " ")} 영역으로 이어지는 버튼입니다.`)}
                   className="rounded-lg border border-[#e8eef6] bg-[#f8fafd] p-3 text-center hover:border-[#a8c0f0] hover:bg-[#eef3ff] transition-colors"
                 >
                   <div className="text-xl">{m.icon}</div>
