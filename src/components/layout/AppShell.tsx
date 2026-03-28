@@ -12,50 +12,43 @@ type AppShellProps = PropsWithChildren<{
   pageTitle: string
 }>
 
-const roadmapShortcuts = [
-  { label: '진로설계', tone: 'teal' },
-  { label: '경력개발', tone: 'blue' },
-  { label: '연구수행', tone: 'amber' },
-  { label: '학년별로드맵', tone: 'green' },
-] as const
-
 const sectionMenuMap: Record<GlobalPage, { title: string; items: string[]; accent: string }> = {
   home: {
     title: 'MY HOME',
-    accent: '#55a7a3',
-    items: ['마이홈 대시보드', '나의 이수현황', '공지사항', '취업자료·기업분석'],
+    accent: '#4c8de1',
+    items: ['My정보', '나의 이수현황', 'My 커리어 로드맵', '진로/취업프로그램', '공지사항'],
   },
   roadmap: {
     title: '연구수행',
-    accent: '#55a7a3',
-    items: ['학업계획서', '지도교수 배정상담', '연구지도 교과목 상담', '연구실적', '어학시험/종합시험', '비교과 실적'],
+    accent: '#4c8de1',
+    items: ['학업계획서', '기업정보', '기업 분석 리포트', '직무 참고자료'],
   },
   mentoring: {
     title: '졸업선배 노하우·멘토링',
-    accent: '#55a7a3',
+    accent: '#4c8de1',
     items: [
-      '우리학교 졸업선배 정보검색',
-      '졸업선배 멘토링상담',
-      '졸업선배 멘토등록',
-      '졸업선배 취업·진학후기',
-      '졸업선배 취업·진학후기 인터뷰',
-      '학기별 선배초청 직무간담회',
+      'AI 멘토 자동 매칭 리포트',
+      '추천 선배 인사이트',
+      '멘토링 상담 연결 추천',
+      '전환 가능 역량',
+      '선배 FAQ',
+      '선배초청 직무간담회',
     ],
   },
   employment: {
     title: '취업자료·기업분석',
-    accent: '#f4c45f',
-    items: ['취업자료실', '기업 분석 리포트', '직무 참고자료', '자격증 정보', '기업정보', '산업행사', '프로그램 안내'],
+    accent: '#4c8de1',
+    items: ['취업자료실', '기업정보', '기업 분석 리포트', '직무 참고자료'],
   },
   recruitment: {
     title: '채용정보',
     accent: '#4c8de1',
-    items: ['추천채용', '일반채용', '인턴채용', '채용설명회', '캠퍼스리크루팅', '지원현황'],
+    items: ['추천채용', '일반채용', '채용설명회', '캠퍼스리크루팅'],
   },
   diagnosis: {
     title: '진단실시',
-    accent: '#7da24a',
-    items: ['직업기초역량진단', '진로성숙도검사', '취업준비도검사', '직무적성검사', '역량결과보기'],
+    accent: '#4c8de1',
+    items: ['전체 역량분석', '직업기초역량진단', '진로성숙도검사', '취업준비도검사', '직무적성검사', ],
   },
   sitemap: {
     title: '사이트맵',
@@ -137,13 +130,6 @@ const quickMenus: QuickMenuItem[] = [
   },
 ]
 
-const toneClassMap = {
-  teal: 'bg-[#effaf6] text-[#21a07c] border-[#d3eee5]',
-  blue: 'bg-[#eef4ff] text-[#5b86f7] border-[#d6e3ff]',
-  amber: 'bg-[#fff7ea] text-[#f1b544] border-[#f7e3b5]',
-  green: 'bg-[#eef7ea] text-[#7cab42] border-[#d9e9c4]',
-} as const
-
 export function AppShell({
   activePage,
   children,
@@ -173,24 +159,6 @@ export function AppShell({
             </div>
             <div className="mt-2 text-sm text-[#5e6d83]">{studentProfile.grade}</div>
             <div className="mt-1 text-sm text-[#5e6d83]">아이티센 교수</div>
-          </section>
-
-          <section className="rounded-md border border-[#e1e6ef] p-3 shadow-sm">
-            <div className="mb-3 flex items-center gap-2 text-[15px] font-semibold text-[#3e4b60]">
-              <span>My로드맵</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              {roadmapShortcuts.map((item) => (
-                <button
-                  key={item.label}
-                  type="button"
-                  className={`rounded-md border px-2 py-3 text-center ${toneClassMap[item.tone]}`}
-                >
-                  <div className="text-xs font-bold leading-snug">{item.label}</div>
-                  <div className="mt-1 text-[10px] opacity-70">진행</div>
-                </button>
-              ))}
-            </div>
           </section>
 
           <section className="rounded-md border border-[#e1e6ef] shadow-sm overflow-hidden">
