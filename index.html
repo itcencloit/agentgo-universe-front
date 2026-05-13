@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/agentgo-universe-front/favicon.svg" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentGo Universe</title>
+    <script type="module" crossorigin src="/agentgo-universe-front/assets/index-UKK_rSvW.js"></script>
+    <link rel="stylesheet" crossorigin href="/agentgo-universe-front/assets/index-BKYLMPSK.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const redirectPath = new URLSearchParams(window.location.search).get('p');
+      if (redirectPath) {
+        const basePath = window.location.pathname.replace(/\/$/, '');
+        window.history.replaceState(null, '', `${basePath}${redirectPath}`);
+      }
+    </script>
+  </body>
+</html>
